@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Polls</title>
+
+	<% include ../partials/header %>
+</head>
+<body>
+
+	<div class="container main-container">
+
+		<% include ../partials/head %>
+
+		<form method="post">
+
+			<div class="row title">
+				<div class="col title-font">
+					<div class="row">
+						<div class="col-auto">#</div>
+						<div class="col">
+							<textarea name="title" placeholder="<%= language.title_textarea %>..." rows="1" onkeyup="adjustSize(this)" autofocus></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<h3 class="col section-title">
+					### <%= language.settings_title %>
+				</h3>
+			</div>
+			<div class="row settings">
+				<div class="col">
+					<div class="custom-checkbox">
+					  <input type="checkbox" id="setting_preventDoubles" name="preventDoubles" checked>
+					  <label for="setting_preventDoubles"><%= language.setting_prevent_duplicates %></label>
+					</div>
+					<div class="custom-checkbox">
+					  <input type="checkbox" id="setting_collectNames" name="collectNames">
+					  <label for="setting_collectNames"><%= language.setting_collect_names %></label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<h3 class="col section-title">
+					### <%= language.choices_title %>
+				</h3>
+			</div>
+			<div class="row options">
+				<div class="col">
+
+					<div class="row choice">
+
+						<div class="col-auto number">
+							1.
+						</div>
+						<div class="col value">
+							<textarea rows="1" placeholder="<%= language.answer_textarea %>..." onkeyup="choiceEdit(this)"></textarea>
+						</div>
+						<div class="col-auto remove" title="<%= language.answer_remove %>" onclick="removeChoice(this)">
+							<i class="fas fa-times"></i>
+						</div>
+						<div class="col-12 metadata">
+							<div class="row">
+								<div class="col-auto meta-group" title="Limit number of answers">
+									<div class="icon"><i class="fas fa-hand-paper"></i></div>
+									<div class="value">
+										<input type="number" name="limitAnswers" min="0" placeholder="Unlimited" oninput="disableMaxAnswers(this)" >
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="row submit">
+				<div class="col">
+					<button type="submit">
+						<span class="text"><%= language.go_button %></span>
+						<span class="spinner"><i class="fas fa-circle-notch fa-spin"></i> <%= language.go_button_posting %></span>
+					</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+	<% include ../partials/footer %>
+
+	<div hidden id="choiceBoilerplate">
+		<div class="row choice">
+
+			<div class="col-auto number">
+
+			</div>
+			<div class="col value">
+				<textarea rows="1" placeholder="<%= language.answer_textarea %>..." onkeyup="choiceEdit(this)"></textarea>
+			</div>
+			<div class="col-auto remove" title="<%= language.answer_remove %>" onclick="removeChoice(this)">
+				<i class="fas fa-times"></i>
+			</div>
+			<div class="col-12 metadata">
+				<div class="row">
+					<div class="col-auto meta-group" title="Limit number of answers">
+						<div class="icon"><i class="fas fa-hand-paper"></i></div>
+						<div class="value">
+							<input type="number" name="limitAnswers" min="0" placeholder="Unlimited" oninput="disableMaxAnswers(this)" >
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="/assets/js/toast.js" charset="utf-8"></script>
+	<script src="/assets/js/newPoll.js?it" charset="utf-8"></script>
+
+</body>
+</html>

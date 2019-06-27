@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Vote - Polls</title>
+
+	<% include ../partials/header %>
+</head>
+<body>
+
+	<div class="container main-container">
+
+		<% include ../partials/head %>
+
+		<form>
+
+			<div class="row title">
+				<div class="col title-font">
+					<div class="row">
+						<div class="col-auto">#</div>
+						<h1 class="col-auto">
+							<%= pollData.title.S %>
+						</h1>
+					</div>
+				</div>
+			</div>
+
+			<% if (pollData.metadata.M.collectNames.BOOL) { %>
+				<%- include('./../partials/vote/collectNames'); %>
+			<% } %>
+
+			<div class="row">
+				<h3 class="col section-title">
+					### <%= language.choices_title %>
+				</h3>
+			</div>
+			<div class="row options">
+				<div class="col">
+
+					<% pollData.options.L.forEach(function(row){ %>
+				    <%- include('./../partials/vote/choiceRowVote', {r: row.M}); %>
+				  <% }); %>
+
+
+				</div>
+			</div>
+
+			<div class="row submit">
+				<div class="col">
+					<button type="submit">
+						<span class="text"><%= language.submit_button %></span>
+						<span class="spinner"><i class="fas fa-circle-notch fa-spin"></i> <%= language.submit_button_posting %></span>
+					</button>
+				</div>
+			</div>
+
+			<div class="row">
+				<h4 class="col section-title">
+					#### <%= language.share_title %>
+				</h4>
+			</div>
+			<div class="row share-buttons">
+				<div class="col">
+					<a>
+						<i class="fas fa-link"></i>
+						Link
+					</a>
+					<a href="tg://msg?text=<%- encodeURIComponent(language.share_text + uri) %>">
+						<i class="fab fa-telegram-plane"></i>
+						Telegram
+					</a>
+					<a href="whatsapp://send?text=<%- encodeURIComponent(language.share_text + uri) %>">
+						<i class="fab fa-whatsapp"></i>
+						Whatsapp
+					</a>
+					<a>
+						<i class="fab fa-facebook-f"></i>
+						Facebook
+					</a>
+					<a>
+						<i class="fab fa-twitter"></i>
+						Twitter
+					</a>
+					<a href="#" id="share_via_qr">
+						<i class="fas fa-qrcode"></i>
+						Qr code
+					</a>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+	<% include ../partials/footer %>
+
+	<script src="/assets/js/toast.js" charset="utf-8"></script>
+	<script src="/assets/js/submitPoll.js" charset="utf-8"></script>
+
+	<script type="text/javascript">
+		document.getElementById("share_via_qr").addEventListener('click', (e) => {
+			e.preventDefault();
+			toast("qr", "<img class='qr-code-img' src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+'<%= uri %>'+"'></img>")
+		})
+	</script>
+
+</body>
+</html>

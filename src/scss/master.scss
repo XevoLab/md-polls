@@ -1,0 +1,43 @@
+@import '_variables';
+@import url('https://fonts.googleapis.com/css?family=Lato:900|Mada&display=swap');
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
+}
+button {
+	font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
+}
+
+.brand-color {
+	color: $brand_color;
+}
+.brand-font {
+	font-family: $brand_font, 'Arial', 'Helvetica', sans-serif;
+	font-weight: 900;
+}
+
+.title-font {
+	font-weight: 900;
+	font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
+	color: #333;
+}
+
+.text-right {
+	text-align: right;
+}
+.text-center {
+	text-align: center;
+}
+
+@import 'toast';
+
+@-webkit-keyframes slideIn {
+  100% { right: 1rem; }
+}
+
+@import 'index';

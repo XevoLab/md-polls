@@ -1,0 +1,25 @@
+{
+  "name": "polls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "scss": "node-sass --watch src\\scss -o public\\assets\\css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "XevoLab",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.480.0",
+    "chart.js": "^2.8.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "number-to-base64": "^1.0.5"
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1"
+  }
+}

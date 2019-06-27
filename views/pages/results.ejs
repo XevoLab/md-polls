@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Results - Polls</title>
+
+	<% include ../partials/header %>
+</head>
+<body>
+
+	<div class="container main-container">
+		<form>
+
+			<% include ../partials/head %>
+
+			<div class="row title">
+				<div class="col title-font">
+					<div class="row">
+						<div class="col-auto">#</div>
+						<h1 class="col-auto">
+							<%= id %>
+						</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<h3 class="col section-title">
+					### <%= language.results_title %>
+				</h3>
+			</div>
+			<div class="row results options">
+				<div class="col">
+
+					<div class="row choice">
+
+						<div class="col-auto number">
+							1.
+						</div>
+						<div class="col-auto result">
+							4/5
+						</div>
+						<div class="col select">
+							Answer
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="row">
+				<h3 class="col section-title">
+					### <%= language.piechart_title %>
+				</h3>
+			</div>
+			<div class="row results options">
+				<div class="col">
+
+					<div class="row choice">
+
+						<div class="col-auto number">
+							1.
+						</div>
+						<div class="col-auto result">
+							4/5
+						</div>
+						<div class="col select">
+							Answer
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+	<% include ../partials/footer %>
+
+	<script src="/assets/js/submitPoll.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		var Chart = require('chart.js');
+		var myChart = new Chart(ctx, {
+	    type: 'pie',
+	    data: data,
+	    options: options
+		});
+	</script>
+
+</body>
+</html>

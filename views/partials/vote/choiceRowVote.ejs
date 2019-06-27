@@ -1,0 +1,16 @@
+
+<div class="row choice" id="answer_row_<%= r.id.N %>">
+
+	<div class="col select">
+		<div class="custom-checkbox">
+			<input type="radio" id="answer_<%= r.id.N %>" name="choice" value="<%= r.id.N %>">
+			<label for="answer_<%= r.id.N %>"><%= r.value.S %></label>
+		</div>
+	</div>
+	<% if (r.metadata.M.limitAnswers.N != 0) { %>
+		<div class="col-auto limit">
+			<%= r.count.N %>/<%= r.metadata.M.limitAnswers.N %>
+		</div>
+	<% } %>
+
+</div>

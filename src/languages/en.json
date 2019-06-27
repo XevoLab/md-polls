@@ -1,0 +1,37 @@
+{
+	"index": {
+		"title_textarea": "Title",
+		"settings_title": "Settings",
+		"setting_prevent_duplicates": "Prevent duplicates",
+		"setting_collect_names": "Collect names",
+		"choices_title": "Choices",
+		"answer_textarea": "Answer",
+		"answer_remove": "Remove",
+		"go_button": "Start collecting answers",
+		"go_button_posting": "Posting",
+		"footer_createPoll": "Create poll"
+	},
+	"vote": {
+		"collect_names_title": "Name",
+		"collect_names_textarea": "John Doe",
+		"collect_names_explanation": "The creator of this poll is asking for people to leave their name as part of their vote",
+		"choices_title": "Choices",
+		"submit_button": "Submit",
+		"submit_button_posting": "Posting",
+		"share_title": "Share",
+		"share_text": "Hi! 👋 Could you vote on this? ",
+		"footer_createPoll": "Create poll"
+	},
+	"results": {
+		"results_title": "Results",
+		"piechart_title": "Pie chart",
+		"share_title": "Share",
+		"footer_createPoll": "Create poll"
+	},
+	"newPolljs": {
+		"toast_not_enough_answers": "There are not enough valid answers 😲, you need at least one.",
+		"toast_too_many_answers": "Whoa, way to many answers 😵. The maximum is 25.",
+		"toast_success": "You poll was posted and is now ready 🤩",
+		"toast_generic_error": "Something went wrong while making this poll go live 😞"
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"index": {
+		"title_textarea": "Titolo",
+		"settings_title": "Impostazioni",
+		"setting_prevent_duplicates": "Previeni duplicati",
+		"choices_title": "Scelte",
+		"answer_textarea": "Risposta",
+		"answer_remove": "Rimuovi",
+		"go_button": "Invia",
+		"footer_createPoll": "Crea questionario 🎉"
+	},
+	"vote": {
+		"choices_title": "Scelte",
+		"submit_button": "Invia",
+		"share_title": "Condividi"
+	},
+	"results": {
+		"results_title": "Risultati",
+		"piechart_title": "Grafico",
+		"share_title": "Condividi"
+	}
+}
