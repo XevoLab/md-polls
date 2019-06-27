@@ -58,6 +58,6 @@ app.use(languageSelector);
 	app.use('/polls', require('./src/routes/polls.js'))
 
 // Starting the server
-const PORT = 443;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
