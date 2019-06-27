@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 const aws = require('aws-sdk');
-aws.config.loadFromPath(__dirname + './../aws_credentials.json');
+aws.config.loadFromPath(__dirname + '/./../aws_credentials.json');
 var ddb = new aws.DynamoDB({apiVersion: '2012-08-10'});
 
 router.get('/:id', (req, res) => {
