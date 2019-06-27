@@ -3,20 +3,35 @@
 		"title_textarea": "Titolo",
 		"settings_title": "Impostazioni",
 		"setting_prevent_duplicates": "Previeni duplicati",
+		"setting_collect_names": "Raccogli nomi",
 		"choices_title": "Scelte",
 		"answer_textarea": "Risposta",
 		"answer_remove": "Rimuovi",
 		"go_button": "Invia",
+		"go_button_posting": "In corso",
 		"footer_createPoll": "Crea questionario 🎉"
 	},
 	"vote": {
+		"collect_names_title": "Nome",
+		"collect_names_textarea": "Mario Rossi",
+		"collect_names_explanation": "Il creatore di questo questionario chiede di lasciare un nome come parte del proprio voto",
 		"choices_title": "Scelte",
 		"submit_button": "Invia",
-		"share_title": "Condividi"
+		"go_button_posting": "In corso",
+		"share_title": "Condividi",
+		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
+		"footer_createPoll": "Crea questionario 🎉"
 	},
 	"results": {
 		"results_title": "Risultati",
 		"piechart_title": "Grafico",
-		"share_title": "Condividi"
+		"share_title": "Condividi",
+		"footer_createPoll": "Crea questionario 🎉"
+	},
+	"newPolljs": {
+		"toast_not_enough_answers": "Non ci sono abbastanza risposte valide 😲, te ne serve almeno una.",
+		"toast_too_many_answers": "Whoa, troppe risposte 😵. Il massimo è 25.",
+		"toast_success": "Il tuo questionario è stato inviato ed è ora pronto 🤩",
+		"toast_generic_error": "Qualcosa non ha funzionato mentre inviavamo il tuo questionario 😞"
 	}
 }
