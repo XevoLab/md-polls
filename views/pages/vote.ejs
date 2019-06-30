@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Vote: <%= pollData.title.S %> - Polls</title>
+	<title>Vote on <%= pollData.title.S %> - Polls</title>
 
-	<meta property=”og:title” content=”Vote: <%= pollData.title.S %> - MD Polls” />
+	<meta property=”og:title” content=”Vote on <%= pollData.title.S %> - MD Polls” />
 	<meta property=”og:og:description content=”Vote on this poll! Create one youself to quicly and effortlessly share nice looking polls to your friends, then collect all their responses” />
 	<meta property=”og:url content=”https://md-polls.herokuapp.com/v/<%= pollData.ID.S %>” />
 
@@ -21,7 +21,7 @@
 				<div class="col title-font">
 					<div class="row">
 						<div class="col-auto">#</div>
-						<h1 class="col-auto">
+						<h1 class="col">
 							<%= pollData.title.S %>
 						</h1>
 					</div>
