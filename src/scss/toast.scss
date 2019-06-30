@@ -95,6 +95,18 @@
 		.title-bar .col.title::before {
 			content: 'QR';
 		}
+		.qr-absolute {
+			position: absolute;
+	    z-index: -1;
+	    left: 50%;
+	    top: 50%;
+	    transform: translate(-50%, -50%);
+	    color: #aaa;
+
+			i.fa-spin {
+				animation-timing-function: cubic-bezier(0.6, 0, 0.4, 0.99);
+			}
+		}
 		img.qr-code-img {
 			width: 150px;
 			height: 150px;

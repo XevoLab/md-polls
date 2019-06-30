@@ -16,8 +16,8 @@
 		"collect_names_textarea": "Mario Rossi",
 		"collect_names_explanation": "Il creatore di questo questionario chiede di lasciare un nome come parte del proprio voto",
 		"choices_title": "Scelte",
-		"submit_button": "Invia",
-		"go_button_posting": "In corso",
+		"submit_button": "Invia il mio voto",
+		"submit_button_posting": "In corso",
 		"share_title": "Condividi",
 		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
 		"footer_createPoll": "Crea questionario 🎉"
@@ -33,5 +33,13 @@
 		"toast_too_many_answers": "Whoa, troppe risposte 😵. Il massimo è 25.",
 		"toast_success": "Il tuo questionario è stato inviato ed è ora pronto 🤩",
 		"toast_generic_error": "Qualcosa non ha funzionato mentre inviavamo il tuo questionario 😞"
+	},
+	"submitPolljs": {
+		"toast_no_answer": "Hmmm, hai fatto la tua scelta? 🤔",
+		"toast_empty_name": "Questo questionario richiede un nome e non riusciamo a trovarlo 😲",
+		"toast_full_choice": "Questa opzione è piena e non può accettare altri voti 😵",
+		"toast_already_voted": "Sembra che tu abbia già votato 😮",
+		"toast_success": "Il tuo voto è stato salvato! 🤩",
+		"toast_generic_error": "Qualcosa è andato storto mentre inviavamo il tuo voto 😞"
 	}
 }

@@ -29,8 +29,6 @@ app.use(languageSelector);
 			res.render('pages/index', {language: req.languageData.index});
 		})
 
-		// Vote
-		app.use(['/v/', '/vote/'], require('./src/routes/vote.js'));
 
 		// Results
 		app.get(['/r/:id', '/results/:id'], (req, res) => {
@@ -48,6 +46,9 @@ app.use(languageSelector);
 		app.get('/assets/js/newPoll.js', (req, res) => {
 			res.render('js/newPoll', {language: req.languageData.newPolljs});
 		})
+		app.get('/assets/js/submitPoll.js', (req, res) => {
+			res.render('js/submitPoll', {language: req.languageData.submitPolljs});
+		})
 
 		// Set a static folder
 		app.use(express.static(path.join(__dirname, 'public')));
@@ -56,6 +57,11 @@ app.use(languageSelector);
 
 	app.use(express.json());
 	app.use('/polls', require('./src/routes/polls.js'))
+
+// HYBRID
+
+		// Vote
+		app.use(['/v/', '/vote/'], require('./src/routes/vote.js'));
 
 // Starting the server
 const PORT = process.env.PORT || 3000;

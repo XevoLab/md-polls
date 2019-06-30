@@ -1,0 +1,73 @@
+var form = document.querySelector('form');
+form.addEventListener('submit', function (e) {
+	e.preventDefault();
+
+	document.querySelector("button[type=submit]").classList.add("loading");
+
+	var pollID = document.querySelector("form").attributes["id"].value;
+
+	var voteData = {};
+
+	var selection = document.querySelectorAll("input:checked[name=choice]");
+	if (selection.length !== 1) {
+		document.querySelector("button[type=submit]").classList.remove("loading");
+		toast("error", "<%= language.toast_no_answer %>");
+		return false;
+	}
+
+	voteData.choice = selection[0].value;
+
+	var name = document.querySelectorAll("input[name=name]");
+	if (name.length === 1) {
+		if (name[0].value === "") {
+			document.querySelector("button[type=submit]").classList.remove("loading");
+			toast("error", "<%= language.toast_empty_name %>");
+			return false;
+		}
+		else {
+			voteData.name = name[0].value;
+		}
+	}
+
+	var xhr = new XMLHttpRequest();
+	xhr.onload = function () {
+		document.querySelector("button[type=submit]").classList.remove("loading");
+
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			var res = JSON.parse(xhr.response);
+			if (res.result === "success") {
+				toast("success", "<%= language.toast_success %>");
+				setTimeout(() => {
+					window.location.href = '/r/'+document.querySelector("form").attributes["id"].value;
+				}, 1000);
+				return true;
+			}
+			else if (res.result === "full") {
+				toast("warning", "<%= language.toast_full_choice %>");
+				return false;
+			}
+			else if (res.result === "alreadyVoted") {
+				toast("warning", "<%= language.toast_already_voted %>");
+				return false;
+			}
+			else {
+				toast("error", "<%= language.toast_generic_error %>");
+				return false;
+			}
+		}
+		else {
+			toast("error", "<%= language.toast_generic_error %>");
+			return false;
+		}
+	}
+	xhr.onerror = function () {
+		document.querySelector("button[type=submit]").classList.remove("loading");
+		toast("error", "<%= language.toast_generic_error %>");
+		return false;
+	}
+	xhr.open('POST', '/vote/'+pollID);
+	xhr.setRequestHeader('Content-type', 'application/json');
+
+	xhr.send(JSON.stringify(voteData));
+
+}, false);

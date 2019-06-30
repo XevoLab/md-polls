@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 			});
 
 			if (data.Items.length === 0) {
-				res.json({result: "empty"})
+				res.json({result: "empty"});
 			}
 			else {
 				res.json(data.Items[0]);
@@ -91,7 +91,11 @@ router.post('/', (req, res) => {
 			metadata: {M: {
 				limitAnswers: {N: String(o.metadata.limitAnswers || 0)}
 			}},
-			count: {N: '0'}
+			votes: {N: '0'}
+		}
+
+		if (d.metadata.collectNames) {
+			singleOption.metadata.M["names"] = {L : []};
 		}
 
 		options.push({M: singleOption});
@@ -108,6 +112,7 @@ router.post('/', (req, res) => {
 	ddbResponse.then(function(data) {
 	  res.json({result: "success", ID: pollID, message:"Request processed successfully"});
 	}).catch(function(err) {
+		console.error("PostPoll: " + err.message)
 	  res.json({result: "error", message:"Somthing didn\'t work out quite right"});
 	});
 

@@ -16,7 +16,7 @@
 		"collect_names_textarea": "John Doe",
 		"collect_names_explanation": "The creator of this poll is asking for people to leave their name as part of their vote",
 		"choices_title": "Choices",
-		"submit_button": "Submit",
+		"submit_button": "Submit my vote",
 		"submit_button_posting": "Posting",
 		"share_title": "Share",
 		"share_text": "Hi! 👋 Could you vote on this? ",
@@ -33,5 +33,13 @@
 		"toast_too_many_answers": "Whoa, way to many answers 😵. The maximum is 25.",
 		"toast_success": "You poll was posted and is now ready 🤩",
 		"toast_generic_error": "Something went wrong while making this poll go live 😞"
+	},
+	"submitPolljs": {
+		"toast_no_answer": "Hmmm, did you pick your choice? 🤔",
+		"toast_empty_name": "This poll requires a name and we cannot find one 😲",
+		"toast_full_choice": "This choice is now full and cannot accept any more votes 😵",
+		"toast_already_voted": "It looks like you already voted on this poll before 😮",
+		"toast_success": "You vote was saved 🤩",
+		"toast_generic_error": "Something went wrong while submitting your answer 😞"
 	}
 }

@@ -10,6 +10,7 @@ function toast(type, content) {
 			</div>
 			<div class="row content-bar">
 				<div class="col content ${(type==="qr" ? "text-center" : null)}">
+					${(type==="qr" ? '<div class="qr-absolute"><i class="fas fa-circle-notch fa-spin fa-2x"></i></div>' : null)}
 					${content}
 				</div>
 			</div>

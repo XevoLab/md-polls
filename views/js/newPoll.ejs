@@ -97,10 +97,16 @@ form.addEventListener('submit', function (e) {
 	xhr.onload = function () {
 		document.querySelector("button[type=submit]").classList.remove("loading");
 
-		if (xhr.readyState == 4 && xhr.status == 200) {
+		try {
+			var res = JSON.parse(xhr.response);
+		} catch (e) {
+			var res = {result: 'error'};
+		}
+
+		if (xhr.readyState == 4 && xhr.status == 200 && res.result === 'success') {
 			toast("success", "<%= language.toast_success %>");
 			setTimeout(() => {
-				window.location.href = '/v/'+JSON.parse(xhr.response).ID;
+				window.location.href = '/v/'+res.ID;
 			}, 1000)
 		}
 		else {

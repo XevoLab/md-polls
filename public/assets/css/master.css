@@ -88,6 +88,15 @@ button {
     background-color: #4298f5; }
   .toast.toast-qr .title-bar .col.title::before {
     content: 'QR'; }
+  .toast.toast-qr .qr-absolute {
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #aaa; }
+    .toast.toast-qr .qr-absolute i.fa-spin {
+      animation-timing-function: cubic-bezier(0.6, 0, 0.4, 0.99); }
   .toast.toast-qr img.qr-code-img {
     width: 150px;
     height: 150px; }
