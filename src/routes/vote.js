@@ -5,9 +5,10 @@ const express = require('express');
 const router = express.Router();
 
 var path = require('path');
+require('dotenv').config();
 
 const aws = require('aws-sdk');
-var ddb = new aws.DynamoDB({apiVersion: '2012-08-10'});
+var ddb = new aws.DynamoDB({apiVersion: '2012-08-10', region: 'eu-central-1'});
 
 router.get('/:id', (req, res) => {
 

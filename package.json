@@ -14,6 +14,7 @@
   "dependencies": {
     "aws-sdk": "^2.480.0",
     "chart.js": "^2.8.0",
+    "dotenv": "^8.0.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "number-to-base64": "^1.0.5"
