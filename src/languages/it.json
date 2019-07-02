@@ -9,7 +9,7 @@
 		"answer_remove": "Rimuovi",
 		"go_button": "Invia",
 		"go_button_posting": "In corso",
-		"footer_createPoll": "Crea questionario 🎉"
+		"footer_createPoll": "Crea questionario"
 	},
 	"vote": {
 		"collect_names_title": "Nome",
@@ -20,13 +20,13 @@
 		"submit_button_posting": "In corso",
 		"share_title": "Condividi",
 		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
-		"footer_createPoll": "Crea questionario 🎉"
+		"footer_createPoll": "Crea questionario"
 	},
 	"results": {
 		"results_title": "Risultati",
 		"piechart_title": "Grafico",
 		"share_title": "Condividi",
-		"footer_createPoll": "Crea questionario 🎉"
+		"footer_createPoll": "Crea questionario"
 	},
 	"newPolljs": {
 		"toast_not_enough_answers": "Non ci sono abbastanza risposte valide 😲, te ne serve almeno una.",

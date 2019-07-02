@@ -25,21 +25,13 @@ app.use(languageSelector);
 		// set the view engine to ejs
 		app.set('view engine', 'ejs');
 
+		// Index
 		app.get(['/', '/index.html', 'index.php'], (req, res) => {
 			res.render('pages/index', {language: req.languageData.index});
 		})
 
-
 		// Results
-		app.get(['/r/:id', '/results/:id'], (req, res) => {
-
-			var pollData = {
-				id: req.params.id,
-				language: req.languageData.results
-			};
-
-			res.render('pages/results', pollData);
-		})
+		app.use(['/r/', '/results/'], require('./src/routes/results.js'));
 
 	// RESOURCES
 

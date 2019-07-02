@@ -1,0 +1,21 @@
+<tr class="choice">
+	<td class="number"><%= index %>.</td>
+	<td class="result"><%= r.votes.N %></td>
+	<td class="select">
+		<%= r.value.S %>
+
+		<% if (showNames) { %>
+			<div class="names">
+				<% for (var i=1; ((i <= r.metadata.M.names.L.length) && (i < 4)); i++) { %>
+					<% var trailer = ''; %>
+					<% if ((i < r.metadata.M.names.L.length) && (i < 3)) { %>
+						<% trailer = ','; %>
+					<% } %>
+					<%= r.metadata.M.names.L[r.metadata.M.names.L.length - i].S + trailer %>
+				<% } %>
+			</div>
+		<% } %>
+
+		<div class="percental-bar" style="width: <%= r.votes.N/total*100 %>%;"></div>
+	</td>
+</tr>

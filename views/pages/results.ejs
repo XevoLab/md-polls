@@ -16,8 +16,8 @@
 				<div class="col title-font">
 					<div class="row">
 						<div class="col-auto">#</div>
-						<h1 class="col-auto">
-							<%= id %>
+						<h1 class="col">
+							<%= title %>
 						</h1>
 					</div>
 				</div>
@@ -31,25 +31,19 @@
 			<div class="row results options">
 				<div class="col">
 
-					<div class="row choice">
+					<table>
 
-						<div class="col-auto number">
-							1.
-						</div>
-						<div class="col-auto result">
-							4/5
-						</div>
-						<div class="col select">
-							Answer
-						</div>
+						<% for (var i=0; i < options.length; i++) { %>
+					    <%- include('./../partials/results/choiceRowResult', {index: i+1, r: options[i].M, total: total, showNames: collectNames}); %>
+					  <% } %>
 
-					</div>
+					</table>
 
 
 				</div>
 			</div>
 
-			<div class="row">
+			<!--<div class="row">
 				<h3 class="col section-title">
 					### <%= language.piechart_title %>
 				</h3>
@@ -57,23 +51,10 @@
 			<div class="row results options">
 				<div class="col">
 
-					<div class="row choice">
-
-						<div class="col-auto number">
-							1.
-						</div>
-						<div class="col-auto result">
-							4/5
-						</div>
-						<div class="col select">
-							Answer
-						</div>
-
-					</div>
 
 
 				</div>
-			</div>
+			</div>-->
 
 		</form>
 	</div>

@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
 	var d = req.body;
 
 	const b64 = require('number-to-base64'); // Base64 econding of id
-	var pollID = Math.floor((Date.now() - 946080000) / 1000) + String(Math.floor(Math.random()*1000));
+	var pollID = Math.floor(Date.now() - 946080000) + String(Math.floor(Math.random()*1000));
 	pollID = b64.ntob(pollID);
 
 	// Item to be added into dynamoDB

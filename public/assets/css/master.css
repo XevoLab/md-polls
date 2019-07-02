@@ -348,3 +348,20 @@ footer button, .main-container .share-buttons button {
 
 footer i, .main-container .share-buttons i {
   width: 18px; }
+
+.results table {
+  width: 100%; }
+  .results table .result {
+    text-align: right;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important; }
+  .results table .select {
+    width: 100%; }
+    .results table .select .names {
+      padding-left: .1em;
+      color: #888;
+      font-size: .9rem; }
+
+.choice .percental-bar {
+  background-color: #4286f4;
+  height: 2px; }
