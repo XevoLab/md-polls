@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Translate MD Polls</title>
+
+	<meta property="og:title" content="MD Polls" />
+	<meta property="og:description" content="Quicly and effortlessly share nice looking polls to your friends, then collect all their responses" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="<%= uri %>" />
+
+	<% include ../partials/header %>
+</head>
+<body>
+
+	<div class="container main-container">
+
+		<% include ../partials/head %>
+
+		<div class="row title">
+			<div class="col title-font">
+				<div class="row">
+					<div class="col-auto">#</div>
+					<h1 class="col">
+						<%= language.title %>
+					</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col p">
+				<p>
+					<%= language.p1 %>
+				</p>
+				<p>
+					<%= language.p2 %>
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<h3 class="col section-title">
+				### <%= language.section_title %>
+			</h3>
+		</div>
+		<div class="row settings">
+			<div class="col p">
+				<p>
+					<%= language.p3 %>
+				</p>
+				<div class="slim-button">
+					<a href="/assets/downloads/languages.zip"><i class="fas fa-file-download"></i> Download file</a>
+				</div>
+				<p>
+					<%= language.p4 %>
+				</p>
+				<div class="code-block">
+					<span class="text-red">"footer_createPoll"</span>: <span class="text-green">"Create poll"</span>,<br />
+					<p><%= language.becomes %></p>
+					<span class="text-red">"footer_createPoll"</span>: <span class="text-green">"Crea sondaggio"</span>,<br />
+				</div>
+				<p class="slim-button">
+					<%= language.p5 %> <a href="mailto:francesoc@goalescape.com">francescoc@goalescape.com</a>
+				</p>
+			</div>
+		</div>
+
+	</div>
+
+	<% include ../partials/footer %>
+
+</body>
+</html>

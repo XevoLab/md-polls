@@ -49,9 +49,21 @@ router.post('/', (req, res) => {
 	// Remap data
 	var d = req.body;
 
-	const b64 = require('number-to-base64'); // Base64 econding of id
-	var pollID = Math.floor(Date.now() - 946080000) + String(Math.floor(Math.random()*1000));
-	pollID = b64.ntob(pollID);
+	const alphabet = 'abcdefghikmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789-';
+	var pollID_number = Math.floor(Date.now() - 946080000) + String(Math.floor(Math.random()*1000));
+
+	var pollID = '';
+	var rem = 0;
+
+	while (pollID_number > 1) {
+
+		rem = Math.floor(pollID_number % 60);
+
+		pollID = alphabet.slice(rem, rem+1) + pollID;
+
+		pollID_number /= 60;
+
+	}
 
 	// Item to be added into dynamoDB
 	var itemData = {

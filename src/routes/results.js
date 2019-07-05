@@ -28,7 +28,6 @@ router.get('/:id', (req, res) => {
 		} else {
 
 			if (data.Items.length === 0) {
-				console.log("404")
 				res.sendFile(path.resolve('public/errorPages/404.html'));
 				return;
 			}
@@ -53,11 +52,27 @@ router.get('/:id', (req, res) => {
 
 				var totalVotes = pollData.options.L.reduce((ac, cv) => ac + parseInt(cv.M.votes.N), 0);
 
+				var alreadyVoted = false;
+				// Check if 'prevent douplicates' mode is enabled
+				if (pollData.metadata.M.preventDoubles.BOOL) {
+					var userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+					// Check if the IP is present
+					for (var v in pollData.metadata.M.answeredBy.L) {
+						if (pollData.metadata.M.answeredBy.L[v].S === userIP) {
+							alreadyVoted = true;
+							break;
+						}
+					}
+				}
+
 				var pageData = {
 					id: req.params.id,
 					title: pollData.title.S,
 					total: totalVotes,
 					options: pollData.options.L,
+					uri: req.protocol + '://' + req.get('host') + '/r/' + req.params.id,
+					alreadyVoted: alreadyVoted,
 					collectNames: pollData.metadata.M.collectNames.BOOL,
 					language: req.languageData.results
 				};

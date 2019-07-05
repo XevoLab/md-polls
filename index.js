@@ -5,6 +5,8 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
+const http = require('http').createServer(app);
+
 
 // LANGUAGE MIDDLEWARE
 const languageSelector = (req, res, next) => {
@@ -27,11 +29,16 @@ app.use(languageSelector);
 
 		// Index
 		app.get(['/', '/index.html', 'index.php'], (req, res) => {
-			res.render('pages/index', {language: req.languageData.index});
-		})
+			res.render('pages/index', {language: req.languageData.index, uri: req.protocol + '://' + req.get('host') + '/'});
+		});
 
 		// Results
 		app.use(['/r/', '/results/'], require('./src/routes/results.js'));
+
+		// Results
+		app.use('/translate', (req, res) => {
+			res.render('pages/translate', {language: req.languageData.translate, uri: req.protocol + '://' + req.get('host') + '/'});
+		});
 
 	// RESOURCES
 
@@ -47,6 +54,14 @@ app.use(languageSelector);
 
 // API REQUESTS
 
+	app.use('/qr/:str', (req, res) => {
+		res.set('Cache-Control', 'public, max-age=7776000'); // 90 days
+
+		var qr = require('qr-image');
+	  var code = qr.image(req.params.str, { type: 'png', margin: 0, size: 7, ec_level: 'Q'});
+	  code.pipe(res);
+	});
+
 	app.use(express.json());
 	app.use('/polls', require('./src/routes/polls.js'))
 
@@ -58,4 +73,4 @@ app.use(languageSelector);
 // Starting the server
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+http.listen(PORT, () => console.log(`Server started on port ${PORT}`));

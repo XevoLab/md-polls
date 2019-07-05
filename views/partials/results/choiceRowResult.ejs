@@ -10,6 +10,8 @@
 					<% var trailer = ''; %>
 					<% if ((i < r.metadata.M.names.L.length) && (i < 3)) { %>
 						<% trailer = ','; %>
+					<% } else if ((i < r.metadata.M.names.L.length) && (i == 3)) { %>
+						<% trailer = '...'; %>
 					<% } %>
 					<%= r.metadata.M.names.L[r.metadata.M.names.L.length - i].S + trailer %>
 				<% } %>

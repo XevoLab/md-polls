@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Results - Polls</title>
+	<title>Results for &apos;<%= title %>&apos; - MD Polls</title>
+
+	<meta property="og:title" content="Results for &apos;<%= title %>&apos; - MD Polls" />
+	<meta property="og:description" content="Check out how this poll did! Create one youself to quicly and effortlessly share nice looking polls to your friends, then collect all their responses" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="<%= uri %>" />
 
 	<% include ../partials/header %>
 </head>
@@ -43,6 +48,16 @@
 				</div>
 			</div>
 
+			<% if (!alreadyVoted) { %>
+				<div class="row vote">
+					<div class="col section-title">
+						<a href="/v/<%= id %>" class="btn primary-color">
+							<%= language.vote_button %>
+						</a>
+					</div>
+				</div>
+			<% } %>
+
 			<!--<div class="row">
 				<h3 class="col section-title">
 					### <%= language.piechart_title %>
@@ -56,19 +71,26 @@
 				</div>
 			</div>-->
 
+			<% include ../partials/socialShare %>
+
 		</form>
 	</div>
 
 	<% include ../partials/footer %>
 
-	<script src="/assets/js/submitPoll.js" charset="utf-8"></script>
+	<script src="/assets/js/toast.js" charset="utf-8"></script>
+
+	<script src="/socket.io/socket.io.js"></script>
+
 	<script type="text/javascript">
-		var Chart = require('chart.js');
-		var myChart = new Chart(ctx, {
-	    type: 'pie',
-	    data: data,
-	    options: options
-		});
+		document.getElementById("share_via_qr").addEventListener('click', (e) => {
+			e.preventDefault();
+			toast("qr", "<img class='qr-code-img' src='/qr/"+'<%= uri %>'+"'></img>")
+		})
+	</script>
+
+	<script>
+	  var socket = io();
 	</script>
 
 </body>

@@ -9,7 +9,8 @@
 		"answer_remove": "Remove",
 		"go_button": "Start collecting answers",
 		"go_button_posting": "Posting",
-		"footer_createPoll": "Create poll"
+		"footer_createPoll": "Create poll",
+		"footer_translate": "Translate"
 	},
 	"vote": {
 		"collect_names_title": "Name",
@@ -19,14 +20,32 @@
 		"submit_button": "Submit my vote",
 		"submit_button_posting": "Posting",
 		"share_title": "Share",
-		"share_text": "Hi! 👋 Could you vote on this? ",
-		"footer_createPoll": "Create poll"
+		"message_share_text": "Hi! 👋 Could you vote on this? ",
+		"social_share_text": "Could you vote on this poll for me? 🙂📩 ",
+		"footer_createPoll": "Create poll",
+		"footer_translate": "Translate"
 	},
 	"results": {
 		"results_title": "Results",
+		"vote_button": "Vote youself",
 		"piechart_title": "Pie chart",
 		"share_title": "Share",
-		"footer_createPoll": "Create poll"
+		"message_share_text": "Hi! 👋 Check out this poll! ",
+		"social_share_text": "Check out how this poll did! 💪😁 ",
+		"footer_createPoll": "Create poll",
+		"footer_translate": "Translate"
+	},
+	"translate": {
+		"title": "Help translate MD Polls",
+		"p1": "MD Polls is a small and personal project of an Italian web developer.",
+		"p2": "The time and resources to get the website translated in as many languages as possible are, obviously, limited. For this reason, the community is one of the most precious things a developed has.",
+		"section_title": "How can I help?",
+		"p3": "If you would like to contribute, please consider downloading the file below, containing all the currently available languages as a .zip archive. The translations are JSON files.",
+		"p4": "Then, create a copy of any file and replace the existing text with the new translation. Be mindful not to change the first section of each id and text pair.",
+		"becomes": "Becomes",
+		"p5": "Ultimately, send the translated file to",
+		"footer_createPoll": "Create poll",
+		"footer_translate": "Translate"
 	},
 	"newPolljs": {
 		"toast_not_enough_answers": "There are not enough valid answers 😲, you need at least one.",

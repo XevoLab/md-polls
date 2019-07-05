@@ -1,0 +1,41 @@
+<div class="row">
+	<h4 class="col section-title">
+		#### <%= language.share_title %>
+	</h4>
+</div>
+<div class="row share-buttons">
+	<div class="col">
+		<a>
+			<i class="fas fa-link"></i>
+			Link
+		</a>
+		<a href="tg://msg?text=<%- encodeURIComponent(language.message_share_text + uri) %>">
+			<i class="fab fa-telegram-plane"></i>
+			Telegram
+		</a>
+		<a href="whatsapp://send?text=<%- encodeURIComponent(language.message_share_text + uri) %>">
+			<i class="fab fa-whatsapp"></i>
+			Whatsapp
+		</a>
+		<a
+			href="https://www.facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(uri) %>"
+			target="popup"
+			onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(uri) %>','popup','width=600,height=600'); return false;"
+		>
+			<i class="fab fa-facebook-f"></i>
+			Facebook
+		</a>
+		<a
+			href="https://twitter.com/intent/tweet?text=<%- encodeURIComponent(language.social_share_text + uri) %>"
+			target="popup"
+			onclick="window.open('https://twitter.com/intent/tweet?text=<%- encodeURIComponent(language.social_share_text + uri) %>','popup','width=600,height=600'); return false;"
+			>
+			<i class="fab fa-twitter"></i>
+			Twitter
+		</a>
+		<a href="#" id="share_via_qr">
+			<i class="fas fa-qrcode"></i>
+			Qr code
+		</a>
+	</div>
+</div>

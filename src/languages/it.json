@@ -9,7 +9,8 @@
 		"answer_remove": "Rimuovi",
 		"go_button": "Invia",
 		"go_button_posting": "In corso",
-		"footer_createPoll": "Crea questionario"
+		"footer_createPoll": "Crea questionario",
+		"footer_translate": "Traduci"
 	},
 	"vote": {
 		"collect_names_title": "Nome",
@@ -20,13 +21,31 @@
 		"submit_button_posting": "In corso",
 		"share_title": "Condividi",
 		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
-		"footer_createPoll": "Crea questionario"
+		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 ",
+		"footer_createPoll": "Crea questionario",
+		"footer_translate": "Traduci"
 	},
 	"results": {
 		"results_title": "Risultati",
+		"vote_button": "Vota te",
 		"piechart_title": "Grafico",
 		"share_title": "Condividi",
-		"footer_createPoll": "Crea questionario"
+		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
+		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 ",
+		"footer_createPoll": "Crea questionario",
+		"footer_translate": "Traduci"
+	},
+	"translate": {
+		"title": "Aiuta a tradurre MD Polls",
+		"p1": "MD Polls è un piccolo progetto personale di un programmatore web italiano.",
+		"p2": "Il tempo e le risorse per avere il sito tradotto in quante più lingue possibili sono ovviamente limitate. Per questo motivo, la comunità è uno degli elementi più preziosi per uno sviluppatore.",
+		"section_title": "Come posso aiutare?",
+		"p3": "Se hai piacere di aiutare a tradurre, scarica il file sottostante, contenente tutte le lingue al momento disponibili come archivio .zip. Le traduzioni sono file JSON.",
+		"p4": "Quindi, crea una copia di un qualsiasi file e sostituisci il testo con quello tradotto. Fa attenzione a non cambiare la prima parte di ogni coppia id: valore.",
+		"becomes": "Diventa",
+		"p5": "Infine, invia il file tradotto a ",
+		"footer_createPoll": "Crea questionario",
+		"footer_translate": "Traduci"
 	},
 	"newPolljs": {
 		"toast_not_enough_answers": "Non ci sono abbastanza risposte valide 😲, te ne serve almeno una.",

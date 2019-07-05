@@ -42,6 +42,33 @@ nav {
 		}
 	}
 
+	button, a.btn {
+		position: relative;
+		padding: .8rem 2rem;
+		border-radius: 8px;
+		color: white;
+		border: none;
+		font-weight: lighter;
+		font-size: 1.1rem;
+		cursor: pointer;
+		text-decoration: none;
+		transition: 100ms box-shadow ease-in-out;
+
+		&:hover {
+			box-shadow: 0 0 10px -3px rgba(0,0,0,.5);
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		&.primary-color {
+			background-color: $primary_color;
+		}
+
+
+	}
+
 	.custom-checkbox {
 		font-size: 16px;
 		line-height: 20px;
@@ -229,46 +256,23 @@ nav {
 
 	.submit {
 		margin-top: 2rem;
+
 		button {
-			position: relative;
-			padding: .8rem 2rem;
-			border-radius: 8px;
-			color: white;
-			border: none;
-			font-weight: lighter;
-			font-size: 1.1rem;
-			cursor: pointer;
-			transition: 100ms box-shadow ease-in-out;
-
-			&:hover {
-				box-shadow: 0 0 10px -3px rgba(0,0,0,.5);
+			span.spinner {
+				opacity: 0;
+				position: absolute;
+				top: calc(1rem - 2px);
+				left: 50%;
+				transform: translateX(-50%);
 			}
-
-			&:focus {
-				outline: none;
-			}
-
-			&[type="submit"] {
-				background-color: $primary_color;
-
-				span.spinner {
+			&.loading {
+				.text {
 					opacity: 0;
-					position: absolute;
-			    top: calc(1rem - 2px);
-			    left: 50%;
-			    transform: translateX(-50%);
 				}
-				&.loading {
-					.text {
-						opacity: 0;
-					}
-					.spinner {
-						opacity: .9;
-					}
+				.spinner {
+					opacity: .9;
 				}
 			}
-
-
 		}
 	}
 
@@ -340,9 +344,9 @@ footer {
 	}
 }
 
-footer, .main-container .share-buttons {
+footer, .main-container .share-buttons, .main-container .slim-button {
 	a, button {
-		color: #aaa;
+		color: #555;
 		padding: .25em .5em;
 		border-radius: 3px;
 		transition: 80ms all ease-in-out;
@@ -350,7 +354,6 @@ footer, .main-container .share-buttons {
 
 		&:hover {
 			background-color: #eee;
-			color: #888;
 		}
 	}
 	button {
@@ -360,5 +363,30 @@ footer, .main-container .share-buttons {
 	}
 	i {
 		width: 18px;
+	}
+}
+footer {
+	a, button {
+		color: #aaa;
+
+		&:hover {
+			color: #888;
+		}
+	}
+}
+
+.code-block {
+	margin: 1rem;
+	padding: 1rem;
+	background-color: #f7f7f7;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-family: "Courier New", Courier, monospace;
+
+	.text-red {
+		color: #aa2222;
+	}
+	.text-green {
+		color: #22aa22;
 	}
 }

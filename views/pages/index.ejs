@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Polls</title>
+	<title>MD Polls</title>
 
-	<meta property=”og:title” content=”MD Polls” />
-	<meta property=”og:og:description content=”Quicly and effortlessly share nice looking polls to your friends, then collect all their responses” />
-	<meta property=”og:url content=”https://md-polls.herokuapp.com” />
+	<meta property="og:title" content="MD Polls" />
+	<meta property="og:description" content="Quicly and effortlessly share nice looking polls to your friends, then collect all their responses" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="<%= uri %>" />
 
 	<% include ../partials/header %>
 </head>
@@ -84,7 +85,7 @@
 
 			<div class="row submit">
 				<div class="col">
-					<button type="submit">
+					<button type="submit" class="primary-color">
 						<span class="text"><%= language.go_button %></span>
 						<span class="spinner"><i class="fas fa-circle-notch fa-spin"></i> <%= language.go_button_posting %></span>
 					</button>
@@ -124,7 +125,7 @@
 	</div>
 
 	<script src="/assets/js/toast.js" charset="utf-8"></script>
-	<script src="/assets/js/newPoll.js?it" charset="utf-8"></script>
+	<script src="/assets/js/newPoll.js" charset="utf-8"></script>
 
 </body>
 </html>
