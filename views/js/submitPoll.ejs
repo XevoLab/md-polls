@@ -43,7 +43,7 @@ form.addEventListener('submit', function (e) {
 
 				toast("success", "<%= language.toast_success %>");
 				setTimeout(() => {
-					//window.location.href = '/r/'+document.querySelector("form").attributes["id"].value;
+					window.location.href = '/r/'+document.querySelector("form").attributes["id"].value;
 				}, 1000);
 				return true;
 			}
