@@ -74,7 +74,7 @@
 	<script type="text/javascript">
 		document.getElementById("share_via_qr").addEventListener('click', (e) => {
 			e.preventDefault();
-			toast("qr", "<img class='qr-code-img' src='/qr/"+'<%= uri %>'+"'></img>")
+			toast("qr", "<img class='qr-code-img' src='/qr/"+'<%= encodeURIComponent(uri) %>'+"'></img>")
 		})
 	</script>
 

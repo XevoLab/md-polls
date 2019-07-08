@@ -10,7 +10,7 @@
 
 	<% include ../partials/header %>
 </head>
-<body>
+<body id="<%= id %>">
 
 	<div class="container main-container">
 		<form>
@@ -81,6 +81,7 @@
 	<script src="/assets/js/toast.js" charset="utf-8"></script>
 
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="/assets/js/results_liveUpdate.js"></script>
 
 	<script type="text/javascript">
 		document.getElementById("share_via_qr").addEventListener('click', (e) => {
@@ -88,10 +89,5 @@
 			toast("qr", "<img class='qr-code-img' src='/qr/"+'<%= uri %>'+"'></img>")
 		})
 	</script>
-
-	<script>
-	  var socket = io();
-	</script>
-
 </body>
 </html>

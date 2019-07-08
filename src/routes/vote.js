@@ -36,7 +36,6 @@ router.get('/:id', (req, res) => {
 				var pollData = {
 					id: req.params.id,
 					uri: req.protocol + '://' + req.get('host') + '/v/' + req.params.id,
-					shareButtons: {},
 					pollData: data.Items[0],
 					language: req.languageData.vote
 				};
@@ -147,7 +146,8 @@ router.post('/:id', (req, res) => {
 
 				ddb.updateItem(updateParams, function(err, updateData) {
 					if (err) {
-						console.error("CastVote: " + err.message)
+						console.error("Vote casting error: "+ err.message);
+
 						res.json({result: "error", message:"Somthing didn\'t work out quite right"});
 					} else {
 						res.json({result: "success", message:"Everything went smoothly"});

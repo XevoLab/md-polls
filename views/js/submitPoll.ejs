@@ -1,10 +1,13 @@
+
+var pollID = document.querySelector("form").attributes["id"].value;
+
+var socket = io(window.location.origin+"?pollID="+encodeURIComponent(pollID));
+
 var form = document.querySelector('form');
 form.addEventListener('submit', function (e) {
 	e.preventDefault();
 
 	document.querySelector("button[type=submit]").classList.add("loading");
-
-	var pollID = document.querySelector("form").attributes["id"].value;
 
 	var voteData = {};
 
@@ -36,9 +39,11 @@ form.addEventListener('submit', function (e) {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			var res = JSON.parse(xhr.response);
 			if (res.result === "success") {
+				sendSocketMessage();
+
 				toast("success", "<%= language.toast_success %>");
 				setTimeout(() => {
-					window.location.href = '/r/'+document.querySelector("form").attributes["id"].value;
+					//window.location.href = '/r/'+document.querySelector("form").attributes["id"].value;
 				}, 1000);
 				return true;
 			}
@@ -71,3 +76,21 @@ form.addEventListener('submit', function (e) {
 	xhr.send(JSON.stringify(voteData));
 
 }, false);
+
+function sendSocketMessage() {
+	var pollID = document.querySelector("form").attributes["id"].value;
+	var selection = document.querySelectorAll("input:checked[name=choice]")[0].value;
+	var name = document.querySelectorAll("input[name=name]");
+	if (name.length === 1) {
+		name = name[0].value;
+	}
+	else {
+		name = null;
+	}
+
+	socket.emit('vote', {id: pollID, selection: selection, name: name});
+}
+
+socket.on('vote', function(vdata){
+  console.log("vote received: "+ vdata);
+});

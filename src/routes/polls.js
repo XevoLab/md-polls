@@ -123,9 +123,12 @@ router.post('/', (req, res) => {
 	var ddbResponse = ddb.putItem(params).promise();
 
 	ddbResponse.then(function(data) {
+		console.log("Poll created: "+pollID);
+
 	  res.json({result: "success", ID: pollID, message:"Request processed successfully"});
 	}).catch(function(err) {
-		console.error("PostPoll: " + err.message)
+		console.error("Poll creation error: "+pollID+" | error: "+ err.message);
+
 	  res.json({result: "error", message:"Somthing didn\'t work out quite right"});
 	});
 

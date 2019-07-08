@@ -33,7 +33,7 @@
 			height: 20px;
 			text-align: center;
 			border-radius: 3px;
-			background-color: lime;
+			background-color: #777;
 			margin-right: .5rem;
 		}
 		.col.title {
@@ -110,6 +110,40 @@
 		img.qr-code-img {
 			width: 150px;
 			height: 150px;
+		}
+	}
+	&.toast-cookie {
+		top: initial;
+		bottom: 1rem;
+		.title-bar .col-auto.icon {
+			background-color: $info_color;
+		}
+		.title-bar .col.title::before {
+			content: 'Cookies';
+		}
+
+		button, a.btn {
+			position: relative;
+			margin-top: .75rem;
+			padding: .6rem 1rem;
+			border-radius: 8px;
+			color: white;
+			border: none;
+			font-weight: lighter;
+			font-size: 1rem;
+			cursor: pointer;
+			float: right;
+			text-decoration: none;
+			transition: 100ms box-shadow ease-in-out;
+			background-color: $success_color;
+
+			&:hover {
+				box-shadow: 0 0 6px -3px rgba(0,0,0,.5);
+			}
+
+			&:focus {
+				outline: none;
+			}
 		}
 	}
 

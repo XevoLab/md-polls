@@ -55,7 +55,7 @@ button {
     height: 20px;
     text-align: center;
     border-radius: 3px;
-    background-color: lime;
+    background-color: #777;
     margin-right: .5rem; }
   .toast .title-bar .col.title {
     font-weight: bold;
@@ -100,6 +100,31 @@ button {
   .toast.toast-qr img.qr-code-img {
     width: 150px;
     height: 150px; }
+  .toast.toast-cookie {
+    top: initial;
+    bottom: 1rem; }
+    .toast.toast-cookie .title-bar .col-auto.icon {
+      background-color: #4298f5; }
+    .toast.toast-cookie .title-bar .col.title::before {
+      content: 'Cookies'; }
+    .toast.toast-cookie button, .toast.toast-cookie a.btn {
+      position: relative;
+      margin-top: .75rem;
+      padding: .6rem 1rem;
+      border-radius: 8px;
+      color: white;
+      border: none;
+      font-weight: lighter;
+      font-size: 1rem;
+      cursor: pointer;
+      float: right;
+      text-decoration: none;
+      transition: 100ms box-shadow ease-in-out;
+      background-color: #32aa0a; }
+      .toast.toast-cookie button:hover, .toast.toast-cookie a.btn:hover {
+        box-shadow: 0 0 6px -3px rgba(0, 0, 0, 0.5); }
+      .toast.toast-cookie button:focus, .toast.toast-cookie a.btn:focus {
+        outline: none; }
   .toast.show {
     right: 1rem; }
 
@@ -175,6 +200,8 @@ nav {
         background: #eee; }
       .main-container .custom-checkbox label:hover::before {
         background: #ddd; }
+      .main-container .custom-checkbox label div {
+        display: inline; }
     .main-container .custom-checkbox input {
       display: none; }
       .main-container .custom-checkbox input:checked ~ label:before {
@@ -333,12 +360,13 @@ footer {
     padding-right: 5px; }
 
 footer a, footer button, .main-container .share-buttons a, .main-container .share-buttons button, .main-container .slim-button a, .main-container .slim-button button {
-  color: #555;
+  color: #aaa;
   padding: .25em .5em;
   border-radius: 3px;
   transition: 80ms all ease-in-out;
   text-decoration: none; }
   footer a:hover, footer button:hover, .main-container .share-buttons a:hover, .main-container .share-buttons button:hover, .main-container .slim-button a:hover, .main-container .slim-button button:hover {
+    color: #888;
     background-color: #eee; }
 
 footer button, .main-container .share-buttons button, .main-container .slim-button button {
@@ -348,11 +376,6 @@ footer button, .main-container .share-buttons button, .main-container .slim-butt
 
 footer i, .main-container .share-buttons i, .main-container .slim-button i {
   width: 18px; }
-
-footer a, footer button {
-  color: #aaa; }
-  footer a:hover, footer button:hover {
-    color: #888; }
 
 .code-block {
   margin: 1rem;

@@ -66,6 +66,8 @@ nav {
         background: #eee; }
       .main-container .custom-checkbox label:hover::before {
         background: #ddd; }
+      .main-container .custom-checkbox label div {
+        display: inline; }
     .main-container .custom-checkbox input {
       display: none; }
       .main-container .custom-checkbox input:checked ~ label:before {
@@ -224,12 +226,13 @@ footer {
     padding-right: 5px; }
 
 footer a, footer button, .main-container .share-buttons a, .main-container .share-buttons button, .main-container .slim-button a, .main-container .slim-button button {
-  color: #555;
+  color: #aaa;
   padding: .25em .5em;
   border-radius: 3px;
   transition: 80ms all ease-in-out;
   text-decoration: none; }
   footer a:hover, footer button:hover, .main-container .share-buttons a:hover, .main-container .share-buttons button:hover, .main-container .slim-button a:hover, .main-container .slim-button button:hover {
+    color: #888;
     background-color: #eee; }
 
 footer button, .main-container .share-buttons button, .main-container .slim-button button {
@@ -239,11 +242,6 @@ footer button, .main-container .share-buttons button, .main-container .slim-butt
 
 footer i, .main-container .share-buttons i, .main-container .slim-button i {
   width: 18px; }
-
-footer a, footer button {
-  color: #aaa; }
-  footer a:hover, footer button:hover {
-    color: #888; }
 
 .code-block {
   margin: 1rem;

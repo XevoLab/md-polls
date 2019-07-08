@@ -66,7 +66,6 @@ nav {
 			background-color: $primary_color;
 		}
 
-
 	}
 
 	.custom-checkbox {
@@ -91,6 +90,10 @@ nav {
 			}
 			&:hover::before{
 				background: #ddd;
+			}
+
+			div {
+				display: inline;
 			}
 		}
 		input {
@@ -346,13 +349,14 @@ footer {
 
 footer, .main-container .share-buttons, .main-container .slim-button {
 	a, button {
-		color: #555;
+		color: #aaa;
 		padding: .25em .5em;
 		border-radius: 3px;
 		transition: 80ms all ease-in-out;
 		text-decoration: none;
 
 		&:hover {
+			color: #888;
 			background-color: #eee;
 		}
 	}
@@ -363,15 +367,6 @@ footer, .main-container .share-buttons, .main-container .slim-button {
 	}
 	i {
 		width: 18px;
-	}
-}
-footer {
-	a, button {
-		color: #aaa;
-
-		&:hover {
-			color: #888;
-		}
 	}
 }
 

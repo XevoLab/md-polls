@@ -1,4 +1,4 @@
-<tr class="choice">
+<tr class="choice" id="choice_<%= r.id.N %>">
 	<td class="number"><%= index %>.</td>
 	<td class="result"><%= r.votes.N %></td>
 	<td class="select">
@@ -18,6 +18,6 @@
 			</div>
 		<% } %>
 
-		<div class="percental-bar" style="width: <%= r.votes.N/total*100 %>%;"></div>
+		<div class="percental-bar" style="width: <%= (total != 0 ? Math.floor(r.votes.N/total*100) : 0) %>%;"></div>
 	</td>
 </tr>
