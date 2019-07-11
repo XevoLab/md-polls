@@ -1,6 +1,11 @@
 <tr class="choice" id="choice_<%= r.id.N %>">
 	<td class="number"><%= index %>.</td>
-	<td class="result"><%= r.votes.N %></td>
+	<td class="result">
+		<span class="n"><%= r.votes.N %></span>
+		<% if (r.metadata.M.limitAnswers.N != 0) { %>
+			/ <%= r.metadata.M.limitAnswers.N %>
+		<% } %>
+	</td>
 	<td class="select">
 		<%= r.value.S %>
 

@@ -40,6 +40,9 @@ function disableMaxAnswers(o) {
 	}
 }
 
+//clickedToggle
+
+
 var form = document.querySelector('form');
 form.addEventListener('submit', function (e) {
 	e.preventDefault();
@@ -85,7 +88,7 @@ form.addEventListener('submit', function (e) {
 			metadata: {}
 		}
 
-		var choiceMeta = choices[i].querySelectorAll(".metadata input");
+		var choiceMeta = choices[i].querySelectorAll(".meta input");
 		for (var j = 0; j < choiceMeta.length; j++) {
 			singleOption.metadata[choiceMeta[j].attributes["name"].value] = choiceMeta[j].value;
 		}

@@ -7,6 +7,32 @@ const path = require("path");
 const app = express();
 const http = require('http').createServer(app);
 
+//
+// --- --- --- ---
+//
+
+// Socket.io
+var io = module.exports.io = require('socket.io')(http)
+
+io.on('connection', (socket) => {
+
+	var pollID = socket.handshake.query.pollID;
+
+	// Close connection with invalid ID
+	if (pollID === undefined) {
+		socket.disconnect(0);
+		return;
+	}
+
+	socket.join("poll-"+pollID);
+
+	socket.on('disconnect', function(){});
+})
+
+//
+// --- --- --- ---
+//
+
 // LANGUAGE MIDDLEWARE
 const languageSelector = (req, res, next) => {
 	var lang = req.acceptsLanguages('en', 'it');
@@ -32,7 +58,7 @@ app.use(languageSelector);
 		});
 
 		// Results
-		app.use(['/r/', '/results/'], require('./src/routes/results.js'));
+		app.use(['/r/', '/result/', '/results/'], require('./src/routes/results.js'));
 
 		// Results
 		app.use('/translate', (req, res) => {
@@ -69,30 +95,6 @@ app.use(languageSelector);
 		// Vote
 		app.use(['/v/', '/vote/'], require('./src/routes/vote.js'));
 
-// Socket.io
-var io = require('socket.io')(http)
-
-io.on('connection', (socket) => {
-
-	var pollID = socket.handshake.query.pollID;
-
-	// Close connection with invalid ID
-	if (pollID === undefined) {
-		socket.disconnect(0);
-		return;
-	}
-
-	socket.join("poll-"+pollID);
-
-	socket.on('vote', function(msg){
-		// On vote --> send to other people on that vote/result page
-		// 						 the data about the new vote
-
-		io.sockets.in("poll-"+msg.id).emit('vote', msg);
-	});
-
-	socket.on('disconnect', function(){});
-})
 
 // Starting the server
 const PORT = process.env.PORT || 3000;

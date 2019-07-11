@@ -4,7 +4,7 @@
 	<title>MD Polls</title>
 
 	<meta property="og:title" content="MD Polls" />
-	<meta property="og:description" content="Quicly and effortlessly share nice looking polls to your friends, then collect all their responses" />
+	<meta property="og:description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<%= uri %>" />
 
@@ -44,6 +44,10 @@
 					  <input type="checkbox" id="setting_collectNames" name="collectNames">
 					  <label for="setting_collectNames"><%= language.setting_collect_names %></label>
 					</div>
+					<div class="custom-checkbox">
+					  <input type="checkbox" id="setting_hiddenResults" name="hiddenResults">
+					  <label for="setting_hiddenResults"><%= language.setting_hidden_results %></label>
+					</div>
 				</div>
 			</div>
 
@@ -63,18 +67,32 @@
 						<div class="col value">
 							<textarea rows="1" placeholder="<%= language.answer_textarea %>..." onkeyup="choiceEdit(this)"></textarea>
 						</div>
-						<div class="col-auto remove" title="<%= language.answer_remove %>" onclick="removeChoice(this)">
-							<i class="fas fa-times"></i>
-						</div>
-						<div class="col-12 metadata">
-							<div class="row">
-								<div class="col-auto meta-group" title="Limit number of answers">
-									<div class="icon"><i class="fas fa-hand-paper"></i></div>
-									<div class="value">
-										<input type="number" name="limitAnswers" min="0" placeholder="Unlimited" oninput="disableMaxAnswers(this)" >
+						<div class="col-auto meta" title="<%= language.answer_options %>">
+							<i class="fas fa-cog"></i>
+
+							<div class="meta-popup">
+								<div class="arrow"></div>
+								<div class="content">
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col">
+												<h4>Choice options</h4>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col" title="<%= language.meta_limit_answers_title %>">
+												<%= language.meta_limit_answers %>
+												<input type="number" name="limitAnswers" min="0" value="0" placeholder="1,2,3...">
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
+
+						</div>
+						<div class="col-auto remove" title="<%= language.answer_remove %>" onclick="removeChoice(this)">
+							<i class="fas fa-times"></i>
 						</div>
 
 					</div>
@@ -107,24 +125,39 @@
 			<div class="col value">
 				<textarea rows="1" placeholder="<%= language.answer_textarea %>..." onkeyup="choiceEdit(this)"></textarea>
 			</div>
-			<div class="col-auto remove" title="<%= language.answer_remove %>" onclick="removeChoice(this)">
-				<i class="fas fa-times"></i>
-			</div>
-			<div class="col-12 metadata">
-				<div class="row">
-					<div class="col-auto meta-group" title="Limit number of answers">
-						<div class="icon"><i class="fas fa-hand-paper"></i></div>
-						<div class="value">
-							<input type="number" name="limitAnswers" min="0" placeholder="Unlimited" oninput="disableMaxAnswers(this)" >
+			<div class="col-auto meta" title="<%= language.answer_options %>">
+				<i class="fas fa-cog"></i>
+
+				<div class="meta-popup">
+					<div class="arrow"></div>
+					<div class="content">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col">
+									<h4>Choice options</h4>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col" title="<%= language.meta_limit_answers_title %>">
+									<%= language.meta_limit_answers %>
+									<input type="number" name="limitAnswers" value="0" min="0" placeholder="1,2,3...">
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
+
+			</div>
+			<div class="col-auto remove" title="<%= language.answer_remove %>" onclick="removeChoice(this)">
+				<i class="fas fa-times"></i>
 			</div>
 
 		</div>
 	</div>
 
-	<script src="/assets/js/toast.js" charset="utf-8"></script>
+	<% include ../partials/scripts %>
+
 	<script src="/assets/js/newPoll.js" charset="utf-8"></script>
 
 </body>

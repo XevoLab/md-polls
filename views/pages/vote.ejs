@@ -3,8 +3,8 @@
 <head>
 	<title>Vote on &apos;<%= pollData.title.S %>&apos; - Polls</title>
 
-	<meta property="og:title" content="Vote on &apos;<%= pollData.title.S %>&apos; - MD Polls" />
-	<meta property="og:description" content="Vote on this poll! Create one youself to quicly and effortlessly share nice looking polls to your friends, then collect all their responses" />
+	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= pollData.title.S %>&apos; - MD Polls" />
+	<meta property="og:description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<%= uri %>" />
 
@@ -66,7 +66,7 @@
 
 	<% include ../partials/footer %>
 
-	<script src="/assets/js/toast.js" charset="utf-8"></script>
+	<% include ../partials/scripts %>
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/assets/js/submitPoll.js" charset="utf-8"></script>

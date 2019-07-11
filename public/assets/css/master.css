@@ -272,37 +272,67 @@ nav {
     font-size: 1.1rem; }
   .main-container .options .choice:first-of-type .remove {
     display: none; }
-  .main-container .options .choice .remove {
+  .main-container .options .choice .remove i, .main-container .options .choice .meta i {
     color: #aaa;
     cursor: pointer; }
-    .main-container .options .choice .remove:hover {
-      color: #333; }
+  .main-container .options .choice .remove:hover i, .main-container .options .choice .meta:hover i {
+    color: #333; }
+  .main-container .options .choice .meta {
+    opacity: 0;
+    position: relative;
+    transition: 75ms opacity ease-in-out; }
+    .main-container .options .choice .meta .meta-popup {
+      display: none;
+      opacity: 0;
+      transition: 50ms opacity ease-in-out;
+      z-index: 1000;
+      position: absolute;
+      right: 0;
+      min-width: 200px;
+      max-width: 75vw; }
+      .main-container .options .choice .meta .meta-popup .arrow {
+        position: absolute;
+        right: calc(1rem - 5px);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 8px solid #dedede; }
+      .main-container .options .choice .meta .meta-popup .content {
+        margin-top: 7px;
+        border-radius: 5px;
+        border: 2px solid #dedede;
+        background-color: white;
+        padding: .75rem .3rem;
+        font-size: .90rem; }
+        .main-container .options .choice .meta .meta-popup .content h4 {
+          margin-top: 0;
+          margin-bottom: .5rem; }
+        .main-container .options .choice .meta .meta-popup .content .col {
+          display: flex; }
+        .main-container .options .choice .meta .meta-popup .content input {
+          border: 2px solid #dedede;
+          border-radius: 3px;
+          padding: .2rem .5rem;
+          font-size: 1rem;
+          margin-left: 15px; }
+    .main-container .options .choice .meta:hover .meta-popup {
+      display: block;
+      opacity: 1; }
+  .main-container .options .choice:hover .meta {
+    opacity: 1; }
   .main-container .options .choice .limit {
     font-size: 1.25rem;
     font-weight: bold;
     color: #888; }
-  .main-container .options .choice .metadata {
-    display: none;
-    padding-left: calc(4rem + 15px); }
-    .main-container .options .choice .metadata .meta-group {
-      border: 2px solid #aaa;
-      border-radius: 2rem;
-      padding: 0; }
-      .main-container .options .choice .metadata .meta-group div {
-        display: inline-block; }
-        .main-container .options .choice .metadata .meta-group div.icon {
-          border-right: 2px solid #aaa;
-          padding: .3rem .6rem; }
-        .main-container .options .choice .metadata .meta-group div.value {
-          width: 6rem;
-          height: 1.5rem;
-          padding-right: .5rem; }
-          .main-container .options .choice .metadata .meta-group div.value input {
-            padding: 0;
-            font-size: 1rem; }
-            .main-container .options .choice .metadata .meta-group div.value input::-webkit-inner-spin-button, .main-container .options .choice .metadata .meta-group div.value input::-webkit-outer-spin-button {
-              -webkit-appearance: none;
-              margin: 0; }
+  .main-container .options .choice.disabled * {
+    color: #aaa; }
+  .main-container .options .choice.disabled .custom-checkbox label {
+    text-decoration: line-through; }
+  .main-container .options .choice.disabled .select {
+    pointer-events: none; }
+  .main-container .options .choice.disabled .limit {
+    display: none; }
   .main-container .submit {
     margin-top: 2rem; }
     .main-container .submit button span.spinner {
@@ -391,6 +421,8 @@ footer i, .main-container .share-buttons i, .main-container .slim-button i {
 
 .results table {
   width: 100%; }
+  .results table .number, .results table .result {
+    white-space: nowrap; }
   .results table .result {
     text-align: right;
     padding-left: 1.5rem !important;

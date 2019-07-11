@@ -207,12 +207,79 @@ nav {
 					display: none;
 				}
 			}
-			.remove {
-				color: #aaa;
-				cursor: pointer;
+			.remove, .meta {
+				i {
+					color: #aaa;
+					cursor: pointer;
+				}
+
+				&:hover i {
+					color: #333;
+				}
+			}
+			.meta {
+				opacity: 0;
+				position: relative;
+				transition: 75ms opacity ease-in-out;
+
+				.meta-popup {
+					display: none;
+					opacity: 0;
+					transition: 50ms opacity ease-in-out;
+					z-index: 1000;
+					position: absolute;
+					right: 0;
+					min-width: 200px;
+					max-width: 75vw;
+
+					.arrow {
+						position: absolute;
+						right: calc(1rem - 5px);
+						width: 0;
+					  height: 0;
+					  border-left: 10px solid transparent;
+					  border-right: 10px solid transparent;
+
+					  border-bottom: 8px solid #dedede;
+					}
+					.content {
+						margin-top: 7px;
+						border-radius: 5px;
+						border: 2px solid #dedede;
+						background-color: white;
+						padding: .75rem .3rem;
+
+						font-size: .90rem;
+
+						h4 {
+							margin-top: 0;
+							margin-bottom: .5rem;
+						}
+
+						.col {
+							display: flex;
+						}
+
+						input {
+							border: 2px solid #dedede;
+							border-radius: 3px;
+							padding: .2rem .5rem;
+							font-size: 1rem;
+							margin-left: 15px;
+						}
+					}
+				}
 
 				&:hover {
-					color: #333;
+					.meta-popup {
+						display: block;
+						opacity: 1;
+					}
+				}
+			}
+			&:hover {
+				.meta {
+					opacity: 1;
 				}
 			}
 			.limit {
@@ -221,38 +288,20 @@ nav {
 				color: #888;
 			}
 
-			.metadata {
-				display: none;
-				padding-left: calc(4rem + 15px);
-				.meta-group {
-					border: 2px solid #aaa;
-					border-radius: 2rem;
-					padding: 0;
-
-					div {
-						display: inline-block;
-
-						&.icon {
-							border-right: 2px solid #aaa;
-							padding: .3rem .6rem;
-						}
-						&.value {
-							width: 6rem;
-							height: 1.5rem;
-							padding-right: .5rem;
-							input {
-								padding: 0;
-								font-size: 1rem;
-								&::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
-								  -webkit-appearance: none;
-								  margin: 0;
-								}
-							}
-						}
-					}
+			&.disabled {
+				* {
+					color: #aaa;
+				}
+				.custom-checkbox label {
+					text-decoration: line-through;
+				}
+				.select {
+					pointer-events: none;
+				}
+				.limit {
+					display: none;
 				}
 			}
-
 
 		}
 	}
@@ -306,10 +355,6 @@ nav {
 			margin-top: .25rem;
 			color: #666;
 		}
-	}
-
-	.results {
-
 	}
 
 }

@@ -87,10 +87,18 @@ function sendSocketMessage() {
 	else {
 		name = null;
 	}
-
-	socket.emit('vote', {id: pollID, selection: selection, name: name});
 }
 
+// --- ---
+
 socket.on('vote', function(vdata){
-  console.log("vote received: "+ vdata);
+
+	var number = document.querySelectorAll('.choice')[vdata.selection].querySelector(".limit .n");
+
+	number.innerHTML = parseInt(number.innerHTML) - 1;
+
+	if (number.innerHTML == 0) {
+		document.querySelectorAll('.choice')[vdata.selection].classList.add("disabled");
+	}
+
 });

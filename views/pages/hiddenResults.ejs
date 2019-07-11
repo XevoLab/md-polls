@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MD Polls</title>
+
+	<meta property="og:title" content="MD Polls" />
+	<meta property="og:description" content="<%= language.header_og_description %>" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="<%= uri %>" />
+
+	<% include ../partials/header %>
+</head>
+<body>
+
+	<div class="container main-container">
+
+		<% include ../partials/head %>
+
+		<div class="row title">
+			<div class="col title-font">
+				<div class="row">
+					<div class="col-auto">#</div>
+					<h1 class="col">
+						<%= language.title %>
+					</h1>
+				</div>
+			</div>
+		</div>
+
+		<div className="row">
+			<div className="col">
+				<p><%= language.description %></p>
+			</div>
+		</div>
+
+		<div class="row vote">
+			<div class="col section-title">
+				<a href="/v/<%= id %>" class="btn primary-color">
+					<%= language.vote_button %>
+				</a>
+			</div>
+		</div>
+
+	</div>
+
+	<% include ../partials/footer %>
+
+	<% include ../partials/scripts %>
+
+</body>
+</html>

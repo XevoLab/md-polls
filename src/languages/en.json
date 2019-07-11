@@ -1,18 +1,24 @@
 {
 	"index": {
+		"header_og_description": "Quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
 		"title_textarea": "Title",
 		"settings_title": "Settings",
 		"setting_prevent_duplicates": "Prevent duplicates",
 		"setting_collect_names": "Collect names",
+		"setting_hidden_results": "Hide results until vote",
 		"choices_title": "Choices",
 		"answer_textarea": "Answer",
 		"answer_remove": "Remove",
+		"meta_limit_answers": "Limit answers",
+		"meta_limit_answers_title": "Stop collecting answers for this choice after this number is reached",
 		"go_button": "Start collecting answers",
 		"go_button_posting": "Posting",
 		"footer_createPoll": "Create poll",
 		"footer_translate": "Translate"
 	},
 	"vote": {
+		"header_og_title": "Vote on",
+		"header_og_description": "Vote on this poll! Create one youself to quicly and effortlessly share nice looking polls to your friends, then collect all their responses.",
 		"collect_names_title": "Name",
 		"collect_names_textarea": "John Doe",
 		"collect_names_explanation": "The creator of this poll is asking for people to leave their name as part of their vote",
@@ -26,16 +32,19 @@
 		"footer_translate": "Translate"
 	},
 	"results": {
+		"header_og_title": "Results for",
+		"header_og_description": "Check out how this poll did! Create one youself to quicly and effortlessly share nice looking polls to your friends, then collect all their responses.",
 		"results_title": "Results",
 		"vote_button": "Vote youself",
 		"piechart_title": "Pie chart",
-		"share_title": "Share",
+		"share_title": "Share results",
 		"message_share_text": "Hi! 👋 Check out this poll! ",
 		"social_share_text": "Check out how this poll did! 💪😁 ",
 		"footer_createPoll": "Create poll",
 		"footer_translate": "Translate"
 	},
 	"translate": {
+		"header_og_description": "Quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
 		"title": "Help translate MD Polls",
 		"p1": "MD Polls is a small and personal project of an Italian web developer.",
 		"p2": "The time and resources to get the website translated in as many languages as possible are, obviously, limited. For this reason, the community is one of the most precious things a developed has.",
@@ -44,6 +53,14 @@
 		"p4": "Then, create a copy of any file and replace the existing text with the new translation. Be mindful not to change the first section of each id and text pair.",
 		"becomes": "Becomes",
 		"p5": "Ultimately, send the translated file to",
+		"footer_createPoll": "Create poll",
+		"footer_translate": "Translate"
+	},
+	"hiddenResults": {
+		"header_og_description": "Quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
+		"title": "You cannot see the results without voting",
+		"description": "The creator of this poll decided to hide the results of this poll until you have voted.",
+		"vote_button": "Vote now",
 		"footer_createPoll": "Create poll",
 		"footer_translate": "Translate"
 	},

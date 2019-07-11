@@ -33,6 +33,7 @@ router.get('/:id', (req, res) => {
 				return;
 			}
 			else {
+
 				var pollData = {
 					id: req.params.id,
 					uri: req.protocol + '://' + req.get('host') + '/v/' + req.params.id,
@@ -102,6 +103,14 @@ router.post('/:id', (req, res) => {
 					}
 				}
 
+				// Check if answer has a limit
+				if (pollData.options.L[parseInt(req.body.choice)].M.metadata.M.limitAnswers.N != 0) {
+					if ((parseInt(pollData.options.L[parseInt(req.body.choice)].M.votes.N) + 1) > parseInt(pollData.options.L[parseInt(req.body.choice)].M.metadata.M.limitAnswers.N)) {
+						res.json({result: "full", message:"This choide is already full"});
+						return;
+					}
+				}
+
 				var updateParams = {
 					TableName: "polls",
 					Key: {
@@ -150,6 +159,20 @@ router.post('/:id', (req, res) => {
 
 						res.json({result: "error", message:"Somthing didn\'t work out quite right"});
 					} else {
+
+						// Socket.io --> Send to all connected users
+						// 							 that a new vote came in
+						//
+						// Importing data from index file
+						var io = require('../../index.js').io;
+						var msg = {
+							id: req.params.id,
+							selection: req.body.choice,
+							name: (pollData.metadata.M.collectNames.BOOL ? String(req.body.name) : "")
+						}
+
+						io.sockets.in("poll-"+msg.id).emit('vote', msg);
+
 						res.json({result: "success", message:"Everything went smoothly"});
 					}
 				});

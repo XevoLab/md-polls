@@ -74,6 +74,7 @@ router.post('/', (req, res) => {
 		'metadata': {M: {
 			preventDoubles: {BOOL: (d.metadata.preventDoubles || false)},
 			collectNames: {BOOL: (d.metadata.collectNames || false)},
+			hiddenResults: {BOOL: (d.metadata.hiddenResults || false)},
 			answeredBy: {L: []}
 		}},
 		'options': null,
@@ -96,13 +97,17 @@ router.post('/', (req, res) => {
 	for (var i = 0; i < d.options.length; i++) {
 		var o = d.options[i];
 
+		if (isNaN(parseInt(o.metadata.limitAnswers)) || o.metadata.limitAnswers < 0) {
+			o.metadata.limitAnswers = 0;
+		}
+
 		// Forcing object structure
 		// Hence, only allowed data will be inside the database
 		var singleOption = {
 			id: {N: String(i)},
 			value: {S: o.value},
 			metadata: {M: {
-				limitAnswers: {N: String(o.metadata.limitAnswers || 0)}
+				limitAnswers: {N: String(o.metadata.limitAnswers)}
 			}},
 			votes: {N: '0'}
 		}

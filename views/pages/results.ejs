@@ -3,8 +3,8 @@
 <head>
 	<title>Results for &apos;<%= title %>&apos; - MD Polls</title>
 
-	<meta property="og:title" content="Results for &apos;<%= title %>&apos; - MD Polls" />
-	<meta property="og:description" content="Check out how this poll did! Create one youself to quicly and effortlessly share nice looking polls to your friends, then collect all their responses" />
+	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= title %>&apos; - MD Polls" />
+	<meta property="og:description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<%= uri %>" />
 
@@ -78,7 +78,7 @@
 
 	<% include ../partials/footer %>
 
-	<script src="/assets/js/toast.js" charset="utf-8"></script>
+	<% include ../partials/scripts %>
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/assets/js/results_liveUpdate.js"></script>
@@ -86,7 +86,7 @@
 	<script type="text/javascript">
 		document.getElementById("share_via_qr").addEventListener('click', (e) => {
 			e.preventDefault();
-			toast("qr", "<img class='qr-code-img' src='/qr/"+'<%= uri %>'+"'></img>")
+			toast("qr", "<img class='qr-code-img' src='/qr/"+'<%= encodeURIComponent(uri) %>'+"'></img>")
 		})
 	</script>
 </body>

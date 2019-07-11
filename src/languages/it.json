@@ -1,41 +1,50 @@
 {
 	"index": {
+		"header_og_description": "Condividi velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogli tutte le loro risposte.",
 		"title_textarea": "Titolo",
 		"settings_title": "Impostazioni",
 		"setting_prevent_duplicates": "Previeni duplicati",
 		"setting_collect_names": "Raccogli nomi",
+		"setting_hidden_results": "Nascondi i voti fino al voto",
 		"choices_title": "Scelte",
 		"answer_textarea": "Risposta",
 		"answer_remove": "Rimuovi",
+		"meta_limit_answers": "Limita risposte",
+		"meta_limit_answers_title": "Smetti di raccogliere risposte per questa opzione dopo che viene raggiunto il massimo.",
 		"go_button": "Pubblica",
 		"go_button_posting": "In corso",
-		"footer_createPoll": "Crea questionario",
+		"footer_createPoll": "Crea nuovo",
 		"footer_translate": "Traduci"
 	},
 	"vote": {
+		"header_og_title": "Vota su",
+		"header_og_description": "Vota su questo sondaggio! Creane uno te stesso per condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
 		"collect_names_title": "Nome",
 		"collect_names_textarea": "Mario Rossi",
-		"collect_names_explanation": "Il creatore di questo questionario chiede di lasciare un nome come parte del proprio voto",
+		"collect_names_explanation": "Il creatore di questo sondaggio chiede di lasciare un nome come parte del proprio voto",
 		"choices_title": "Scelte",
 		"submit_button": "Invia il mio voto",
 		"submit_button_posting": "In corso",
 		"share_title": "Condividi",
 		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
 		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 ",
-		"footer_createPoll": "Crea questionario",
+		"footer_createPoll": "Crea nuovo",
 		"footer_translate": "Traduci"
 	},
 	"results": {
+		"header_og_title": "Risultati per",
+		"header_og_description": "Dai un occhio a come è andato questo sondaggio! Creane uno te stesso per condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
 		"results_title": "Risultati",
 		"vote_button": "Vota te",
 		"piechart_title": "Grafico",
-		"share_title": "Condividi",
+		"share_title": "Condividi i risultati",
 		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
 		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 ",
-		"footer_createPoll": "Crea questionario",
+		"footer_createPoll": "Crea nuovo",
 		"footer_translate": "Traduci"
 	},
 	"translate": {
+		"header_og_description": "Condividi velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogli tutte le loro risposte.",
 		"title": "Aiuta a tradurre MD Polls",
 		"p1": "MD Polls è un piccolo progetto personale di un programmatore web italiano.",
 		"p2": "Il tempo e le risorse per avere il sito tradotto in quante più lingue possibili sono ovviamente limitate. Per questo motivo, la comunità è uno degli elementi più preziosi per uno sviluppatore.",
@@ -44,18 +53,26 @@
 		"p4": "Quindi, crea una copia di un qualsiasi file e sostituisci il testo con quello tradotto. Fa attenzione a non cambiare la prima parte di ogni coppia id: valore.",
 		"becomes": "Diventa",
 		"p5": "Infine, invia il file tradotto a ",
-		"footer_createPoll": "Crea questionario",
+		"footer_createPoll": "Crea nuovo",
+		"footer_translate": "Traduci"
+	},
+	"hiddenResults": {
+		"header_og_description": "Condividi velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogli tutte le loro risposte.",
+		"title": "Non potrai vedere i risultati fino a quando non voti",
+		"description": "Il cretore di questo sondaggio ha bloccato la visualizzazione dei risultati fino al voto.",
+		"vote_button": "Vota ora",
+		"footer_createPoll": "Crea nuovo",
 		"footer_translate": "Traduci"
 	},
 	"newPolljs": {
 		"toast_not_enough_answers": "Non ci sono abbastanza risposte valide 😲, te ne serve almeno una.",
 		"toast_too_many_answers": "Whoa, troppe risposte 😵. Il massimo è 25.",
-		"toast_success": "Il tuo questionario è stato inviato ed è ora pronto 🤩",
-		"toast_generic_error": "Qualcosa non ha funzionato mentre inviavamo il tuo questionario 😞"
+		"toast_success": "Il tuo sondaggio è stato inviato ed è ora pronto 🤩",
+		"toast_generic_error": "Qualcosa non ha funzionato mentre inviavamo il tuo sondaggio 😞"
 	},
 	"submitPolljs": {
 		"toast_no_answer": "Hmmm, hai fatto la tua scelta? 🤔",
-		"toast_empty_name": "Questo questionario richiede un nome e non riusciamo a trovarlo 😲",
+		"toast_empty_name": "Questo sondaggio richiede un nome e non riusciamo a trovarlo 😲",
 		"toast_full_choice": "Questa opzione è piena e non può accettare altri voti 😵",
 		"toast_already_voted": "Sembra che tu abbia già votato 😮",
 		"toast_success": "Il tuo voto è stato salvato! 🤩",

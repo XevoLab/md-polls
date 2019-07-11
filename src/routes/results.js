@@ -51,19 +51,27 @@ router.get('/:id', (req, res) => {
 				pollData.options.L = pollData.options.L.sort(compare);
 
 				var totalVotes = pollData.options.L.reduce((ac, cv) => ac + parseInt(cv.M.votes.N), 0);
+				var userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
 				var alreadyVoted = false;
-				// Check if 'prevent douplicates' mode is enabled
-				if (pollData.metadata.M.preventDoubles.BOOL) {
-					var userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
-					// Check if the IP is present
-					for (var v in pollData.metadata.M.answeredBy.L) {
-						if (pollData.metadata.M.answeredBy.L[v].S === userIP) {
-							alreadyVoted = true;
-							break;
-						}
+				// Check if the IP is present
+				for (var v in pollData.metadata.M.answeredBy.L) {
+					if (pollData.metadata.M.answeredBy.L[v].S === userIP) {
+						alreadyVoted = true;
+						break;
 					}
+				}
+
+				// Check if 'hidden_results' mode is enabled
+				if (pollData.metadata.M.hiddenResults.BOOL && !alreadyVoted) {
+					var pageData = {
+						id: req.params.id,
+						language: req.languageData.hiddenResults,
+						uri: req.protocol + '://' + req.get('host')
+					}
+					
+					res.render('pages/hiddenResults', pageData);
+					return;
 				}
 
 				var pageData = {
