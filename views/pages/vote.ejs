@@ -5,8 +5,12 @@
 
 	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= pollData.title.S %>&apos; - MD Polls" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
+	<meta name="description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<%= uri %>" />
+	<meta name="robots" content="noindex" />
+	<meta name="googlebot" content="noindex" />
+	<meta name="keywords" content="Polls,Vote,Live,Interactive">
 
 	<% include ../partials/header %>
 </head>
@@ -28,6 +32,12 @@
 					</div>
 				</div>
 			</div>
+
+			<% if (pollData.metadata.M.preventDoubles.BOOL && alreadyVoted) { %>
+				<%- include('./../partials/vote/alreadyVoted'); %>
+			<% } else if (noMoreChoices) { %>
+				<%- include('./../partials/vote/noMoreChoices'); %>
+			<% } %>
 
 			<% if (pollData.metadata.M.collectNames.BOOL) { %>
 				<%- include('./../partials/vote/collectNames'); %>

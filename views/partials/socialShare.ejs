@@ -5,15 +5,15 @@
 </div>
 <div class="row share-buttons">
 	<div class="col">
-		<a>
+		<a title="Link">
 			<i class="fas fa-link"></i>
 			Link
 		</a>
-		<a href="tg://msg?text=<%- encodeURIComponent(language.message_share_text + uri) %>">
+		<a href="tg://msg?text=<%- encodeURIComponent(language.message_share_text + uri) %>" title="Telegram">
 			<i class="fab fa-telegram-plane"></i>
 			Telegram
 		</a>
-		<a href="whatsapp://send?text=<%- encodeURIComponent(language.message_share_text + uri) %>">
+		<a href="whatsapp://send?text=<%- encodeURIComponent(language.message_share_text + uri) %>" title="Whatsapp">
 			<i class="fab fa-whatsapp"></i>
 			Whatsapp
 		</a>
@@ -21,6 +21,7 @@
 			href="https://www.facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(uri) %>"
 			target="popup"
 			onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(uri) %>','popup','width=600,height=600'); return false;"
+			title="Facebook"
 		>
 			<i class="fab fa-facebook-f"></i>
 			Facebook
@@ -29,11 +30,12 @@
 			href="https://twitter.com/intent/tweet?text=<%- encodeURIComponent(language.social_share_text + uri) %>"
 			target="popup"
 			onclick="window.open('https://twitter.com/intent/tweet?text=<%- encodeURIComponent(language.social_share_text + uri) %>','popup','width=600,height=600'); return false;"
+			title="Twitter"
 			>
 			<i class="fab fa-twitter"></i>
 			Twitter
 		</a>
-		<a href="#" id="share_via_qr">
+		<a href="#" id="share_via_qr" title="QR code">
 			<i class="fas fa-qrcode"></i>
 			Qr code
 		</a>

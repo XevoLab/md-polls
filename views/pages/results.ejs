@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language.languageCode %>">
 <head>
 	<title>Results for &apos;<%= title %>&apos; - MD Polls</title>
 
 	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= title %>&apos; - MD Polls" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
+	<meta name="description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<%= uri %>" />
+	<meta name="robots" content="noindex" />
+	<meta name="googlebot" content="noindex" />
+	<meta name="keywords" content="Polls,Vote,Live,Interactive">
 
 	<% include ../partials/header %>
 </head>

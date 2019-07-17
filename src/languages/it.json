@@ -19,6 +19,9 @@
 	"vote": {
 		"header_og_title": "Vota su",
 		"header_og_description": "Vota su questo sondaggio! Creane uno te stesso per condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
+		"alert_footer": "Vedi le risposte qui",
+		"alert_already_voted": "Sembra che tu abbia già votato a questo sondaggio.",
+		"alert_no_more_choices": "Questo sondaggio è ora pieno e non può più accettare risposte.",
 		"collect_names_title": "Nome",
 		"collect_names_textarea": "Mario Rossi",
 		"collect_names_explanation": "Il creatore di questo sondaggio chiede di lasciare un nome come parte del proprio voto",
@@ -74,7 +77,7 @@
 		"toast_no_answer": "Hmmm, hai fatto la tua scelta? 🤔",
 		"toast_empty_name": "Questo sondaggio richiede un nome e non riusciamo a trovarlo 😲",
 		"toast_full_choice": "Questa opzione è piena e non può accettare altri voti 😵",
-		"toast_already_voted": "Sembra che tu abbia già votato 😮",
+		"toast_already_voted": "Sembra che tu abbia già votato a questo sondaggio 😮",
 		"toast_success": "Il tuo voto è stato salvato! 🤩",
 		"toast_generic_error": "Qualcosa è andato storto mentre inviavamo il tuo voto 😞"
 	}

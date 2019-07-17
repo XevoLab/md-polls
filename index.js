@@ -41,6 +41,11 @@ const languageSelector = (req, res, next) => {
 	}
 
 	req.languageData = require('./src/languages/'+lang+'.json');
+
+	// Adding the language code to every page element
+	for (var v in req.languageData) {
+		req.languageData[v].languageCode = lang;
+	}
 	next();
 }
 app.use(languageSelector);

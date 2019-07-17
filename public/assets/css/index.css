@@ -228,6 +228,17 @@ nav {
     font-size: .95rem;
     margin-top: .25rem;
     color: #666; }
+  .main-container .alert {
+    margin: 1.5rem 0 -.5rem 0;
+    max-width: 480px;
+    border: 1px solid #f44e42;
+    border-radius: 5px; }
+    .main-container .alert .alert-icon {
+      color: white; }
+    .main-container .alert .row > div {
+      padding: 8px 15px; }
+      .main-container .alert .row > div:first-child {
+        background-color: #f44e42; }
 
 @media (max-width: 992px) {
   .main-container, footer {

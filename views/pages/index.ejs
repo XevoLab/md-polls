@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<%= language.languageCode %>">
 <head>
 	<title>MD Polls</title>
 
 	<meta property="og:title" content="MD Polls" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
+	<meta name="description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<%= uri %>" />
+	<meta name="keywords" content="Polls,Vote,Live,Interactive">
 
 	<% include ../partials/header %>
 </head>

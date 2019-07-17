@@ -34,10 +34,38 @@ router.get('/:id', (req, res) => {
 			}
 			else {
 
+				var pollData = data.Items[0];
+
+				// Check if IP already voted.
+				var userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+				var alreadyVoted = false;
+				// Check if the IP is present
+				for (var v in pollData.metadata.M.answeredBy.L) {
+					if (pollData.metadata.M.answeredBy.L[v].S === userIP) {
+						alreadyVoted = true;
+						break;
+					}
+				}
+
+				// Check if there are more available answers
+				var noMoreChoices = true;
+				for (var v in pollData.options.L) {
+					if (
+						pollData.options.L[v].M.metadata.M.limitAnswers.N == 0 ||
+						pollData.options.L[v].M.votes.N < pollData.options.L[v].M.metadata.M.limitAnswers.N
+					) {
+						noMoreChoices = false;
+						break;
+					}
+				}
+
 				var pollData = {
 					id: req.params.id,
 					uri: req.protocol + '://' + req.get('host') + '/v/' + req.params.id,
-					pollData: data.Items[0],
+					pollData: pollData,
+					alreadyVoted: alreadyVoted,
+					noMoreChoices: noMoreChoices,
 					language: req.languageData.vote
 				};
 

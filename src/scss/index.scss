@@ -357,6 +357,24 @@ nav {
 		}
 	}
 
+	.alert {
+		margin: 1.5rem 0 -.5rem 0;
+		max-width: 480px;
+		border: 1px solid $error_color;
+		border-radius: 5px;
+
+		.alert-icon {
+			color: white;
+		}
+		.row > div {
+			padding: 8px 15px;
+
+			&:first-child {
+				background-color: $error_color;
+			}
+		}
+	}
+
 }
 
 @media (max-width: 992px) {
