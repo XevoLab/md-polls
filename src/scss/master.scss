@@ -1,4 +1,5 @@
 @import '_variables';
+@import '_theme_light';
 @import url('https://fonts.googleapis.com/css?family=Lato:900|Mada&display=swap');
 
 *, *::before, *::after {
@@ -13,9 +14,6 @@ button {
 	font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
 }
 
-.brand-color {
-	color: $brand_color;
-}
 .brand-font {
 	font-family: $brand_font, 'Arial', 'Helvetica', sans-serif;
 	font-weight: 900;

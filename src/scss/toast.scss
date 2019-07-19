@@ -4,9 +4,10 @@
 	right: -350px;
 	width: 350px;
 	max-width: calc(100vw - 2rem);
-	background-color: white;
-	border: 1px solid #ddd;
+	background-color: $toast_bg;
+	border: 1px solid $toast_border;
 	border-radius: 5px;
+	overflow: hidden;
 	box-shadow: 0 0 6px -3px rgba(0,0,0,.5);
 
 	transition-property: right;
@@ -17,7 +18,7 @@
 		padding: .5rem .75rem;
 
 		&:not(:last-of-type) {
-			border-bottom: 1px solid #ddd;
+			border-bottom: 1px solid $toast_border;
 		}
 	}
 
@@ -38,7 +39,7 @@
 		}
 		.col.title {
 			font-weight: bold;
-			color: #333;
+			color: $toast_color;
 		}
 		.col-auto.dismiss {
 			color: #aaa;
@@ -52,7 +53,8 @@
 		}
 	}
 	.content-bar {
-		padding: .75rem initial;
+		padding: .75rem;
+		color: $toast_color;
 	}
 
 	/* Toast types */
@@ -95,13 +97,16 @@
 		.title-bar .col.title::before {
 			content: 'QR';
 		}
+		.content-bar {
+			background-color: white;
+		}
 		.qr-absolute {
 			position: absolute;
 	    z-index: -1;
 	    left: 50%;
 	    top: 50%;
 	    transform: translate(-50%, -50%);
-	    color: #aaa;
+			color: $toast_loading_color;
 
 			i.fa-spin {
 				animation-timing-function: cubic-bezier(0.6, 0, 0.4, 0.99);

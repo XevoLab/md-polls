@@ -69,7 +69,7 @@ router.get('/:id', (req, res) => {
 						language: req.languageData.hiddenResults,
 						uri: req.protocol + '://' + req.get('host')
 					}
-					
+
 					res.render('pages/hiddenResults', pageData);
 					return;
 				}
