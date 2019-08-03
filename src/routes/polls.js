@@ -89,7 +89,8 @@ router.post('/', (req, res) => {
 		}
 	}
 	if (d.options.length < 1) {
-		return {result: "error", error: "notEnoughAnswers", message:"Not enough valid options"}
+		res.json({result: "error", error: "notEnoughAnswers", message:"Not enough valid options"});
+		return false;
 	}
 
 	// Adding the options
