@@ -10,7 +10,10 @@ If you want to host your own version of this website, please feel free to do so 
 
 ## Setup steps
 
-Create a .env file in the project root with your AWS access keys
+Create a DynamoDB table called *polls* and with primary key *ID* in the eu-central-1 region (Frankfurt)
+These are the default values, that can be edited once you download the source code.
+
+Create a .env file in the project root (or set some envirnment variables) with your AWS access keys
   
 	AWS_ACCESS_KEY_ID=Your access key
 	AWS_SECRET_ACCESS_KEY=Your secret access key
