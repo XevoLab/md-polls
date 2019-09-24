@@ -16,16 +16,16 @@
   "author": "XevoLab",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.480.0",
+    "aws-sdk": "^2.534.0",
     "chart.js": "^2.8.0",
-    "dotenv": "^8.0.0",
-    "ejs": "^2.6.2",
+    "dotenv": "^8.1.0",
+    "ejs": "^2.7.1",
     "express": "^4.17.1",
     "qr-image": "^3.2.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.3.0"
   },
   "devDependencies": {
     "node-sass": "^4.12.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.2"
   }
 }
