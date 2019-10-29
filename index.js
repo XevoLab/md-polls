@@ -65,9 +65,15 @@ app.use(languageSelector);
 		// Results
 		app.use(['/r/', '/result/', '/results/'], require('./src/routes/results.js'));
 
-		// Results
+		// Translate
 		app.use('/translate', (req, res) => {
 			res.render('pages/translate', {language: req.languageData.translate, uri: req.protocol + '://' + req.get('host') + '/'});
+		});
+
+
+		// Error pages
+		app.use('/error/:ecode([0-9]{3})', (req, res) => {
+			res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: req.params.ecode});
 		});
 
 	// RESOURCES
@@ -77,6 +83,9 @@ app.use(languageSelector);
 		})
 		app.get('/assets/js/submitPoll.js', (req, res) => {
 			res.render('js/submitPoll', {language: req.languageData.submitPolljs});
+		})
+		app.get('/assets/js/cookie_consent.js', (req, res) => {
+			res.render('js/cookie_consent', {language: req.languageData.cookieConsentjs});
 		})
 
 		// Set a static folder

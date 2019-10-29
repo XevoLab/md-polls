@@ -8,12 +8,12 @@ var path = require('path');
 require('dotenv').config();
 
 const aws = require('aws-sdk');
-var ddb = new aws.DynamoDB({apiVersion: '2012-08-10', region: 'eu-central-1'});
+var ddb = new aws.DynamoDB({apiVersion: '2012-08-10', region: process.env.AWS_REGION});
 
 router.get('/:id', (req, res) => {
 
 	var params = {
-		TableName: 'polls',
+		TableName: process.env.AWS_TABLE_NAME,
 		ConsistentRead: true,
 		Limit: 1,
 		KeyConditionExpression: "ID = :val",
@@ -24,12 +24,13 @@ router.get('/:id', (req, res) => {
 
 	var ddbResponse = ddb.query(params, function(err, data) {
 		if (err) {
-			res.sendFile(path.resolve('public/errorPages/404.html'));
+			console.error("DynamoDB error vote.js : ", err);
+			res.redirect('/error/500');
 		} else {
 
 			if (data.Items.length === 0) {
 				console.log("404")
-				res.sendFile(path.resolve('public/errorPages/404.html'));
+				res.redirect('/error/404');
 				return;
 			}
 			else {
@@ -79,7 +80,7 @@ router.get('/:id', (req, res) => {
 router.post('/:id', (req, res) => {
 
 	var getParams = {
-		TableName: 'polls',
+		TableName: process.env.AWS_TABLE_NAME,
 		ConsistentRead: true,
 		Limit: 1,
 		KeyConditionExpression: "ID = :val",
@@ -91,6 +92,7 @@ router.post('/:id', (req, res) => {
 	// Get data
 	ddb.query(getParams, function(err, pollData) {
 		if (err) {
+			console.error("DynamoDB error vote.js : ", err);
 			res.json({result: "error", message:"Somthing didn\'t work out quite right"});
 		} else {
 
@@ -140,7 +142,7 @@ router.post('/:id', (req, res) => {
 				}
 
 				var updateParams = {
-					TableName: "polls",
+					TableName: process.env.AWS_TABLE_NAME,
 					Key: {
 						"ID": {S: req.params.id}
 					},

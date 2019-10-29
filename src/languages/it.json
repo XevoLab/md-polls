@@ -67,6 +67,14 @@
 		"footer_createPoll": "Crea nuovo",
 		"footer_translate": "Traduci"
 	},
+	"errors": {
+		"header_og_description": "Qualcosa non ha funzionato... Ma con md-polls puoi condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
+		"message": "Qualcosa non ha molto funzionato...",
+		"description_404": "Ho guardato ovunque ma non ho trovato quello che mi chiedevi",
+		"description_500": "Ho fatto qualche casino e non sono riuscito a venirne fuori",
+		"footer_createPoll": "Crea nuovo",
+		"footer_translate": "Traduci"
+	},
 	"newPolljs": {
 		"toast_not_enough_answers": "Non ci sono abbastanza risposte valide 😲, te ne serve almeno una.",
 		"toast_too_many_answers": "Whoa, troppe risposte 😵. Il massimo è 25.",
@@ -80,5 +88,9 @@
 		"toast_already_voted": "Sembra che tu abbia già votato a questo sondaggio 😮",
 		"toast_success": "Il tuo voto è stato salvato! 🤩",
 		"toast_generic_error": "Qualcosa è andato storto mentre inviavamo il tuo voto 😞"
+	},
+	"cookieConsentjs": {
+		"cookie_phrase": "Questo sito usa i cookie 🍪 per rendere la tua visita ancora migliore 😄.",
+		"cookie_button": "Va bene 👌"
 	}
 }

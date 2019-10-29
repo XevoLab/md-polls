@@ -67,6 +67,14 @@
 		"footer_createPoll": "Create poll",
 		"footer_translate": "Translate"
 	},
+	"errors": {
+		"header_og_description": "Something didn't work out right... But with md-polls you can quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
+		"message": "Something did not go quite right...",
+		"description_404": "I looked everywhere but could not find what you asked",
+		"description_500": "I did something wrong and couldn't get it together",
+		"footer_createPoll": "Create poll",
+		"footer_translate": "Translate"
+	},
 	"newPolljs": {
 		"toast_not_enough_answers": "There are not enough valid answers 😲, you need at least one.",
 		"toast_too_many_answers": "Whoa, way to many answers 😵. The maximum is 25.",
@@ -80,5 +88,9 @@
 		"toast_already_voted": "It looks like you already voted on this poll before 😮",
 		"toast_success": "You vote was saved 🤩",
 		"toast_generic_error": "Something went wrong while submitting your answer 😞"
+	},
+	"cookieConsentjs": {
+		"cookie_phrase": "This website uses cookies 🍪 to enhance your browsing experience 😄.",
+		"cookie_button": "I agree 👌"
 	}
 }

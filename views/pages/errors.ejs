@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="<%= language.languageCode %>">
+<head>
+	<title>MD Polls</title>
+
+	<% include ../partials/header %>
+
+	<meta property="og:title" content="MD Polls" />
+	<meta property="og:description" content="<%= language.header_og_description %>" />
+	<meta name="description" content="<%= language.header_og_description %>" />
+	<meta property="og:url" content="<%= uri %>" />
+	<meta name="robots" content="noindex">
+</head>
+<body>
+
+	<div class="container main-container">
+
+		<div class="row mb-5">
+			<div class="col" style="color: #777;">
+				<%= language.message %>
+			</div>
+		</div>
+		<div class="row title">
+			<div class="col title-font">
+				<div class="row">
+					<h1>
+						<%= errorCode %>
+					</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<h3 class="col section-title">
+				<%= language["description_"+errorCode] %>
+			</h3>
+		</div>
+
+
+	</div>
+
+	<% include ../partials/footer %>
+
+	<% include ../partials/scripts %>
+
+</body>
+</html>

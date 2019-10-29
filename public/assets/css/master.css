@@ -150,13 +150,14 @@ nav {
     color: white;
     border-radius: 8px;
     margin: auto;
-    display: flex; }
+    display: flex;
+    line-height: 1.5em; }
     nav div img {
       max-height: 1.5em;
       margin-right: 1rem; }
 
 .main-container {
-  min-height: calc(100vh - 55px);
+  min-height: calc(100vh - 100px);
   background-color: white;
   border-left: 1px solid #eff2f9;
   border-right: 1px solid #eff2f9;
