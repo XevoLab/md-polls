@@ -11,7 +11,7 @@
 		"answer_remove": "Remove",
 		"meta_limit_answers": "Limit answers",
 		"meta_limit_answers_title": "Stop collecting answers for this choice after this number is reached",
-		"go_button": "Start collecting answers",
+		"go_button": "Publish",
 		"go_button_posting": "Posting",
 		"footer_createPoll": "Create poll",
 		"footer_translate": "Translate"

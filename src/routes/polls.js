@@ -1,5 +1,10 @@
-// polls.js
-// (c) 2019 - CesconFrancesco
+/**
+ * @Filename:     polls.js
+ * @Date:         Francesco Cescon <francesco> @ 2019-11-27 15:25:44
+ * @Last edit by: francesco
+ * @Last edit at: 2019-11-27 19:27:45
+ * @Copyright:    (c) 2019
+ */
 
 const express = require('express');
 const router = express.Router();

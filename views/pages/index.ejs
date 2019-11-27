@@ -5,36 +5,31 @@
 
 	<% include ../partials/header %>
 
-	<meta property="og:title" content="MD Polls" />
+	<meta property="og:title" content="Questionary" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
 	<meta name="description" content="<%= language.header_og_description %>" />
 	<meta property="og:url" content="<%= uri %>" />
 </head>
 <body>
 
-	<div class="container main-container">
+	<% include ../partials/head %>
 
-		<% include ../partials/head %>
+	<div class="container main-container">
 
 		<form method="post">
 
-			<div class="row title">
-				<div class="col title-font">
-					<div class="row">
-						<div class="col-auto">#</div>
-						<div class="col">
-							<textarea name="title" placeholder="<%= language.title_textarea %>..." rows="1" onkeyup="adjustSize(this)" autofocus></textarea>
-						</div>
-					</div>
+			<div class="row">
+				<div class="col title">
+					<textarea name="title" placeholder="<%= language.title_textarea %>..." rows="1" onkeyup="adjustSize(this)" autofocus></textarea>
+				</div>
+				<div class="col-auto">
+					<a class="btn primary-color">
+						<%= language.settings_title %>
+					</a>
 				</div>
 			</div>
 
-			<div class="row">
-				<h3 class="col section-title">
-					### <%= language.settings_title %>
-				</h3>
-			</div>
-			<div class="row settings">
+			<div class="row settings" style="display: none">
 				<div class="col">
 					<div class="custom-checkbox">
 					  <input type="checkbox" id="setting_preventDoubles" name="preventDoubles" checked>
@@ -51,19 +46,12 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<h3 class="col section-title">
-					### <%= language.choices_title %>
-				</h3>
-			</div>
 			<div class="row options">
 				<div class="col">
 
 					<div class="row choice">
 
-						<div class="col-auto number">
-							1.
-						</div>
+						<span class="border"></span>
 						<div class="col value">
 							<textarea rows="1" placeholder="<%= language.answer_textarea %>..." onkeyup="choiceEdit(this)"></textarea>
 						</div>
@@ -119,9 +107,7 @@
 	<div hidden id="choiceBoilerplate">
 		<div class="row choice">
 
-			<div class="col-auto number">
-
-			</div>
+			<span class="border"></span>
 			<div class="col value">
 				<textarea rows="1" placeholder="<%= language.answer_textarea %>..." onkeyup="choiceEdit(this)"></textarea>
 			</div>

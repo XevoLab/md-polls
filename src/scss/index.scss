@@ -1,42 +1,33 @@
+// @Author: francesco
+// @Date:   2019-11-27 15:25:44
+// @Filename: index.scss
+// @Last modified by:   francesco
+// @Last modified time: 2019-11-27 20:30:24
+// @Copyright: (c) 2019
+
 @import '_variables';
 body {
 	background-color: $bg_color;
-	background-image: $bg_graphic;
 }
 
 nav {
-	margin-bottom: 3rem;
 	display: flex;
+	padding: 1.5rem 5rem;
+	padding-top: 1.5rem!important;
+	padding-bottom: 1.5rem!important;
 
-	div {
-		font-size: 2rem;
-		padding: .5rem .75rem;
-		background-color: $header_bg;
-		color: $header_color;
-		border-radius: 8px;
-		margin: auto;
-		display: flex;
-		line-height: 1.5em;
-
-		img {
-			max-height: 1.5em;
-			margin-right: 1rem;
-		}
+	img {
+		max-height: 64px;
 	}
 }
 
 .main-container {
-	min-height: calc(100vh - 100px);
+	/*                       navbar        footer */
+	min-height: calc(100vh - 4rem - 64px - 55px);
+	max-width: 960px!important;
 	background-color: $bg_color;
-	border-left: 1px solid $body_border_color;
-	border-right: 1px solid $body_border_color;
-	padding: 3rem 5rem!important;
+	padding: 1.5rem 4.5rem;
 	color: $body_color;
-
-	.section-title {
-		padding: .5rem 15px;
-		margin: 2rem 0 0 0;
-	}
 
 	input, textarea {
 		font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
@@ -52,15 +43,14 @@ nav {
 
 	button, a.btn {
 		position: relative;
-		padding: .8rem 2rem;
+		padding: .2rem 1.1rem;
 		border-radius: 8px;
-		color: white;
 		border: none;
 		font-weight: lighter;
-		font-size: 1.1rem;
+		font-size: 1.2rem;
 		cursor: pointer;
 		text-decoration: none;
-		transition: 100ms box-shadow ease-in-out;
+		transition: 80ms all ease-in-out;
 
 		&:hover {
 			box-shadow: 0 0 10px -3px rgba(0,0,0,.5);
@@ -71,7 +61,12 @@ nav {
 		}
 
 		&.primary-color {
-			background-color: $primary_color;
+			border: 2px solid $primary_color;
+			color: $primary_color;
+			&:hover, &.hover {
+				background-color: $primary_color;
+				color: white;
+			}
 		}
 
 	}
@@ -136,10 +131,12 @@ nav {
 	}
 
 	.title {
+		margin-bottom: 2rem;
+
 		h1, div.col-auto {
 			font-weight: 900;
 			font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
-			color: $primary_color;
+			color: $seconday_color;
 			font-size: 2rem;
 			padding: 2rem 15px 0 15px;
 		}
@@ -151,22 +148,26 @@ nav {
 			padding-left: 0;
 		}
 
+		&+.col-auto {
+			margin-top: 2rem;
+		}
+
 		textarea {
 			font-weight: 900;
 			font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
-			color: $primary_color;
+			color: $seconday_color;
 			font-size: 2rem;
 			padding: 0 .2rem;
 			margin: 2rem 0 0 0;
 			overflow: hidden;
 
 			&::placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder, &::-webkit-input-placeholder, &:-moz-placeholder {
-				color: $primary_color;
+				color: $seconday_color;
 				font-style: italic;
 				opacity: .75;
 			}
 			&::placeholder {
-				color: $primary_color;
+				color: $seconday_color;
 				font-style: italic;
 				opacity: .75;
 			}
@@ -180,14 +181,14 @@ nav {
 	.options {
 		.choice {
 
-			.number {
-				width: 4rem;
-				max-width: 4rem;
-				line-height: 2rem;
-				font-weight: bold;
-				padding: .2rem .75rem;
-				text-align: right;
+			.border {
+				border-radius: 5px;
+				background-color: $primary_color;
+				width: 5px;
+				margin-bottom: .5rem;
+		    margin-left: 15px;
 			}
+
 			.result {
 				line-height: 2rem;
 				font-weight: bold;
@@ -195,8 +196,6 @@ nav {
 				padding: .2rem .75rem;
 			}
 			.value {
-				padding-left: 0;
-				padding: .5rem .2rem;
 				font-size: 1.1rem;
 
 				input, textarea {
@@ -288,7 +287,7 @@ nav {
 					}
 				}
 			}
-			&:hover {
+			&:hover  {
 				.meta {
 					opacity: 1;
 				}
@@ -321,6 +320,10 @@ nav {
 		margin-top: 2rem;
 
 		button {
+			padding: .6rem 2rem;
+			font-size: 1.1rem;
+			background-color: $primary_color;
+			color: white;
 			span.spinner {
 				opacity: 0;
 				position: absolute;
@@ -389,27 +392,9 @@ nav {
 
 }
 
-@media (max-width: 992px) {
-	.main-container, footer {
-		padding: 3rem 4rem!important;
-	}
-}
-@media (max-width: 768px) {
-	.main-container, footer {
-		padding: 3rem 3rem!important;
-	}
-}
-@media (max-width: 576px) {
-	.main-container, footer {
-		padding: 3rem 1rem!important;
-	}
-}
-
 footer {
 	min-height: 55px;
 	background-color: $bg_color;
-	border-left: 1px solid $body_border_color;
-	border-right: 1px solid $body_border_color;
 	padding: 1rem 5rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
@@ -442,6 +427,22 @@ footer, .main-container .share-buttons, .main-container .slim-button {
 	}
 	i {
 		width: 18px;
+	}
+}
+
+@media (max-width: 992px) {
+	nav, .main-container, footer {
+		padding: 3rem 4rem;
+	}
+}
+@media (max-width: 768px) {
+	nav, .main-container, footer {
+		padding: 1.5rem 3rem;
+	}
+}
+@media (max-width: 576px) {
+	nav, .main-container, footer {
+		padding: 1rem 1rem;
 	}
 }
 

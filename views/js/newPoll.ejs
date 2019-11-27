@@ -1,3 +1,11 @@
+/**
+ * @Filename:     newPoll.ejs
+ * @Date:         Francesco Cescon <francesco> @ 2019-11-27 15:25:44
+ * @Last edit by: francesco
+ * @Last edit at: 2019-11-27 19:18:50
+ * @Copyright:    (c) 2019
+ */
+
 function adjustSize(o) {
 	o.style.height = "1px";
 	o.style.height = (o.scrollHeight)+"px";
@@ -20,19 +28,11 @@ function addNewOption() {
 	var currentChoices = document.querySelector(".options .col");
 
 	currentChoices.appendChild(choiceBoilerplate);
-	placeItemNumbers();
 }
 function removeChoice(o) {
 	var itemToRemove = o.parentElement;
 
 	itemToRemove.parentElement.removeChild(itemToRemove);
-}
-function placeItemNumbers() {
-	var choices = document.querySelectorAll(".options .choice");
-
-	for (var i = 0; i < choices.length; i++) {
-		choices[i].children[0].innerHTML = (i+1) + ".";
-	}
 }
 function disableMaxAnswers(o) {
 	if (o.value == 0) {
@@ -95,6 +95,7 @@ form.addEventListener('submit', function (e) {
 
 		pollData.options.push(singleOption);
 	}
+	console.log(pollData);
 
 	var xhr = new XMLHttpRequest();
 	xhr.onload = function () {
