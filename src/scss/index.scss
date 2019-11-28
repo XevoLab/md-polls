@@ -2,7 +2,7 @@
 // @Date:   2019-11-27 15:25:44
 // @Filename: index.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-11-27 20:30:24
+// @Last modified time: 2019-11-28 16:31:30
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -28,6 +28,11 @@ nav {
 	background-color: $bg_color;
 	padding: 1.5rem 4.5rem;
 	color: $body_color;
+
+	& form > .row, & > .row {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
 
 	input, textarea {
 		font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
@@ -131,18 +136,12 @@ nav {
 	}
 
 	.title {
-		margin-bottom: 2rem;
 
-		h1, div.col-auto {
-			font-weight: 900;
-			font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
-			color: $seconday_color;
-			font-size: 2rem;
-			padding: 2rem 15px 0 15px;
-		}
-		h1 {
-			margin: 0;
-		}
+		font-weight: 900;
+		font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
+		color: $seconday_color;
+		font-size: 2rem;
+		padding: 1rem 15px 1rem 15px;
 
 		& > .col .col {
 			padding-left: 0;
@@ -160,6 +159,7 @@ nav {
 			padding: 0 .2rem;
 			margin: 2rem 0 0 0;
 			overflow: hidden;
+			max-width: 560px;
 
 			&::placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder, &::-webkit-input-placeholder, &:-moz-placeholder {
 				color: $seconday_color;
@@ -325,24 +325,25 @@ nav {
 			background-color: $primary_color;
 			color: white;
 			span.spinner {
-				opacity: 0;
-				position: absolute;
+				display: none;
 				top: calc(1rem - 2px);
 				left: 50%;
 				transform: translateX(-50%);
 			}
 			&.loading {
 				.text {
-					opacity: 0;
+					display: none;
 				}
 				.spinner {
-					opacity: .9;
+					display: inline;
 				}
 			}
 		}
 	}
 
 	.share-buttons {
+		margin-top: 1rem;
+
 		a {
 			display: inline-block;
 			display: -webkit-inline-box;
@@ -351,23 +352,24 @@ nav {
 	}
 
 	.collectNames {
+		margin: 1rem 0;
+
+		.border {
+			border-radius: 5px;
+			background-color: $primary_color;
+			width: 5px;
+			margin-left: 15px;
+		}
+
 		.limited-width {
 			max-width: 480px;
 		}
 		input {
-			border: 1px solid #ddd;
 	    font-size: 1.1rem;
-	    padding: .5rem .75rem;
-	    border-radius: 5px;
-			transition: 100ms box-shadow ease-in-out;
-
-			&:focus{
-		    box-shadow: 0 0 5px -2px rgba(0,0,0,.5);
-			}
 		}
 		.explanation {
 			font-size: .95rem;
-			margin-top: .25rem;
+			margin-top: .5rem;
 			color: #666;
 		}
 	}
@@ -410,7 +412,7 @@ footer {
 footer, .main-container .share-buttons, .main-container .slim-button {
 	a, button {
 		color: $button_active_color;
-		padding: .25em .5em;
+		padding: .35em .55em;
 		border-radius: 3px;
 		transition: 80ms all ease-in-out;
 		text-decoration: none;

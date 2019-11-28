@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Vote on &apos;<%= pollData.title.S %>&apos; - Polls</title>
+	<title>Vote on &apos;<%= pollData.title.S %>&apos; - Questionary</title>
 
-	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= pollData.title.S %>&apos; - MD Polls" />
+	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= pollData.title.S %>&apos; - Questionary" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
 	<meta name="description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
@@ -22,14 +22,9 @@
 
 		<form id="<%= pollData.ID.S %>">
 
-			<div class="row title">
-				<div class="col title-font">
-					<div class="row">
-						<div class="col-auto">#</div>
-						<h1 class="col">
-							<%= pollData.title.S %>
-						</h1>
-					</div>
+			<div class="row">
+				<div class="col title">
+					<%= pollData.title.S %>
 				</div>
 			</div>
 
@@ -43,11 +38,6 @@
 				<%- include('./../partials/vote/collectNames'); %>
 			<% } %>
 
-			<div class="row">
-				<h3 class="col section-title">
-					### <%= language.choices_title %>
-				</h3>
-			</div>
 			<div class="row options">
 				<div class="col">
 

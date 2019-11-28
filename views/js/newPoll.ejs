@@ -2,7 +2,7 @@
  * @Filename:     newPoll.ejs
  * @Date:         Francesco Cescon <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2019-11-27 19:18:50
+ * @Last edit at: 2019-11-27 21:02:51
  * @Copyright:    (c) 2019
  */
 
@@ -95,7 +95,6 @@ form.addEventListener('submit', function (e) {
 
 		pollData.options.push(singleOption);
 	}
-	console.log(pollData);
 
 	var xhr = new XMLHttpRequest();
 	xhr.onload = function () {
