@@ -16,9 +16,9 @@ if (showPopUp) {
 			<div class="row content-bar">
 				<div class="col content">
 					<div>
-						<%= language.cookie_phrase %>
+						${language.cookie_phrase}
 					</div>
-					<button onclick="dismissCookieConset(this)"><%= language.cookie_button %></button>
+					<button onclick="dismissCookieConset(this)">${language.cookie_button}</button>
 				</div>
 			</div>
 		</div>

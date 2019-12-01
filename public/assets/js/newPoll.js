@@ -6,6 +6,7 @@
  * @Copyright:    (c) 2019
  */
 
+
 function adjustSize(o) {
 	o.style.height = "1px";
 	o.style.height = (o.scrollHeight)+"px";
@@ -13,19 +14,19 @@ function adjustSize(o) {
 function choiceEdit(o) {
 	adjustSize(o);
 
-	var lastTextArea = document.querySelector(".options .choice:last-of-type .value textarea");
+	var lastTextArea = document.querySelector(".choices .choice:last-of-type .value textarea");
 	if (lastTextArea.value != "") {
 		addNewOption();
 	}
 }
 function addNewOption() {
-	var choices = document.querySelectorAll(".options .choice");
+	var choices = document.querySelectorAll(".choices .choice");
 	if (choices.length >= 25) {
 		return false;
 	}
 
 	var choiceBoilerplate = document.querySelector("#choiceBoilerplate .choice").cloneNode(true);
-	var currentChoices = document.querySelector(".options .col");
+	var currentChoices = document.querySelector(".choices .col");
 
 	currentChoices.appendChild(choiceBoilerplate);
 }
@@ -47,7 +48,7 @@ var form = document.querySelector('form');
 form.addEventListener('submit', function (e) {
 	e.preventDefault();
 
-	var choices = document.querySelectorAll(".options .choice");
+	var choices = document.querySelectorAll(".choices .choice");
 	var validChoicesLength = 0;
 	for (var i = 0; i < choices.length; i++) {
 		if (choices[i].querySelector('.value textarea').value !== "") {
@@ -56,11 +57,11 @@ form.addEventListener('submit', function (e) {
 	}
 
 	if (validChoicesLength == 0) {
-		toast("error", "<%= language.toast_not_enough_answers %>");
+		toast("error", language.toast_not_enough_answers);
 		return false;
 	}
 	else if (validChoicesLength > 25) {
-		toast("error", "<%= language.toast_too_many_answers %>");
+		toast("error", language.toast_too_many_answers);
 		return false;
 	}
 
@@ -93,7 +94,7 @@ form.addEventListener('submit', function (e) {
 			singleOption.metadata[choiceMeta[j].attributes["name"].value] = choiceMeta[j].value;
 		}
 
-		pollData.options.push(singleOption);
+		pollData.choices.push(singleOption);
 	}
 
 	var xhr = new XMLHttpRequest();
@@ -107,18 +108,18 @@ form.addEventListener('submit', function (e) {
 		}
 
 		if (xhr.readyState == 4 && xhr.status == 200 && res.result === 'success') {
-			toast("success", "<%= language.toast_success %>");
+			toast("success", language.toast_success);
 			setTimeout(() => {
 				window.location.href = '/v/'+res.ID;
 			}, 1000)
 		}
 		else {
-			toast("error", "<%= language.toast_generic_error %>");
+			toast("error", language.toast_generic_error);
 		}
 	}
 	xhr.onerror = function () {
 		document.querySelector("button[type=submit]").classList.remove("loading");
-		toast("error", "<%= language.toast_generic_error %>");
+		toast("error", language.toast_generic_error);
 	}
 	xhr.open('POST', '/polls/');
 	xhr.setRequestHeader('Content-type', 'application/json');

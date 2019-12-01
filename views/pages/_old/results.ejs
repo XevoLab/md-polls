@@ -72,7 +72,7 @@
 
 	<% include ../partials/footer %>
 
-	<% include ../partials/scripts %>
+	<%- include('../partials/scripts', {lang: lang}) %>
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/assets/js/results_liveUpdate.js"></script>

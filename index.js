@@ -39,6 +39,7 @@ const languageSelector = (req, res, next) => {
 	if (!lang) {
 		lang = 'en';
 	}
+	req.lang = lang;
 
 	req.languageData = require('./src/languages/'+lang+'.json');
 
@@ -77,16 +78,6 @@ app.use(languageSelector);
 		});
 
 	// RESOURCES
-
-		app.get('/assets/js/newPoll.js', (req, res) => {
-			res.render('js/newPoll', {language: req.languageData.newPolljs});
-		})
-		app.get('/assets/js/submitPoll.js', (req, res) => {
-			res.render('js/submitPoll', {language: req.languageData.submitPolljs});
-		})
-		app.get('/assets/js/cookie_consent.js', (req, res) => {
-			res.render('js/cookie_consent', {language: req.languageData.cookieConsentjs});
-		})
 
 		// Set a static folder
 		app.use(express.static(path.join(__dirname, 'public')));

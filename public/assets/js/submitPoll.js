@@ -14,7 +14,7 @@ form.addEventListener('submit', function (e) {
 	var selection = document.querySelectorAll("input:checked[name=choice]");
 	if (selection.length !== 1) {
 		document.querySelector("button[type=submit]").classList.remove("loading");
-		toast("error", "<%= language.toast_no_answer %>");
+		toast("error", language.toast_no_answer);
 		return false;
 	}
 
@@ -24,7 +24,7 @@ form.addEventListener('submit', function (e) {
 	if (name.length === 1) {
 		if (name[0].value === "") {
 			document.querySelector("button[type=submit]").classList.remove("loading");
-			toast("error", "<%= language.toast_empty_name %>");
+			toast("error", language.toast_empty_name);
 			return false;
 		}
 		else {
@@ -41,33 +41,33 @@ form.addEventListener('submit', function (e) {
 			if (res.result === "success") {
 				sendSocketMessage();
 
-				toast("success", "<%= language.toast_success %>");
+				toast("success", language.toast_success_vote);
 				setTimeout(() => {
 					window.location.href = '/r/'+document.querySelector("form").attributes["id"].value;
 				}, 1000);
 				return true;
 			}
 			else if (res.result === "full") {
-				toast("warning", "<%= language.toast_full_choice %>");
+				toast("warning", language.toast_full_choice);
 				return false;
 			}
 			else if (res.result === "alreadyVoted") {
-				toast("warning", "<%= language.toast_already_voted %>");
+				toast("warning", language.toast_already_voted);
 				return false;
 			}
 			else {
-				toast("error", "<%= language.toast_generic_error %>");
+				toast("error", language.toast_generic_error);
 				return false;
 			}
 		}
 		else {
-			toast("error", "<%= language.toast_generic_error %>");
+			toast("error", language.toast_generic_error);
 			return false;
 		}
 	}
 	xhr.onerror = function () {
 		document.querySelector("button[type=submit]").classList.remove("loading");
-		toast("error", "<%= language.toast_generic_error %>");
+		toast("error", language.toast_generic_error);
 		return false;
 	}
 	xhr.open('POST', '/vote/'+pollID);

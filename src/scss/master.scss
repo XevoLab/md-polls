@@ -1,16 +1,5 @@
-// @Author: Xevolab <francesco>
-// @Date:   2019-11-27 15:25:44
-// @Filename: master.scss
-// @Last modified by:   francesco
-// @Last modified time: 2019-11-27 21:11:28
-// @Copyright: (c) 2019
-
 @import '_variables';
 @import url('https://fonts.googleapis.com/css?family=Lato:900|Mada&display=swap');
-
-*, *::before, *::after {
-	box-sizing: border-box;
-}
 
 body {
 	margin: 0;
@@ -20,29 +9,96 @@ button {
 	font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
 }
 
-.brand-font {
-	font-family: $brand_font, 'Arial', 'Helvetica', sans-serif;
-	font-weight: 900;
-}
-
-.title-font {
-	font-weight: 900;
-	font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
-	color: #333;
-}
+@import 'toast';
 
 .text-right {
 	text-align: right;
 }
-.text-center {
-	text-align: center;
-}
 
-@import 'toast';
+nav {
+	img {
+		max-width: 85px;
+	}
 
-@-webkit-keyframes slideIn {
-  100% { right: 1rem; }
+	& .row {
+		padding: 2rem;
+	}
+	@media (max-width: 992px) {
+		& .row {
+			padding: 1.5rem;
+		}
+	}
+	@media (max-width: 768px) {
+		& .row {
+			padding: 1.5rem 1rem;
+		}
+	}
+	@media (max-width: 576px) {
+		& .row {
+			padding: 1rem .5rem;
+		}
+	}
 }
 
 @import 'index';
-@import 'results';
+
+footer {
+	color: $button_active_color;
+
+	& .row > *:first-child {
+		padding-left: 2.5rem;
+	}
+	& .row > *:last-child {
+		padding-right: 2.5rem;
+	}
+
+	.row > * {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.btn {
+		color: $button_active_color;
+		padding: .35em .55em;
+		border-radius: 3px;
+		transition: 80ms all ease-in-out;
+		text-decoration: none;
+		background-color: transparent;
+		border: none;
+		font-size: .95rem;
+
+		&:hover {
+			color: $button_hover_color;
+			background-color: $button_hover_bg;
+		}
+
+		i {
+			width: 18px;
+		}
+	}
+
+	@media (max-width: 992px) {
+		& .row > *:first-child {
+			padding-left: 2rem;
+		}
+		& .row > *:last-child {
+			padding-right: 2rem;
+		}
+	}
+	@media (max-width: 768px) {
+		& .row > *:first-child {
+			padding-left: 1.5rem;
+		}
+		& .row > *:last-child {
+			padding-right: 1.5rem;
+		}
+	}
+	@media (max-width: 576px) {
+		& .row > *:first-child {
+			padding-left: 1rem;
+		}
+		& .row > *:last-child {
+			padding-right: 1rem;
+		}
+	}
+}
