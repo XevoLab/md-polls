@@ -2,12 +2,14 @@
  * @Filename:     polls.js
  * @Date:         Francesco Cescon <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2019-11-27 19:27:45
+ * @Last edit at: 2019-12-03 16:27:17
  * @Copyright:    (c) 2019
  */
 
 const express = require('express');
 const router = express.Router();
+
+const crypto = require('crypto');
 
 require('dotenv').config();
 
@@ -54,6 +56,8 @@ router.post('/', (req, res) => {
 
 	// Remap data
 	var d = req.body;
+	var pollID = crypto.createHash('md5').update(JSON.stringify([d, Date.now()])).digest('base64');
+	pollID = pollID.replace(/[\+\/\=]/g, "").substr(0, 9);
 
 	const alphabet = 'abcdefghikmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789-';
 	var pollID_number = Math.floor(Date.now() - 946080000) + String(Math.floor(Math.random()*1000));
@@ -81,6 +85,7 @@ router.post('/', (req, res) => {
 			preventDoubles: {BOOL: (d.metadata.preventDoubles || false)},
 			collectNames: {BOOL: (d.metadata.collectNames || false)},
 			hiddenResults: {BOOL: (d.metadata.hiddenResults || false)},
+			graphType: {S: 'bars'},//(d.metadata.graphType || 'bars')},
 			answeredBy: {L: []}
 		}},
 		'options': null,

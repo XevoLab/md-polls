@@ -1,3 +1,11 @@
+/**
+ * @Filename:     vote.js
+ * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
+ * @Last edit by: francesco
+ * @Last edit at: 2019-12-03 19:25:37
+ * @Copyright:    (c) 2019
+ */
+
 // vote.js
 // (c) 2019 - Cescon Francesco
 
@@ -25,12 +33,12 @@ router.get('/:id', (req, res) => {
 	var ddbResponse = ddb.query(params, function(err, data) {
 		if (err) {
 			console.error("DynamoDB error vote.js : ", err);
-			res.redirect('/error/500');
+			res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 500});
 		} else {
 
 			if (data.Items.length === 0) {
 				console.log("404")
-				res.redirect('/error/404');
+				res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
 				return;
 			}
 			else {

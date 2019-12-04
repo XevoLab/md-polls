@@ -1,16 +1,11 @@
 <div class="row alert">
 	<div class="col">
-		<div class="row">
-			<div class="col-auto alert-icon"><i class="fas fa-exclamation-circle"></i></div>
-			<div class="col">
-				<%= language.alert_already_voted %>
+		<%= language.alert_already_voted %>
 
-				<div>
-					<a href="/r/<%= id %>" title="<%= language.alert_footer %>">
-						<%= language.alert_footer %>
-					</a>
-				</div>
-			</div>
+		<div>
+			<a href="/r/<%= id %>" title="<%= language.alert_footer %>">
+				<%= language.alert_footer %>
+			</a>
 		</div>
 	</div>
 </div>

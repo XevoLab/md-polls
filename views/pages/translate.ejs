@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Translate MD Polls</title>
+	<title>Translate Questionary</title>
 
 	<meta property="og:title" content="MD Polls" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
@@ -12,43 +12,32 @@
 </head>
 <body>
 
-	<% include ../partials/head %>
+	<% include ../partials/nav %>
 
 	<div class="container main-container">
 
-		<div class="row">
-			<div class="col title">
-				<%= language.title %>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col p">
-				<p>
-					<%= language.p1 %>
-				</p>
-				<p>
-					<%= language.p2 %>
-				</p>
-			</div>
-		</div>
-
-		<div class="row">
-			<h3 class="col section-title">
-				### <%= language.section_title %>
-			</h3>
-		</div>
+		<h1>
+			<%= language.title %>
+		</h1>
+		<p>
+			<%= language.p1 %>
+		</p>
+		<p>
+			<%= language.p2 %>
+		</p>
+		<h3>
+			<%= language.section_title %>
+		</h3>
+		<p>
+			<%= language.p3 %>
+		</p>
+		<a class="btn btn-slim" href="/assets/downloads/languages.zip"><i class="icon-download"></i> Download file</a>
+		<p>
+			<%= language.p4 %>
+		</p>
 		<div class="row settings">
 			<div class="col p">
-				<p>
-					<%= language.p3 %>
-				</p>
-				<div class="slim-button">
-					<a href="/assets/downloads/languages.zip"><i class="fas fa-file-download"></i> Download file</a>
-				</div>
-				<p>
-					<%= language.p4 %>
-				</p>
+
 				<div class="code-block">
 					<span class="text-red">"footer_createPoll"</span>: <span class="text-green">"Create poll"</span>,<br />
 					<p><%= language.becomes %></p>
@@ -64,7 +53,7 @@
 
 	<% include ../partials/footer %>
 
-	<% include('../partials/scripts', {lang: lang}) %>
+	<% include('../partials/scripts', {lang: language}) %>
 
 </body>
 </html>

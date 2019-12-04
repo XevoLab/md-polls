@@ -27,10 +27,10 @@
 				</div>
 			</div>
 
-			<div class="row results options">
+			<div class="row">
 				<div class="col">
 
-					<table>
+					<table class="results">
 
 						<% for (var i=0; i < options.length; i++) { %>
 					    <%- include('./../partials/results/choiceRowResult', {index: i+1, r: options[i].M, total: total, showNames: collectNames}); %>
@@ -38,11 +38,17 @@
 
 					</table>
 
+					<script type="text/javascript">
+						function swapNumberPerc() {
+							document.querySelector("table.results").classList.toggle("percentage");
+						}
+					</script>
+
 
 				</div>
 			</div>
 
-			<% if (!alreadyVoted) { %>
+			<!--<% if (!alreadyVoted) { %>
 				<div class="row vote">
 					<div class="col section-title">
 						<a href="/v/<%= id %>" class="btn primary-color">
@@ -50,7 +56,7 @@
 						</a>
 					</div>
 				</div>
-			<% } %>
+			<% } %>-->
 
 			<!--<div class="row">
 				<h3 class="col section-title">
@@ -72,7 +78,7 @@
 
 	<% include ../partials/footer %>
 
-	<%- include('../partials/scripts', {lang: lang}) %>
+	<%- include('../partials/scripts', {lang: language.languageCode}) %>
 
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="/assets/js/results_liveUpdate.js"></script>

@@ -1,7 +1,21 @@
+/**
+ * @Filename:     submitPoll.js
+ * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
+ * @Last edit by: francesco
+ * @Last edit at: 2019-12-03 09:33:21
+ * @Copyright:    (c) 2019
+ */
 
 var pollID = document.querySelector("form").attributes["id"].value;
 
 var socket = io(window.location.origin+"?pollID="+encodeURIComponent(pollID));
+
+var select = document.querySelectorAll('input[type="radio"]');
+for (var i=0; i<select.length; i++) {
+  select[i].onclick = function() {
+		document.querySelector('button[type="submit"]').classList.remove("disabled");
+	};
+}
 
 var form = document.querySelector('form');
 form.addEventListener('submit', function (e) {

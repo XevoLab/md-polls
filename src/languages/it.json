@@ -1,6 +1,5 @@
 {
 	"index": {
-		"header_og_description": "Condividi velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogli tutte le loro risposte.",
 		"title_textarea": "Titolo",
 		"settings_title": "Impostazioni",
 		"setting_prevent_duplicates": "Previeni duplicati",
@@ -12,9 +11,7 @@
 		"meta_limit_answers": "Limita risposte",
 		"meta_limit_answers_title": "Smetti di raccogliere risposte per questa opzione dopo che viene raggiunto il massimo.",
 		"go_button": "Pubblica",
-		"go_button_posting": "In corso",
-		"footer_createPoll": "Crea nuovo",
-		"footer_translate": "Traduci"
+		"go_button_posting": "In corso"
 	},
 	"vote": {
 		"header_og_title": "Vota su",
@@ -30,9 +27,7 @@
 		"submit_button_posting": "In corso",
 		"share_title": "Condividi",
 		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
-		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 ",
-		"footer_createPoll": "Crea nuovo",
-		"footer_translate": "Traduci"
+		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 "
 	},
 	"results": {
 		"header_og_title": "Risultati per",
@@ -42,12 +37,9 @@
 		"piechart_title": "Grafico",
 		"share_title": "Condividi i risultati",
 		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
-		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 ",
-		"footer_createPoll": "Crea nuovo",
-		"footer_translate": "Traduci"
+		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 "
 	},
 	"translate": {
-		"header_og_description": "Condividi velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogli tutte le loro risposte.",
 		"title": "Aiuta a tradurre Questionary",
 		"p1": "Questionary è un piccolo progetto personale di un programmatore web italiano.",
 		"p2": "Il tempo e le risorse per avere il sito tradotto in quante più lingue possibili sono ovviamente limitate. Per questo motivo, la comunità è uno degli elementi più preziosi per uno sviluppatore.",
@@ -55,24 +47,22 @@
 		"p3": "Se hai piacere di aiutare a tradurre, scarica il file sottostante, contenente tutte le lingue al momento disponibili come archivio .zip. Le traduzioni sono file JSON.",
 		"p4": "Quindi, crea una copia di un qualsiasi file e sostituisci il testo con quello tradotto. Fa attenzione a non cambiare la prima parte di ogni coppia id: valore.",
 		"becomes": "Diventa",
-		"p5": "Infine, invia il file tradotto a ",
-		"footer_createPoll": "Crea nuovo",
-		"footer_translate": "Traduci"
+		"p5": "Infine, invia il file tradotto a "
 	},
 	"hiddenResults": {
-		"header_og_description": "Condividi velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogli tutte le loro risposte.",
 		"title": "Non potrai vedere i risultati fino a quando non voti",
 		"description": "Il cretore di questo sondaggio ha bloccato la visualizzazione dei risultati fino al voto.",
-		"vote_button": "Vota ora",
-		"footer_createPoll": "Crea nuovo",
-		"footer_translate": "Traduci"
+		"vote_button": "Vota ora"
 	},
 	"errors": {
 		"header_og_description": "Qualcosa non ha funzionato... Ma con md-polls puoi condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
 		"message": "Qualcosa non ha molto funzionato...",
-		"description_404": "Ho guardato ovunque ma non ho trovato quello che mi chiedevi",
-		"description_500": "Ho fatto qualche casino e non sono riuscito a venirne fuori",
-		"footer_createPoll": "Crea nuovo",
-		"footer_translate": "Traduci"
+		"line1": "La pagina è caduta dal furgone 🚚",
+		"line2": "Matrix è crashato 😵",
+		"line3": "Millenium bug 🗓"
+	},
+	"commons": {
+		"header_og_description": "Condividi velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogli tutte le loro risposte.",
+		"footer_createPoll": "Crea nuovo"
 	}
 }

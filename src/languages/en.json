@@ -1,6 +1,5 @@
 {
 	"index": {
-		"header_og_description": "Quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
 		"title_textarea": "Title",
 		"settings_title": "Settings",
 		"setting_prevent_duplicates": "Prevent duplicates",
@@ -12,9 +11,7 @@
 		"meta_limit_answers": "Limit answers",
 		"meta_limit_answers_title": "Stop collecting answers for this choice after this number is reached",
 		"go_button": "Publish",
-		"go_button_posting": "Posting",
-		"footer_createPoll": "Create poll",
-		"footer_translate": "Translate"
+		"go_button_posting": "Publishing..."
 	},
 	"vote": {
 		"header_og_title": "Vote on",
@@ -25,29 +22,23 @@
 		"collect_names_title": "Name",
 		"collect_names_textarea": "John Doe",
 		"collect_names_explanation": "The creator of this poll is asking for people to leave their name as part of their vote",
-		"choices_title": "Choices",
-		"submit_button": "Submit my vote",
-		"submit_button_posting": "Posting",
+		"submit_button": "Submit",
+		"submit_button_posting": "Submitting...",
 		"share_title": "Share",
 		"message_share_text": "Hi! 👋 Could you vote on this? ",
-		"social_share_text": "Could you vote on this poll for me? 🙂📩 ",
-		"footer_createPoll": "Create poll",
-		"footer_translate": "Translate"
+		"social_share_text": "Could you vote on this poll for me? 🙂📩 "
 	},
 	"results": {
 		"header_og_title": "Results for",
 		"header_og_description": "Check out how this poll did! Create one youself to quicly and effortlessly share nice looking polls to your friends, then collect all their responses.",
-		"results_title": "Results",
+		"swap_number_percentage": "Reveal percentage",
 		"vote_button": "Vote youself",
 		"piechart_title": "Pie chart",
 		"share_title": "Share results",
 		"message_share_text": "Hi! 👋 Check out this poll! ",
-		"social_share_text": "Check out how this poll did! 💪😁 ",
-		"footer_createPoll": "Create poll",
-		"footer_translate": "Translate"
+		"social_share_text": "Check out how this poll did! 💪😁 "
 	},
 	"translate": {
-		"header_og_description": "Quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
 		"title": "Help translate Questionary",
 		"p1": "Questionary is a small and personal project of an Italian web developer.",
 		"p2": "The time and resources to get the website translated in as many languages as possible are, obviously, limited. For this reason, the community is one of the most precious things a developed has.",
@@ -55,24 +46,23 @@
 		"p3": "If you would like to contribute, please consider downloading the file below, containing all the currently available languages as a .zip archive. The translations are JSON files.",
 		"p4": "Then, create a copy of any file and replace the existing text with the new translation. Be mindful not to change the first section of each id and text pair.",
 		"becomes": "Becomes",
-		"p5": "Ultimately, send the translated file to",
-		"footer_createPoll": "Create poll",
-		"footer_translate": "Translate"
+		"p5": "Ultimately, send the translated file to"
 	},
 	"hiddenResults": {
-		"header_og_description": "Quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
 		"title": "You cannot see the results without voting",
 		"description": "The creator of this poll decided to hide the results of this poll until you have voted.",
-		"vote_button": "Vote now",
-		"footer_createPoll": "Create poll",
-		"footer_translate": "Translate"
+		"vote_button": "Vote now"
 	},
 	"errors": {
 		"header_og_description": "Something didn't work out right... But with md-polls you can quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
 		"message": "Something did not go quite right...",
-		"description_404": "I looked everywhere but could not find what you asked",
-		"description_500": "I did something wrong and couldn't get it together",
+		"line1": "This page fell off the truck 🚚",
+		"line2": "The Matrix crashed 😵",
+		"line3": "Millenium bug 🗓"
+	},
+	"commons": {
+		"header_og_description": "Quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
 		"footer_createPoll": "Create poll",
-		"footer_translate": "Translate"
+		"footer_howItWorks": "How it works"
 	}
 }

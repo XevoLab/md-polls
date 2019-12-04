@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="<%= language.languageCode %>">
+<head>
+	<title>Questionary</title>
+
+	<% include ../partials/header %>
+
+	<meta property="og:title" content="Questionary" />
+	<meta property="og:description" content="<%= language.header_og_description %>" />
+	<meta name="description" content="<%= language.header_og_description %>" />
+	<meta property="og:url" content="<%= uri %>" />
+	<meta name="robots" content="noindex">
+</head>
+<body>
+
+	<nav class="container-fluid">
+		<div class="row">
+			<div class="col-auto">
+				<a href="/"><img src="/assets/img/logo_color.png" alt="Logo"></a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container main-container error-page">
+
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-auto">
+				<div class="container-fluid options">
+					<div class="row">
+						<div class="col title">
+							<%= language.message %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col label">
+							<div class=""><label><%= language.line1 %></label> 50%</div>
+							<div class=""><label><%= language.line2 %></label> 30%</div>
+							<div class=""><label><%= language.line3 %></label> 20%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<img src="/assets/img/banner.png" id="banner_bg" alt="">
+
+	</div>
+
+	<% include('../partials/scripts', {lang: language.languageCode}) %>
+
+</body>
+</html>

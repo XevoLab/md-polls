@@ -2,7 +2,7 @@
  * @Filename:     newPoll.ejs
  * @Date:         Francesco Cescon <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2019-11-27 21:02:51
+ * @Last edit at: 2019-12-03 16:13:30
  * @Copyright:    (c) 2019
  */
 
@@ -43,8 +43,8 @@ function disableMaxAnswers(o) {
 
 //clickedToggle
 
-
 var form = document.querySelector('form');
+
 form.addEventListener('submit', function (e) {
 	e.preventDefault();
 
@@ -68,12 +68,12 @@ form.addEventListener('submit', function (e) {
 	document.querySelector("button[type=submit]").classList.add("loading");
 
 	var pollData = {
-		title: document.querySelector(".title textarea").value,
+		title: document.querySelector("textarea.title").value,
 		metadata: {},
 		options: []
 	};
 
-	var pollMeta = document.querySelectorAll(".settings input");
+	var pollMeta = document.querySelectorAll(".options input");
 	for (var j = 0; j < pollMeta.length; j++) {
 		if (pollMeta[j].attributes["type"].value == "checkbox") {
 			pollData.metadata[pollMeta[j].attributes["name"].value] = pollMeta[j].checked;
@@ -90,11 +90,11 @@ form.addEventListener('submit', function (e) {
 		}
 
 		var choiceMeta = choices[i].querySelectorAll(".meta input");
-		for (var j = 0; j < choiceMeta.length; j++) {
+		/*for (var j = 0; j < choiceMeta.length; j++) {
 			singleOption.metadata[choiceMeta[j].attributes["name"].value] = choiceMeta[j].value;
-		}
+		}*/
 
-		pollData.choices.push(singleOption);
+		pollData.options.push(singleOption);
 	}
 
 	var xhr = new XMLHttpRequest();
@@ -108,7 +108,7 @@ form.addEventListener('submit', function (e) {
 		}
 
 		if (xhr.readyState == 4 && xhr.status == 200 && res.result === 'success') {
-			toast("success", language.toast_success);
+			toast("success", language.toast_success_poll);
 			setTimeout(() => {
 				window.location.href = '/v/'+res.ID;
 			}, 1000)
@@ -127,3 +127,11 @@ form.addEventListener('submit', function (e) {
 	xhr.send(JSON.stringify(pollData));
 
 }, false);
+
+document.onkeydown = function () {
+	var evtobj = window.event? event : e
+	if (evtobj.keyCode == 13 && (event.metaKey || event.ctrlKey)) {
+		console.log("enter");
+		form.submit();
+	}
+};

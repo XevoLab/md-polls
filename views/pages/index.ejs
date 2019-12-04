@@ -14,8 +14,42 @@
 
 	<nav class="container-fluid">
 		<div class="row">
+			<div class="col">
+				<a href="/"><img src="/assets/img/logo_bw.png" alt="Logo"></a>
+			</div>
 			<div class="col-auto">
-				<img src="/assets/img/logo_bw.png" alt="Logo">
+				<input type="checkbox" id="options_toggle" value="">
+				<label for="options_toggle">Options</label>
+				<div class="options">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col">
+								<input type="checkbox" id="setting_preventDoubles" name="preventDoubles" checked>
+								<label for="setting_preventDoubles"><%= language.setting_prevent_duplicates %></label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="checkbox" id="setting_collectNames" name="collectNames">
+							  <label for="setting_collectNames"><%= language.setting_collect_names %></label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="checkbox" id="setting_hiddenResults" name="hiddenResults">
+							  <label for="setting_hiddenResults"><%= language.setting_hidden_results %></label>
+							</div>
+						</div>
+						<!--<div class="row" style="margin-top: 5px;">
+							<div class="col">
+								<input type="radio" id="graph_bars" value="bars" name="graphType" checked>
+							  <label for="graph_bars"><i class="icon-chart-bar"></i></label>
+								<input type="radio" id="graph_pie" value="pie" name="graphType">
+							  <label for="graph_pie"><i class="icon-chart-pie"></i></label>
+							</div>
+						</div>-->
+					</div>
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -48,29 +82,32 @@
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="col">
+					<button type="submit" class="btn">
+						<span class="text"><%= language.go_button %> <div class="description" hidden>(⌘+enter)</div></span>
+						<span class="spinner"><i class="icon-save animate-pulse"></i> <%= language.go_button_posting %></span>
+					</button>
+				</div>
+			</div>
+
 		</form>
 
 	</div>
 
-	<footer class="container-fluid">
-		<div class="row">
-			<div class="col-auto">
-				<a href="/" class="btn" title="<%= language.footer_createPoll %>"><%= language.footer_createPoll %> 🎉</a>
-			</div>
-			<!--<div class="col-auto">
-				<a href="/API">API ⚡</a>
-			</div>-->
-			<div class="col-auto">
-				<a href="/translate" class="btn" title="<%= language.footer_translate %>"><%= language.footer_translate %> 🗺️</a>
-			</div>
-			<div class="col text-right">
-				&copy; <%= new Date().getFullYear() %>
-			</div>
-		</div>
-	</footer>
+	<% include ../partials/footer %>
 
 	<div id="choiceBoilerplate" hidden>
+		<div class="row choice">
 
+			<div class="col value">
+				<textarea rows="1" placeholder="<%= language.answer_textarea %>..." onkeyup="choiceEdit(this)"></textarea>
+			</div>
+			<div class="col-auto remove" title="<%= language.answer_remove %>" onclick="removeChoice(this)">
+				<i class="icon-cancel"></i>
+			</div>
+
+		</div>
 	</div>
 
 	<%- include('../partials/scripts', {lang: language.languageCode}) %>

@@ -1,33 +1,35 @@
-<div class="row share-buttons">
-	<div class="col">
-		<a href="tg://msg?text=<%- encodeURIComponent(language.message_share_text + uri) %>" title="Telegram">
-			<i class="fab fa-telegram-plane"></i>
+<div class="row">
+	<div class="col socialShare">
+		<a href="tg://msg?text=<%- encodeURIComponent(language.message_share_text + uri) %>" class="btn btn-slim" title="Telegram">
+			<i class="icon-telegram"></i>
 			Telegram
 		</a>
-		<a href="whatsapp://send?text=<%- encodeURIComponent(language.message_share_text + uri) %>" title="Whatsapp">
-			<i class="fab fa-whatsapp"></i>
+		<a href="whatsapp://send?text=<%- encodeURIComponent(language.message_share_text + uri) %>" class="btn btn-slim" title="Whatsapp">
+			<i class="icon-whatsapp"></i>
 			Whatsapp
 		</a>
 		<a
 			href="https://www.facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(uri) %>"
+			class="btn btn-slim"
 			target="popup"
 			onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(uri) %>','popup','width=600,height=600'); return false;"
 			title="Facebook"
 		>
-			<i class="fab fa-facebook-f"></i>
+			<i class="icon-facebook"></i>
 			Facebook
 		</a>
 		<a
 			href="https://twitter.com/intent/tweet?text=<%- encodeURIComponent(language.social_share_text + uri) %>"
+			class="btn btn-slim"
 			target="popup"
 			onclick="window.open('https://twitter.com/intent/tweet?text=<%- encodeURIComponent(language.social_share_text + uri) %>','popup','width=600,height=600'); return false;"
 			title="Twitter"
 			>
-			<i class="fab fa-twitter"></i>
+			<i class="icon-twitter"></i>
 			Twitter
 		</a>
-		<a href="#" id="share_via_qr" title="QR code">
-			<i class="fas fa-qrcode"></i>
+		<a href="#" class="btn btn-slim" id="share_via_qr" title="QR code">
+			<i class="icon-qrcode"></i>
 			Qr code
 		</a>
 	</div>

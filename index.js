@@ -1,3 +1,11 @@
+/**
+ * @Filename:     index.js
+ * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
+ * @Last edit by: francesco
+ * @Last edit at: 2019-12-03 19:20:20
+ * @Copyright:    (c) 2019
+ */
+
 // Index.js
 // (c) 2019 - Cescon Francesco
 
@@ -44,8 +52,10 @@ const languageSelector = (req, res, next) => {
 	req.languageData = require('./src/languages/'+lang+'.json');
 
 	// Adding the language code to every page element
+	// add the commons
 	for (var v in req.languageData) {
 		req.languageData[v].languageCode = lang;
+		req.languageData[v] = {...req.languageData.commons, ...req.languageData[v]}
 	}
 	next();
 }
@@ -69,6 +79,9 @@ app.use(languageSelector);
 		// Translate
 		app.use('/translate', (req, res) => {
 			res.render('pages/translate', {language: req.languageData.translate, uri: req.protocol + '://' + req.get('host') + '/'});
+		});
+		app.use('/how-it-works', (req, res) => {
+			res.render('pages/howItWorks', {language: req.languageData.howItWorks, uri: req.protocol + '://' + req.get('host') + '/'});
 		});
 
 

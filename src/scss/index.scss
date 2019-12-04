@@ -1,6 +1,16 @@
+// @Author: Xevolab <francesco>
+// @Date:   2019-12-01 20:50:03
+// @Filename: index.scss
+// @Last modified by:   francesco
+// @Last modified time: 2019-12-03 15:42:18
+// @Copyright: (c) 2019
+
 .main-container {
 
-	.row:not(.choice) {
+	max-width: calc(760px + 4rem);
+	padding: 0 2rem;
+
+	& > .row:not(.choice), & form > .row:not(.choice) {
 		margin-bottom: 3rem;
 	}
 	.row.h1 {
@@ -8,9 +18,31 @@
 		color: $primary_color;
 	}
 
-	textarea {
+	.title, h1 {
+		font-weight: 900;
+		font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
+		color: $secondary_color;
+		font-size: 2rem;
+		padding: 0 .2rem;
+		margin: 2rem 0 0 0;
+		overflow: hidden;
+		max-width: 560px;
+
+		&::placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder, &::-webkit-input-placeholder, &:-moz-placeholder {
+			color: $secondary_color;
+			font-style: italic;
+			opacity: .75;
+		}
+		&::placeholder {
+			color: $secondary_color;
+			font-style: italic;
+			opacity: .75;
+		}
+	}
+
+	textarea, input {
 		font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
-		border: none;
+		border: 1px solid #ccc;
 		width: 100%;
 		background: transparent;
 		resize: none;
@@ -18,35 +50,32 @@
 		&:focus {
 			outline: none;
 		}
+	}
+	textarea {
+		border: none;
+		width: 100%;
+	}
+	input {
+		max-width: 320px;
+		padding: .5em .75em;
+		border-radius: 5px;
+		font-size: 1.05rem;
+	}
 
-		&.title {
-			font-weight: 900;
-			font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
-			color: $seconday_color;
-			font-size: 2rem;
-			padding: 0 .2rem;
-			margin: 2rem 0 0 0;
-			overflow: hidden;
-			max-width: 560px;
-
-			&::placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder, &::-webkit-input-placeholder, &:-moz-placeholder {
-				color: $seconday_color;
-				font-style: italic;
-				opacity: .75;
-			}
-			&::placeholder {
-				color: $seconday_color;
-				font-style: italic;
-				opacity: .75;
-			}
-		}
+	.description {
+		margin-top: .5em;
+		color: #888;
+		font-size: .95rem;
 	}
 
 	.choices .choice {
 
+		&:not(:last-of-type) {
+			margin-bottom: .15rem;
+		}
+
 		.value {
 			font-size: 1.1rem;
-			padding-left: 0;
 			display: inline-flex;
 
 			input, textarea {
@@ -55,7 +84,7 @@
 				overflow: hidden;
 				color: $body_color;
 			}
-			&:before {
+			&:not(label):before {
 				background-color: $primary_color;
 				width: 5px;
 				border-radius: 5px;
@@ -65,6 +94,13 @@
 			}
 		}
 
+		.remove {
+			color: #888;
+			cursor: pointer;
+			&:hover {
+				color: #444;
+			}
+		}
 		&:first-of-type {
 			.remove {
 				display: none;
@@ -73,4 +109,82 @@
 
 	}
 
+	table.results {
+		font-size: 1.2rem;
+
+		.value {
+			width: 100%;
+			div.text {
+				min-width: fit-content;
+				padding: 5px 10px;
+				background-color: $primary_color;
+				color: white;
+				border-radius: 5px;
+				padding: 5px 10px;
+			}
+		}
+		.votes {
+			text-align: right;
+			padding: 0 .25em;
+			cursor: pointer;
+			.votes-percentage {
+				display: none;
+			}
+		}
+
+		&.percentage {
+			.votes-number {
+				display: none;
+			}
+			.votes-percentage {
+				display: block;
+			}
+		}
+	}
+
+	.socialShare {
+		display: contents;
+	}
+
+	button[type="submit"] {
+		.text .description {
+			font-size: .6em;
+	    position: absolute;
+	    top: 3rem;
+	    color: #888;
+		}
+		.spinner {
+			display: none;
+		}
+		&.loading {
+			.spinner {
+				display: inline-block;
+			}
+			.text {
+				display: none;
+			}
+		}
+	}
+
+}
+
+.animate-pulse {
+  -moz-animation: pulse .9s infinite linear;
+  -o-animation: pulse .9s infinite linear;
+  -webkit-animation: pulse .9s infinite linear;
+  animation: pulse .9s infinite linear;
+  display: inline-block;
+}
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+	100% {
+    opacity: 1;
+  }
 }
