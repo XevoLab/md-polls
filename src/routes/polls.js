@@ -2,7 +2,7 @@
  * @Filename:     polls.js
  * @Date:         Francesco Cescon <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2019-12-03 16:27:17
+ * @Last edit at: 2019-12-04 21:29:13
  * @Copyright:    (c) 2019
  */
 
@@ -58,22 +58,6 @@ router.post('/', (req, res) => {
 	var d = req.body;
 	var pollID = crypto.createHash('md5').update(JSON.stringify([d, Date.now()])).digest('base64');
 	pollID = pollID.replace(/[\+\/\=]/g, "").substr(0, 9);
-
-	const alphabet = 'abcdefghikmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789-';
-	var pollID_number = Math.floor(Date.now() - 946080000) + String(Math.floor(Math.random()*1000));
-
-	var pollID = '';
-	var rem = 0;
-
-	while (pollID_number > 1) {
-
-		rem = Math.floor(pollID_number % 60);
-
-		pollID = alphabet.slice(rem, rem+1) + pollID;
-
-		pollID_number /= 60;
-
-	}
 
 	// Item to be added into dynamoDB
 	var itemData = {
