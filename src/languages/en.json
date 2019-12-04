@@ -16,8 +16,8 @@
 	"vote": {
 		"header_og_title": "Vote on",
 		"header_og_description": "Vote on this poll! Create one youself to quicly and effortlessly share nice looking polls to your friends, then collect all their responses.",
-		"alert_footer": "See the results here",
-		"alert_already_voted": "It looks like you already voted on this poll before.",
+		"alert_footer": "See the results",
+		"alert_already_voted": "It looks like you have already voted on this poll before.",
 		"alert_no_more_choices": "This poll is now full and cannot accept any more votes.",
 		"collect_names_title": "Name",
 		"collect_names_textarea": "John Doe",
