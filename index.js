@@ -1,3 +1,11 @@
+/**
+ * @Filename:     index.js
+ * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
+ * @Last edit by: francesco
+ * @Last edit at: 2019-12-03 19:20:20
+ * @Copyright:    (c) 2019
+ */
+
 // Index.js
 // (c) 2019 - Cescon Francesco
 
@@ -39,12 +47,15 @@ const languageSelector = (req, res, next) => {
 	if (!lang) {
 		lang = 'en';
 	}
+	req.lang = lang;
 
 	req.languageData = require('./src/languages/'+lang+'.json');
 
 	// Adding the language code to every page element
+	// add the commons
 	for (var v in req.languageData) {
 		req.languageData[v].languageCode = lang;
+		req.languageData[v] = {...req.languageData.commons, ...req.languageData[v]}
 	}
 	next();
 }
@@ -69,6 +80,9 @@ app.use(languageSelector);
 		app.use('/translate', (req, res) => {
 			res.render('pages/translate', {language: req.languageData.translate, uri: req.protocol + '://' + req.get('host') + '/'});
 		});
+		app.use('/how-it-works', (req, res) => {
+			res.render('pages/howItWorks', {language: req.languageData.howItWorks, uri: req.protocol + '://' + req.get('host') + '/'});
+		});
 
 
 		// Error pages
@@ -77,16 +91,6 @@ app.use(languageSelector);
 		});
 
 	// RESOURCES
-
-		app.get('/assets/js/newPoll.js', (req, res) => {
-			res.render('js/newPoll', {language: req.languageData.newPolljs});
-		})
-		app.get('/assets/js/submitPoll.js', (req, res) => {
-			res.render('js/submitPoll', {language: req.languageData.submitPolljs});
-		})
-		app.get('/assets/js/cookie_consent.js', (req, res) => {
-			res.render('js/cookie_consent', {language: req.languageData.cookieConsentjs});
-		})
 
 		// Set a static folder
 		app.use(express.static(path.join(__dirname, 'public')));

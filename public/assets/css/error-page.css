@@ -1,0 +1,15 @@
+.error-page #banner_bg {
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  max-width: 80vw; }
+
+.error-page .container-fluid.options {
+  max-width: 400px; }
+  .error-page .container-fluid.options .label {
+    margin-top: 1.5em; }
+    .error-page .container-fluid.options .label > div {
+      margin-bottom: .7rem;
+      font-size: 1.2rem; }

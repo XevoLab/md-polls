@@ -1,3 +1,11 @@
+/**
+ * @Filename:     cookie_consent.js
+ * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
+ * @Last edit by: francesco
+ * @Last edit at: 2019-12-04 21:08:33
+ * @Copyright:    (c) 2019
+ */
+
 var cookies = document.cookie.split(';');
 var showPopUp = true;
 for (var v in cookies) {
@@ -8,17 +16,19 @@ for (var v in cookies) {
 }
 if (showPopUp) {
 	var toastHTML = `
-		<div class="container-fluid">
-			<div class="row title-bar">
-				<div class="col-auto icon"></div>
-				<div class="col title"></div>
-			</div>
-			<div class="row content-bar">
-				<div class="col content">
-					<div>
-						<%= language.cookie_phrase %>
+		<div class="wrapper">
+			<div class="container-fluid">
+				<div class="row title-bar">
+					<div class="col-auto icon"></div>
+					<div class="col title"></div>
+				</div>
+				<div class="row content-bar">
+					<div class="col content">
+						<div>
+							${language.cookie_phrase}
+						</div>
+						<button onclick="dismissCookieConset(this)">${language.cookie_button}</button>
 					</div>
-					<button onclick="dismissCookieConset(this)"><%= language.cookie_button %></button>
 				</div>
 			</div>
 		</div>
@@ -29,7 +39,7 @@ if (showPopUp) {
 	toastElement.classList.add("toast");
 	toastElement.classList.add("toast-cookie");
 
-	var body = document.querySelector('body');
+	var body = document.querySelector('.toast-container');
 	body.appendChild(toastElement);
 
 	setTimeout(() => {
@@ -37,7 +47,7 @@ if (showPopUp) {
 	}, 10);
 
 	function dismissCookieConset(o) {
-		var itemToRemove = o.parentElement.parentElement.parentElement.parentElement;
+		var itemToRemove = o.parentElement.parentElement.parentElement.parentElement.parentElement;
 		itemToRemove.classList.remove('show');
 
 		var d = new Date();

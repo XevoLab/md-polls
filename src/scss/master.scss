@@ -1,10 +1,12 @@
-@import '_variables';
-@import '_theme_light';
-@import url('https://fonts.googleapis.com/css?family=Lato:900|Mada&display=swap');
+// @Author: Xevolab <francesco>
+// @Date:   2019-12-01 20:50:03
+// @Filename: master.scss
+// @Last modified by:   francesco
+// @Last modified time: 2019-12-04 21:02:24
+// @Copyright: (c) 2019
 
-*, *::before, *::after {
-	box-sizing: border-box;
-}
+@import '_variables';
+@import url('https://fonts.googleapis.com/css?family=Lato:900|Mada&display=swap');
 
 body {
 	margin: 0;
@@ -14,29 +16,183 @@ button {
 	font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
 }
 
-.brand-font {
-	font-family: $brand_font, 'Arial', 'Helvetica', sans-serif;
-	font-weight: 900;
-}
-
-.title-font {
-	font-weight: 900;
-	font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
-	color: #333;
-}
+@import 'toast';
 
 .text-right {
 	text-align: right;
 }
-.text-center {
-	text-align: center;
-}
 
-@import 'toast';
+nav {
+	img {
+		max-width: 85px;
+	}
 
-@-webkit-keyframes slideIn {
-  100% { right: 1rem; }
+	& > .row {
+		padding: 2rem;
+	}
+	@media (max-width: 992px) {
+		& > .row {
+			padding: 1.5rem;
+		}
+	}
+	@media (max-width: 768px) {
+		& > .row {
+			padding: 1.5rem 1rem;
+		}
+	}
+	@media (max-width: 576px) {
+		& > .row {
+			padding: 1rem .5rem;
+		}
+	}
+
+
+	.options {
+		display: none;
+		position: relative;
+		.container-fluid {
+			margin-top: 5px;
+			border: 15px solid white;
+			position: absolute;
+			width: max-content;
+			border-radius: 5px;
+			right: -15px;
+			z-index: 1000;
+			background-color: white;
+			.row {
+				padding: 5px 0;
+				.col {
+					text-align: right;
+					padding-right: 0;
+					padding-left: 0;
+				}
+			}
+		}
+	}
+	#options_toggle:checked+label+.options {
+		display: block;
+	}
 }
 
 @import 'index';
-@import 'results';
+@import 'error-page';
+
+.main-container {
+	min-height: calc(100vh - 85px - 7rem - 15px);
+}
+
+footer {
+	position: relative;
+	top: calc(100% - 50px);
+	color: $button_active_color;
+	margin: .5em auto 1em auto;
+
+	& .row > *:first-child {
+		padding-left: 2.5rem;
+	}
+	& .row > *:last-child {
+		padding-right: 2.5rem;
+	}
+
+	.row > * {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	@media (max-width: 992px) {
+		& .row > *:first-child {
+			padding-left: 2rem;
+		}
+		& .row > *:last-child {
+			padding-right: 2rem;
+		}
+	}
+	@media (max-width: 768px) {
+		& .row > *:first-child {
+			padding-left: 1.5rem;
+		}
+		& .row > *:last-child {
+			padding-right: 1.5rem;
+		}
+	}
+	@media (max-width: 576px) {
+		& .row > *:first-child {
+			padding-left: 1rem;
+		}
+		& .row > *:last-child {
+			padding-right: 1rem;
+		}
+	}
+}
+
+
+.btn {
+	background-color: $secondary_color;
+	color: white;
+	padding: .7em 1.4em;
+	font-size: 1.05em;
+	border-radius: 4px;
+	border: none;
+	outline: none;
+	text-decoration: none;
+	transition: 100ms all ease-in-out;
+	cursor: pointer;
+
+	&:not(.btn-slim), &.btn-slim.btn-primary, &.btn-slim.btn-secondary {
+		&:hover {
+			box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.35);
+		}
+		&:active {
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.35);
+		}
+	}
+
+	&.disabled {
+		pointer-events: none;
+		cursor: auto;
+		opacity: .65;
+	}
+
+	&.btn-slim {
+		padding: .25em .65em;
+		border: none;
+		font-size: .95rem;
+
+		&:not(.btn-primary):not(.btn-secondary) {
+			background-color: transparent;
+			color: $button_active_color;
+			&:hover {
+				color: $button_hover_color;
+				background-color: $button_hover_bg;
+			}
+		}
+
+		i {
+			width: 18px;
+		}
+	}
+
+	&.btn-primary {
+		background-color: $primary_color;
+		color: white;
+	}
+	&.btn-secondary {
+		background-color: $secondary_color;
+		color: white;
+	}
+}
+
+label {
+	background-color: $primary_color;
+	color: white;
+	border-radius: 5px;
+	padding: 5px 10px;
+	cursor: pointer;
+	user-select: none;
+}
+input[type="checkbox"], input[type="radio"] {
+	display: none;
+}
+input:checked+label {
+	background-color: $secondary_color;
+}

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="<%= language.languageCode %>">
 <head>
-	<title>MD Polls</title>
+	<title>Questionary</title>
 
 	<% include ../partials/header %>
 
-	<meta property="og:title" content="MD Polls" />
+	<meta property="og:title" content="Questionary" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
 	<meta name="description" content="<%= language.header_og_description %>" />
 	<meta property="og:url" content="<%= uri %>" />
@@ -13,34 +13,41 @@
 </head>
 <body>
 
-	<div class="container main-container">
-
-		<div class="row mb-5">
-			<div class="col" style="color: #777;">
-				<%= language.message %>
+	<nav class="container-fluid">
+		<div class="row">
+			<div class="col-auto">
+				<a href="/"><img src="/assets/img/logo_color.png" alt="Logo"></a>
 			</div>
 		</div>
-		<div class="row title">
-			<div class="col title-font">
-				<div class="row">
-					<h1>
-						<%= errorCode %>
-					</h1>
+	</nav>
+
+	<div class="container main-container error-page">
+
+		<div class="row">
+			<div class="col"></div>
+			<div class="col-auto">
+				<div class="container-fluid options">
+					<div class="row">
+						<div class="col title">
+							<%= language.message %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col label">
+							<div class=""><label><%= language.line1 %></label> 50%</div>
+							<div class=""><label><%= language.line2 %></label> 30%</div>
+							<div class=""><label><%= language.line3 %></label> 20%</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<h3 class="col section-title">
-				<%= language["description_"+errorCode] %>
-			</h3>
-		</div>
 
+		<img src="/assets/img/banner.png" id="banner_bg" alt="">
 
 	</div>
 
-	<% include ../partials/footer %>
-
-	<% include ../partials/scripts %>
+	<% include('../partials/scripts', {lang: language.languageCode}) %>
 
 </body>
 </html>

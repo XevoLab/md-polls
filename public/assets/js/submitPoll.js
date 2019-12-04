@@ -1,7 +1,21 @@
+/**
+ * @Filename:     submitPoll.js
+ * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
+ * @Last edit by: francesco
+ * @Last edit at: 2019-12-03 09:33:21
+ * @Copyright:    (c) 2019
+ */
 
 var pollID = document.querySelector("form").attributes["id"].value;
 
 var socket = io(window.location.origin+"?pollID="+encodeURIComponent(pollID));
+
+var select = document.querySelectorAll('input[type="radio"]');
+for (var i=0; i<select.length; i++) {
+  select[i].onclick = function() {
+		document.querySelector('button[type="submit"]').classList.remove("disabled");
+	};
+}
 
 var form = document.querySelector('form');
 form.addEventListener('submit', function (e) {
@@ -14,7 +28,7 @@ form.addEventListener('submit', function (e) {
 	var selection = document.querySelectorAll("input:checked[name=choice]");
 	if (selection.length !== 1) {
 		document.querySelector("button[type=submit]").classList.remove("loading");
-		toast("error", "<%= language.toast_no_answer %>");
+		toast("error", language.toast_no_answer);
 		return false;
 	}
 
@@ -24,7 +38,7 @@ form.addEventListener('submit', function (e) {
 	if (name.length === 1) {
 		if (name[0].value === "") {
 			document.querySelector("button[type=submit]").classList.remove("loading");
-			toast("error", "<%= language.toast_empty_name %>");
+			toast("error", language.toast_empty_name);
 			return false;
 		}
 		else {
@@ -41,33 +55,33 @@ form.addEventListener('submit', function (e) {
 			if (res.result === "success") {
 				sendSocketMessage();
 
-				toast("success", "<%= language.toast_success %>");
+				toast("success", language.toast_success_vote);
 				setTimeout(() => {
 					window.location.href = '/r/'+document.querySelector("form").attributes["id"].value;
 				}, 1000);
 				return true;
 			}
 			else if (res.result === "full") {
-				toast("warning", "<%= language.toast_full_choice %>");
+				toast("warning", language.toast_full_choice);
 				return false;
 			}
 			else if (res.result === "alreadyVoted") {
-				toast("warning", "<%= language.toast_already_voted %>");
+				toast("warning", language.toast_already_voted);
 				return false;
 			}
 			else {
-				toast("error", "<%= language.toast_generic_error %>");
+				toast("error", language.toast_generic_error);
 				return false;
 			}
 		}
 		else {
-			toast("error", "<%= language.toast_generic_error %>");
+			toast("error", language.toast_generic_error);
 			return false;
 		}
 	}
 	xhr.onerror = function () {
 		document.querySelector("button[type=submit]").classList.remove("loading");
-		toast("error", "<%= language.toast_generic_error %>");
+		toast("error", language.toast_generic_error);
 		return false;
 	}
 	xhr.open('POST', '/vote/'+pollID);

@@ -2,7 +2,7 @@
 // @Date:   2019-11-27 15:25:44
 // @Filename: _variables.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-03 14:09:20
+// @Last modified time: 2019-11-27 21:12:06
 // @Copyright: (c) 2019
 
 /* FONTS */
@@ -11,9 +11,6 @@ $body_font: 'Mada';
 $title_font: 'Lato';
 
 /* COLORS */
-$primary_color: #00249C;
-$secondary_color: #EF3830;
-
 $brand_color: #1f294f;
 
 /* */
@@ -22,14 +19,21 @@ $warning_color: #f4c242;
 $success_color: #32aa0a;
 $info_color: #4298f5;
 
+$primary_color: #00249C;
+$seconday_color: #EF3830;
+
 $bg_color: white;
+
 $body_color: #050505;
 
 $checkbox_background: #eee;
 $checkbox_background_hover: #ddd;
 
-/* Footer */
-$button_active_color: #999;
+$choice_meta_bg: white;
+$choice_meta_border: $body_color;
+$choice_meta_color: $body_color;
+
+$button_active_color: #aaa;
 $button_hover_color: #888;
 $button_hover_bg: #eee;
 

@@ -1,0 +1,39 @@
+// @Author: Xevolab <francesco>
+// @Date:   2019-12-03 19:29:28
+// @Filename: errors.scss
+// @Last modified by:   francesco
+// @Last modified time: 2019-12-04 13:07:23
+// @Copyright: (c) 2019
+
+.error-page {
+
+	#banner_bg {
+		position: fixed;
+		z-index: -1;
+		bottom: 0;
+		left: 0;
+		width: 100vw;
+		max-width: 80vw;
+		opacity: .85;
+	}
+
+	.container-fluid.options {
+		max-width: 23rem;
+
+		.col {
+			padding: 0;
+		}
+		.label {
+			margin-top: 1.5em;
+			label {
+				cursor: auto;
+			}
+			& > div {
+				margin-bottom: .5rem;
+				color: $primary_color;
+				font-size: 1.2rem;
+			}
+		}
+	}
+
+}

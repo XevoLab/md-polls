@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="<%= language.languageCode %>">
+<head>
+	<title>Create new - Questionary</title>
+
+	<% include ../partials/header %>
+
+	<meta property="og:title" content="Questionary" />
+	<meta property="og:description" content="<%= language.header_og_description %>" />
+	<meta name="description" content="<%= language.header_og_description %>" />
+	<meta property="og:url" content="<%= uri %>" />
+</head>
+<body>
+
+	<% include ../partials/head %>
+
+	<div class="container main-container">
+
+		<form method="post">
+
+			<div class="row">
+				<div class="col title">
+					<textarea name="title" placeholder="<%= language.title_textarea %>..." rows="1" onkeyup="adjustSize(this)" autofocus></textarea>
+				</div>
+				<div class="col-auto">
+					<a class="btn primary-color">
+						<%= language.settings_title %>
+					</a>
+				</div>
+			</div>
+
+			<div class="row settings" style="display: none">
+				<div class="col">
+					<div class="custom-checkbox">
+					  <input type="checkbox" id="setting_preventDoubles" name="preventDoubles" checked>
+					  <label for="setting_preventDoubles"><%= language.setting_prevent_duplicates %></label>
+					</div>
+					<div class="custom-checkbox">
+					  <input type="checkbox" id="setting_collectNames" name="collectNames">
+					  <label for="setting_collectNames"><%= language.setting_collect_names %></label>
+					</div>
+					<div class="custom-checkbox">
+					  <input type="checkbox" id="setting_hiddenResults" name="hiddenResults">
+					  <label for="setting_hiddenResults"><%= language.setting_hidden_results %></label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row options">
+				<div class="col">
+
+					<div class="row choice">
+
+						<span class="border"></span>
+						<div class="col value">
+							<textarea rows="1" placeholder="<%= language.answer_textarea %>..." onkeyup="choiceEdit(this)"></textarea>
+						</div>
+						<div class="col-auto meta" title="<%= language.answer_options %>">
+							<i class="fas fa-cog"></i>
+
+							<div class="meta-popup">
+								<div class="arrow"></div>
+								<div class="content">
+									<div class="container-fluid">
+										<div class="row">
+											<div class="col">
+												<h4>Choice options</h4>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col" title="<%= language.meta_limit_answers_title %>">
+												<%= language.meta_limit_answers %>
+												<input type="number" name="limitAnswers" min="0" value="0" placeholder="1,2,3...">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="col-auto remove" title="<%= language.answer_remove %>" onclick="removeChoice(this)">
+							<i class="fas fa-times"></i>
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="row submit">
+				<div class="col">
+					<button type="submit" class="primary-color">
+						<span class="text"><%= language.go_button %></span>
+						<span class="spinner"><i class="fas fa-circle-notch fa-spin"></i> <%= language.go_button_posting %></span>
+					</button>
+				</div>
+			</div>
+
+		</form>
+
+	</div>
+
+	<% include ../partials/footer %>
+
+	<div hidden id="choiceBoilerplate">
+		<div class="row choice">
+
+			<span class="border"></span>
+			<div class="col value">
+				<textarea rows="1" placeholder="<%= language.answer_textarea %>..." onkeyup="choiceEdit(this)"></textarea>
+			</div>
+			<div class="col-auto meta" title="<%= language.answer_options %>">
+				<i class="fas fa-cog"></i>
+
+				<div class="meta-popup">
+					<div class="arrow"></div>
+					<div class="content">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col">
+									<h4>Choice options</h4>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col" title="<%= language.meta_limit_answers_title %>">
+									<%= language.meta_limit_answers %>
+									<input type="number" name="limitAnswers" value="0" min="0" placeholder="1,2,3...">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-auto remove" title="<%= language.answer_remove %>" onclick="removeChoice(this)">
+				<i class="fas fa-times"></i>
+			</div>
+
+		</div>
+	</div>
+
+	<%- include('../partials/scripts', {lang: language.languageCode}) %>
+
+	<script src="/assets/js/newPoll.js" charset="utf-8"></script>
+
+</body>
+</html>

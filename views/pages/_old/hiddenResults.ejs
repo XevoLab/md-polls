@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>MD Polls</title>
+	<title>Questionary</title>
 
-	<meta property="og:title" content="MD Polls" />
+	<meta property="og:title" content="Questionary" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="<%= uri %>" />
@@ -12,9 +12,9 @@
 </head>
 <body>
 
-	<div class="container main-container">
+	<% include ../partials/head %>
 
-		<% include ../partials/head %>
+	<div class="container main-container">
 
 		<div class="row title">
 			<div class="col title-font">
@@ -45,7 +45,7 @@
 
 	<% include ../partials/footer %>
 
-	<% include ../partials/scripts %>
+	<% include('../partials/scripts', {lang: lang}) %>
 
 </body>
 </html>
