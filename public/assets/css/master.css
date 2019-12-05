@@ -148,7 +148,10 @@ nav .options {
     margin-top: 5px;
     border: 15px solid white;
     position: absolute;
-    width: max-content;
+    width: -moz-max-content;
+    width: -webkit-max-content;
+    width: -o-max-content;
+    width: max-width;
     border-radius: 5px;
     right: -15px;
     z-index: 1000;
@@ -372,6 +375,9 @@ footer {
   .btn.btn-secondary {
     background-color: #EF3830;
     color: white; }
+  .btn.btn-inline {
+    vertical-align: bottom;
+    display: inline-block; }
 
 label {
   background-color: #00249C;

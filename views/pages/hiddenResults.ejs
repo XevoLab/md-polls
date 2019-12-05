@@ -16,14 +16,11 @@
 
 	<div class="container main-container">
 
-		<div class="row title">
-			<div class="col title-font">
-				<div class="row">
-					<div class="col-auto">#</div>
-					<h1 class="col">
-						<%= language.title %>
-					</h1>
-				</div>
+		<div class="row">
+			<div class="col">
+				<h1>
+					<%= language.title %>
+				</h1>
 			</div>
 		</div>
 
@@ -45,7 +42,7 @@
 
 	<% include ../partials/footer %>
 
-	<% include('../partials/scripts', {lang: lang}) %>
+	<% include('../partials/scripts', {lang: language}) %>
 
 </body>
 </html>

@@ -55,6 +55,9 @@
 						<span class="text"><%= language.submit_button %></span>
 						<span class="spinner"><i class="icon-save animate-pulse"></i> <%= language.submit_button_posting %></span>
 					</button>
+					<% if (!pollData.metadata.M.hiddenResults.BOOL) { %>
+						<a href="/r/<%= id %>" class="btn btn-slim btn-inline"><%= language.peak_results_button %></a>
+					<% } %>
 				</div>
 			</div>
 
