@@ -23,7 +23,7 @@
 
 			<div class="row">
 				<div class="col title">
-					<%= title %>
+					<h1><%= title %></h1>
 				</div>
 			</div>
 
@@ -48,28 +48,15 @@
 				</div>
 			</div>
 
-			<!--<% if (!alreadyVoted) { %>
-				<div class="row vote">
-					<div class="col section-title">
-						<a href="/v/<%= id %>" class="btn primary-color">
+			<% if (!alreadyVoted) { %>
+				<div class="row">
+					<div class="col" style="display: contents;">
+						<a href="/v/<%= id %>" class="btn btn-slim">
 							<%= language.vote_button %>
 						</a>
 					</div>
 				</div>
-			<% } %>-->
-
-			<!--<div class="row">
-				<h3 class="col section-title">
-					### <%= language.piechart_title %>
-				</h3>
-			</div>
-			<div class="row results options">
-				<div class="col">
-
-
-
-				</div>
-			</div>-->
+			<% } %>
 
 			<% include ../partials/socialShare %>
 

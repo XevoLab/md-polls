@@ -10,8 +10,8 @@
 		"answer_remove": "Rimuovi",
 		"meta_limit_answers": "Limita risposte",
 		"meta_limit_answers_title": "Smetti di raccogliere risposte per questa opzione dopo che viene raggiunto il massimo.",
-		"go_button": "Pubblica",
-		"go_button_posting": "In corso"
+		"go_button": "Invia",
+		"go_button_posting": "Invio..."
 	},
 	"vote": {
 		"header_og_title": "Vota su",
@@ -22,21 +22,18 @@
 		"collect_names_title": "Nome",
 		"collect_names_textarea": "Mario Rossi",
 		"collect_names_explanation": "Il creatore di questo sondaggio chiede di lasciare un nome come parte del proprio voto",
-		"choices_title": "Scelte",
-		"submit_button": "Invia il mio voto",
-		"submit_button_posting": "In corso",
-		"share_title": "Condividi",
-		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
+		"submit_button": "Invia",
+		"submit_button_posting": "Invio...",
+		"peak_results_button": "Sbircia i risultati ➡️",
+		"message_share_text": "Ciao! 👋 Potresti votare anche tu? ",
 		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 "
 	},
 	"results": {
 		"header_og_title": "Risultati per",
 		"header_og_description": "Dai un occhio a come è andato questo sondaggio! Creane uno te stesso per condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
-		"results_title": "Risultati",
-		"vote_button": "Vota te",
-		"piechart_title": "Grafico",
-		"share_title": "Condividi i risultati",
-		"share_text": "Ciao! 👋 Potresti votare anche tu? ",
+		"swap_number_percentage": "Mostra percentuali",
+		"vote_button": "⬅️ Vota anche te",
+		"message_share_text": "Ciao! 👋 Potresti votare anche tu? ",
 		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 "
 	},
 	"translate": {

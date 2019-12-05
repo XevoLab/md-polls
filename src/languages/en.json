@@ -24,7 +24,7 @@
 		"collect_names_explanation": "The creator of this poll is asking for people to leave their name as part of their vote",
 		"submit_button": "Submit",
 		"submit_button_posting": "Submitting...",
-		"share_title": "Share",
+		"peak_results_button": "Peak at the results ➡️",
 		"message_share_text": "Hi! 👋 Could you vote on this? ",
 		"social_share_text": "Could you vote on this poll for me? 🙂📩 "
 	},
@@ -32,9 +32,7 @@
 		"header_og_title": "Results for",
 		"header_og_description": "Check out how this poll did! Create one youself to quicly and effortlessly share nice looking polls to your friends, then collect all their responses.",
 		"swap_number_percentage": "Reveal percentage",
-		"vote_button": "Vote youself",
-		"piechart_title": "Pie chart",
-		"share_title": "Share results",
+		"vote_button": "⬅️ Vote youself",
 		"message_share_text": "Hi! 👋 Check out this poll! ",
 		"social_share_text": "Check out how this poll did! 💪😁 "
 	},
@@ -62,7 +60,6 @@
 	},
 	"commons": {
 		"header_og_description": "Quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
-		"footer_createPoll": "Create poll",
-		"footer_howItWorks": "How it works"
+		"footer_createPoll": "Create poll"
 	}
 }
