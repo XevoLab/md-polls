@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: index.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-06 22:17:45
+// @Last modified time: 2019-12-06 22:44:41
 // @Copyright: (c) 2019
 
 .main-container {
@@ -17,15 +17,18 @@
 		margin-bottom: 1rem;
 		color: $primary_color;
 	}
+	.col {
+		padding: 0;
+	}
 
 	.title, h1 {
 		font-weight: 500;
 		color: $secondary_color;
-		font-size: 56pt;
+		font-size: $title_font_size;
 		line-height: 48pt;
 		min-height: 57pt;
 		padding: 0 .2rem;
-		margin: 2rem 0 0 16px;
+		margin: 2rem 0 0 $choices_padding_title;
 		max-width: 560px;
 
 		&::placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder, &::-webkit-input-placeholder, &:-moz-placeholder {
@@ -39,7 +42,7 @@
 	}
 
 	textarea, input {
-		font-size: 24pt;
+		font-size: $choices_font_size;
 		font-weight: 500;
 		border: 1px solid #ccc;
 		width: 100%;
@@ -74,7 +77,7 @@
 		}
 
 		.value {
-			font-size: 24pt;
+			font-size: $choices_font_size;
 			display: inline-flex;
 
 			input, textarea {
@@ -108,7 +111,7 @@
 	}
 
 	table.results {
-		font-size: 24pt;
+		font-size: $choices_font_size;
 
 		tr[index="0"] {
 			.value .text {
@@ -125,10 +128,9 @@
 			div.text {
 				min-width: fit-content;
 				background-color: $primary_color;
-				padding: 5px 10px;
+				padding: 5px $choices_padding;
 				color: white;
 				border-radius: 5px;
-				padding: 5px 10px;
 			}
 		}
 		.votes {
@@ -152,7 +154,8 @@
 	}
 
 	.socialShare {
-		display: contents;
+		margin-left: $choices_padding;
+		margin-right: $choices_padding;
 	}
 
 	button[type="submit"] {

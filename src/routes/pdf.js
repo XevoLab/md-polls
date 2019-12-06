@@ -2,7 +2,7 @@
  * @Filename:     pdf.js
  * @Date:         Xevolab <francesco> @ 2019-12-06 11:14:12
  * @Last edit by: francesco
- * @Last edit at: 2019-12-06 21:49:28
+ * @Last edit at: 2019-12-06 22:20:44
  * @Copyright:    (c) 2019
  */
 
@@ -15,7 +15,7 @@ require('dotenv').config();
 const aws = require('aws-sdk');
 var ddb = new aws.DynamoDB({apiVersion: '2012-08-10', region: process.env.AWS_REGION});
 
-const puppeteer = require('puppeteer');
+//const puppeteer = require('puppeteer');
 
 router.get("/:id", async (req, res) => {
 

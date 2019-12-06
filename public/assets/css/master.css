@@ -1,5 +1,6 @@
 /* FONTS */
 /* COLORS */
+/* Dimensions */
 /* */
 /* Footer */
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
@@ -174,6 +175,8 @@ nav #options_toggle:checked + label + .options {
   .main-container .row.h1 {
     margin-bottom: 1rem;
     color: #00249C; }
+  .main-container .col {
+    padding: 0; }
   .main-container .title, .main-container h1 {
     font-weight: 500;
     color: #EE3830;
@@ -181,7 +184,7 @@ nav #options_toggle:checked + label + .options {
     line-height: 48pt;
     min-height: 57pt;
     padding: 0 .2rem;
-    margin: 2rem 0 0 16px;
+    margin: 2rem 0 0 18px;
     max-width: 560px; }
     .main-container .title::placeholder, .main-container .title:-ms-input-placeholder, .main-container .title::-ms-input-placeholder, .main-container .title::-webkit-input-placeholder, .main-container .title:-moz-placeholder, .main-container h1::placeholder, .main-container h1:-ms-input-placeholder, .main-container h1::-ms-input-placeholder, .main-container h1::-webkit-input-placeholder, .main-container h1:-moz-placeholder {
       color: #EE3830;
@@ -245,10 +248,9 @@ nav #options_toggle:checked + label + .options {
       .main-container table.results .value div.text {
         min-width: fit-content;
         background-color: #00249C;
-        padding: 5px 10px;
+        padding: 5px 21px;
         color: white;
-        border-radius: 5px;
-        padding: 5px 10px; }
+        border-radius: 5px; }
     .main-container table.results .votes {
       text-align: right;
       color: #00249C;
@@ -261,7 +263,8 @@ nav #options_toggle:checked + label + .options {
     .main-container table.results.percentage .votes-percentage {
       display: block; }
   .main-container .socialShare {
-    display: contents; }
+    margin-left: 21px;
+    margin-right: 21px; }
   .main-container button[type="submit"] .text .description {
     font-size: .6em;
     position: absolute;
@@ -298,17 +301,18 @@ nav #options_toggle:checked + label + .options {
   max-width: 100vw;
   max-height: 100vh; }
 
-.error-page .container-fluid.options .col {
-  padding: 0; }
-
-.error-page .container-fluid.options .label {
-  margin-top: 1.5em; }
-  .error-page .container-fluid.options .label label {
-    cursor: auto; }
-  .error-page .container-fluid.options .label > div {
-    margin-bottom: .5rem;
-    color: #00249C;
-    font-size: 1.2rem; }
+.error-page .container-fluid {
+  max-width: inherit; }
+  .error-page .container-fluid .options .col {
+    padding: 0; }
+  .error-page .container-fluid .options .label {
+    margin-top: 1.5em; }
+    .error-page .container-fluid .options .label label {
+      cursor: auto; }
+    .error-page .container-fluid .options .label > div {
+      margin-bottom: .5rem;
+      color: #00249C;
+      font-size: 1.2rem; }
 
 .main-container {
   min-height: calc(100vh - 85px - 7rem - 15px); }

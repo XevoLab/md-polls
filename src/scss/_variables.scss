@@ -2,7 +2,7 @@
 // @Date:   2019-11-27 15:25:44
 // @Filename: _variables.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-06 22:04:18
+// @Last modified time: 2019-12-06 22:44:46
 // @Copyright: (c) 2019
 
 /* FONTS */
@@ -13,6 +13,12 @@ $title_font: 'Lato';
 /* COLORS */
 $primary_color: #00249C;
 $secondary_color: #EE3830;
+
+/* Dimensions */
+$title_font_size: 56pt;
+$choices_font_size: 24pt;
+$choices_padding: 21px;
+$choices_padding_title: 18px;
 
 /* */
 $error_color: #f44e42;
