@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>PDF export</title>
+
+	<link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="/assets/css/pdf.css">
+</head>
+<body class="pdf-template">
+
+	<nav class="container-fluid">
+		<div class="row">
+			<div class="col-5">
+				<h1>Questionary</h1>
+			</div>
+			<div class="col">
+				<h2><%= title %></h2>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-4"></div>
+			<div class="col page-content">
+
+				<% for (i=0; i < options.length; i++) { %>
+					<div class="row">
+						<div class="col-2 percentage"><h3><%= (total != 0 ? Math.floor(options[i]['M'].votes.N/total*100) : 0) %>%</h3></div>
+						<div class="col">
+							<h3><%= options[i]['M'].value.S %></h3>
+							<% if (collectNames) { %>
+								<p>
+									<%= options[i]['M'].metadata.M.names.L.map(e => e.S).join(", ") %>.
+								</p>
+							<% } %>
+						</div>
+					</div>
+				<% } %>
+
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="container-fluid">
+		<div class="row">
+			<div class="col-8"><a href="//questionary.xevolab.cloud">questionary.xevolab.cloud</a></div>
+			<div class="col"></div>
+		</div>
+	</footer>
+
+</body>
+</html>

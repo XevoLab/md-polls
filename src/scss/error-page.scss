@@ -2,7 +2,7 @@
 // @Date:   2019-12-03 19:29:28
 // @Filename: errors.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-04 13:07:23
+// @Last modified time: 2019-12-06 21:55:04
 // @Copyright: (c) 2019
 
 .error-page {
@@ -12,13 +12,12 @@
 		z-index: -1;
 		bottom: 0;
 		left: 0;
-		width: 100vw;
-		max-width: 80vw;
-		opacity: .85;
+		height: 100vh;
+		max-width: 100vw;
+		max-height: 100vh;
 	}
 
 	.container-fluid.options {
-		max-width: 23rem;
 
 		.col {
 			padding: 0;

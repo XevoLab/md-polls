@@ -2,13 +2,13 @@
 /* COLORS */
 /* */
 /* Footer */
-@import url("https://fonts.googleapis.com/css?family=Lato:900|Mada&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
 body {
   margin: 0;
-  font-family: "Mada", "Arial", "Helvetica", sans-serif; }
+  font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
 
 button {
-  font-family: "Mada", "Arial", "Helvetica", sans-serif; }
+  font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
 
 .toast-container {
   position: fixed;
@@ -52,7 +52,7 @@ button {
       background-color: #777;
       margin-right: .5rem; }
     .toast-container .toast .title-bar .col.title {
-      font-weight: bold;
+      font-weight: 500;
       color: #050505; }
     .toast-container .toast .title-bar .col-auto.dismiss {
       color: #aaa;
@@ -108,7 +108,7 @@ button {
       border-radius: 8px;
       color: white;
       border: none;
-      font-weight: lighter;
+      font-weight: 400;
       font-size: 1rem;
       cursor: pointer;
       float: right;
@@ -175,24 +175,23 @@ nav #options_toggle:checked + label + .options {
     margin-bottom: 1rem;
     color: #00249C; }
   .main-container .title, .main-container h1 {
-    font-weight: 900;
-    font-family: "Lato", "Arial", "Helvetica", sans-serif;
-    color: #EF3830;
-    font-size: 2rem;
+    font-weight: 500;
+    color: #EE3830;
+    font-size: 56pt;
+    line-height: 48pt;
+    min-height: 57pt;
     padding: 0 .2rem;
-    margin: 2rem 0 0 0;
-    overflow: hidden;
+    margin: 2rem 0 0 16px;
     max-width: 560px; }
     .main-container .title::placeholder, .main-container .title:-ms-input-placeholder, .main-container .title::-ms-input-placeholder, .main-container .title::-webkit-input-placeholder, .main-container .title:-moz-placeholder, .main-container h1::placeholder, .main-container h1:-ms-input-placeholder, .main-container h1::-ms-input-placeholder, .main-container h1::-webkit-input-placeholder, .main-container h1:-moz-placeholder {
-      color: #EF3830;
-      font-style: italic;
+      color: #EE3830;
       opacity: .75; }
     .main-container .title::placeholder, .main-container h1::placeholder {
-      color: #EF3830;
-      font-style: italic;
+      color: #EE3830;
       opacity: .75; }
   .main-container textarea, .main-container input {
-    font-family: "Mada", "Arial", "Helvetica", sans-serif;
+    font-size: 24pt;
+    font-weight: 500;
     border: 1px solid #ccc;
     width: 100%;
     background: transparent;
@@ -214,11 +213,10 @@ nav #options_toggle:checked + label + .options {
   .main-container .choices .choice:not(:last-of-type) {
     margin-bottom: .15rem; }
   .main-container .choices .choice .value {
-    font-size: 1.1rem;
+    font-size: 24pt;
     display: inline-flex; }
     .main-container .choices .choice .value input, .main-container .choices .choice .value textarea {
       width: 100%;
-      font-size: inherit;
       overflow: hidden;
       color: #050505; }
     .main-container .choices .choice .value:not(label):before {
@@ -236,18 +234,24 @@ nav #options_toggle:checked + label + .options {
   .main-container .choices .choice:first-of-type .remove {
     display: none; }
   .main-container table.results {
-    font-size: 1.2rem; }
+    font-size: 24pt; }
+    .main-container table.results tr[index="0"] .value .text {
+      background-color: #EE3830;
+      width: 100% !important; }
+    .main-container table.results tr[index="0"] .votes {
+      color: #EE3830; }
     .main-container table.results .value {
       width: 100%; }
       .main-container table.results .value div.text {
         min-width: fit-content;
-        padding: 5px 10px;
         background-color: #00249C;
+        padding: 5px 10px;
         color: white;
         border-radius: 5px;
         padding: 5px 10px; }
     .main-container table.results .votes {
       text-align: right;
+      color: #00249C;
       padding: 0 .25em;
       cursor: pointer; }
       .main-container table.results .votes .votes-percentage {
@@ -290,22 +294,21 @@ nav #options_toggle:checked + label + .options {
   z-index: -1;
   bottom: 0;
   left: 0;
-  width: 100vw;
-  max-width: 80vw;
-  opacity: .85; }
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh; }
 
-.error-page .container-fluid.options {
-  max-width: 23rem; }
-  .error-page .container-fluid.options .col {
-    padding: 0; }
-  .error-page .container-fluid.options .label {
-    margin-top: 1.5em; }
-    .error-page .container-fluid.options .label label {
-      cursor: auto; }
-    .error-page .container-fluid.options .label > div {
-      margin-bottom: .5rem;
-      color: #00249C;
-      font-size: 1.2rem; }
+.error-page .container-fluid.options .col {
+  padding: 0; }
+
+.error-page .container-fluid.options .label {
+  margin-top: 1.5em; }
+  .error-page .container-fluid.options .label label {
+    cursor: auto; }
+  .error-page .container-fluid.options .label > div {
+    margin-bottom: .5rem;
+    color: #00249C;
+    font-size: 1.2rem; }
 
 .main-container {
   min-height: calc(100vh - 85px - 7rem - 15px); }
@@ -339,10 +342,10 @@ footer {
       padding-right: 1rem; } }
 
 .btn {
-  background-color: #EF3830;
+  background-color: #EE3830;
   color: white;
   padding: .7em 1.4em;
-  font-size: 1.05em;
+  font-size: 18pt;
   border-radius: 4px;
   border: none;
   outline: none;
@@ -373,7 +376,7 @@ footer {
     background-color: #00249C;
     color: white; }
   .btn.btn-secondary {
-    background-color: #EF3830;
+    background-color: #EE3830;
     color: white; }
   .btn.btn-inline {
     vertical-align: bottom;
@@ -391,4 +394,4 @@ input[type="checkbox"], input[type="radio"] {
   display: none; }
 
 input:checked + label {
-  background-color: #EF3830; }
+  background-color: #EE3830; }
