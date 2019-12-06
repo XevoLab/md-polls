@@ -8,7 +8,7 @@ body {
   margin: 0;
   font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
 
-button {
+button, textarea, input {
   font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
 
 .toast-container {

@@ -1,12 +1,12 @@
 {
 	"index": {
-		"title_textarea": "Title",
+		"title_textarea": "What?",
 		"settings_title": "Settings",
 		"setting_prevent_duplicates": "Prevent duplicates",
 		"setting_collect_names": "Collect names",
 		"setting_hidden_results": "Hide results until vote",
 		"choices_title": "Choices",
-		"answer_textarea": "Answer",
+		"answer_textarea": "Choice",
 		"answer_remove": "Remove",
 		"meta_limit_answers": "Limit answers",
 		"meta_limit_answers_title": "Stop collecting answers for this choice after this number is reached",

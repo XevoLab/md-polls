@@ -1,12 +1,12 @@
 {
 	"index": {
-		"title_textarea": "Titolo",
+		"title_textarea": "What?",
 		"settings_title": "Impostazioni",
 		"setting_prevent_duplicates": "Previeni duplicati",
 		"setting_collect_names": "Raccogli nomi",
 		"setting_hidden_results": "Nascondi i voti fino al voto",
 		"choices_title": "Scelte",
-		"answer_textarea": "Risposta",
+		"answer_textarea": "Opzione",
 		"answer_remove": "Rimuovi",
 		"meta_limit_answers": "Limita risposte",
 		"meta_limit_answers_title": "Smetti di raccogliere risposte per questa opzione dopo che viene raggiunto il massimo.",
