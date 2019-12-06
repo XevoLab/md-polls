@@ -2,18 +2,18 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: master.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-05 18:36:20
+// @Last modified time: 2019-12-06 22:49:33
 // @Copyright: (c) 2019
 
 @import '_variables';
-@import url('https://fonts.googleapis.com/css?family=Lato:900|Mada&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
 
 body {
 	margin: 0;
-	font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
+	font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
 }
 button {
-	font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
+	font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
 }
 
 @import 'toast';
@@ -68,7 +68,7 @@ nav {
 					text-align: right;
 					padding-right: 0;
 					padding-left: 0;
-					
+
 				}
 			}
 		}
@@ -134,7 +134,7 @@ footer {
 	background-color: $secondary_color;
 	color: white;
 	padding: .7em 1.4em;
-	font-size: 1.05em;
+	font-size: 18pt;
 	border-radius: 4px;
 	border: none;
 	outline: none;
@@ -195,7 +195,7 @@ label {
 	background-color: $primary_color;
 	color: white;
 	border-radius: 5px;
-	padding: 5px 10px;
+	padding: 5px $choices_padding;
 	cursor: pointer;
 	user-select: none;
 }

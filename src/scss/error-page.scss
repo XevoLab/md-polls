@@ -2,7 +2,7 @@
 // @Date:   2019-12-03 19:29:28
 // @Filename: errors.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-04 13:07:23
+// @Last modified time: 2019-12-06 22:33:37
 // @Copyright: (c) 2019
 
 .error-page {
@@ -12,28 +12,31 @@
 		z-index: -1;
 		bottom: 0;
 		left: 0;
-		width: 100vw;
-		max-width: 80vw;
-		opacity: .85;
+		height: 100vh;
+		max-width: 100vw;
+		max-height: 100vh;
 	}
 
-	.container-fluid.options {
-		max-width: 23rem;
+	.container-fluid {
 
-		.col {
-			padding: 0;
-		}
-		.label {
-			margin-top: 1.5em;
-			label {
-				cursor: auto;
+		max-width: inherit;
+
+		.options {
+			.col {
+				padding: 0;
 			}
-			& > div {
-				margin-bottom: .5rem;
-				color: $primary_color;
-				font-size: 1.2rem;
+			.label {
+				margin-top: 1.5em;
+				label {
+					cursor: auto;
+				}
+				& > div {
+					margin-bottom: .5rem;
+					color: $primary_color;
+					font-size: 1.2rem;
+				}
 			}
 		}
-	}
+}
 
 }

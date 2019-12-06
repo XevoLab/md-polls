@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: index.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-03 15:42:18
+// @Last modified time: 2019-12-06 22:50:57
 // @Copyright: (c) 2019
 
 .main-container {
@@ -19,29 +19,28 @@
 	}
 
 	.title, h1 {
-		font-weight: 900;
-		font-family: $title_font, 'Arial', 'Helvetica', sans-serif;
+		font-weight: 500;
 		color: $secondary_color;
-		font-size: 2rem;
+		font-size: $title_font_size;
+		line-height: 48pt;
+		min-height: 57pt;
 		padding: 0 .2rem;
-		margin: 2rem 0 0 0;
-		overflow: hidden;
+		margin: 2rem 0 0 $choices_padding_title;
 		max-width: 560px;
 
 		&::placeholder, &:-ms-input-placeholder, &::-ms-input-placeholder, &::-webkit-input-placeholder, &:-moz-placeholder {
 			color: $secondary_color;
-			font-style: italic;
 			opacity: .75;
 		}
 		&::placeholder {
 			color: $secondary_color;
-			font-style: italic;
 			opacity: .75;
 		}
 	}
 
 	textarea, input {
-		font-family: $body_font, 'Arial', 'Helvetica', sans-serif;
+		font-size: $choices_font_size;
+		font-weight: 500;
 		border: 1px solid #ccc;
 		width: 100%;
 		background: transparent;
@@ -75,12 +74,11 @@
 		}
 
 		.value {
-			font-size: 1.1rem;
+			font-size: $choices_font_size;
 			display: inline-flex;
 
 			input, textarea {
 				width: 100%;
-				font-size: inherit;
 				overflow: hidden;
 				color: $body_color;
 			}
@@ -110,21 +108,31 @@
 	}
 
 	table.results {
-		font-size: 1.2rem;
+		font-size: $choices_font_size;
+
+		tr[index="0"] {
+			.value .text {
+				background-color: $secondary_color;
+				width: 100% !important;
+			}
+			.votes {
+				color: $secondary_color;
+			}
+		}
 
 		.value {
 			width: 100%;
 			div.text {
 				min-width: fit-content;
-				padding: 5px 10px;
 				background-color: $primary_color;
+				padding: 5px $choices_padding;
 				color: white;
 				border-radius: 5px;
-				padding: 5px 10px;
 			}
 		}
 		.votes {
 			text-align: right;
+			color: $primary_color;
 			padding: 0 .25em;
 			cursor: pointer;
 			.votes-percentage {
@@ -143,10 +151,12 @@
 	}
 
 	.socialShare {
-		display: contents;
+		margin-left: $choices_padding;
+		margin-right: $choices_padding;
 	}
 
 	button[type="submit"] {
+		margin-left: 8px;
 		.text .description {
 			font-size: .6em;
 	    position: absolute;

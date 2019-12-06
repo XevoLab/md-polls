@@ -2,7 +2,7 @@
  * @Filename:     index.js
  * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
  * @Last edit by: francesco
- * @Last edit at: 2019-12-03 19:20:20
+ * @Last edit at: 2019-12-06 11:28:41
  * @Copyright:    (c) 2019
  */
 
@@ -84,12 +84,6 @@ app.use(languageSelector);
 			res.render('pages/howItWorks', {language: req.languageData.howItWorks, uri: req.protocol + '://' + req.get('host') + '/'});
 		});
 
-
-		// Error pages
-		app.use('/error/:ecode([0-9]{3})', (req, res) => {
-			res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: req.params.ecode});
-		});
-
 	// RESOURCES
 
 		// Set a static folder
@@ -105,6 +99,8 @@ app.use(languageSelector);
 	  code.pipe(res);
 	});
 
+	app.use('/pdf/', require('./src/routes/pdf.js'));
+
 	app.use(express.json());
 	app.use('/polls', require('./src/routes/polls.js'))
 
@@ -112,6 +108,11 @@ app.use(languageSelector);
 
 		// Vote
 		app.use(['/v/', '/vote/'], require('./src/routes/vote.js'));
+
+	// Assuming nothing else responded --> 404
+	app.use((req, res) => {
+		res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
+	});
 
 
 // Starting the server

@@ -16,13 +16,13 @@
 </head>
 <body id="<%= id %>">
 
-	<% include ../partials/head %>
+	<% include ../partials/nav %>
 
 	<div class="container main-container">
 		<form>
 
 			<div class="row">
-				<div class="col title">
+				<div class="col">
 					<h1><%= title %></h1>
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 					<table class="results">
 
 						<% for (var i=0; i < options.length; i++) { %>
-					    <%- include('./../partials/results/choiceRowResult', {index: i+1, r: options[i].M, total: total, showNames: collectNames}); %>
+					    <%- include('./../partials/results/choiceRowResult', {maxVotes: options[0].M.votes.N, r: options[i].M, total: total, showNames: collectNames}); %>
 					  <% } %>
 
 					</table>
@@ -47,16 +47,6 @@
 
 				</div>
 			</div>
-
-			<% if (!alreadyVoted) { %>
-				<div class="row">
-					<div class="col" style="display: contents;">
-						<a href="/v/<%= id %>" class="btn btn-slim">
-							<%= language.vote_button %>
-						</a>
-					</div>
-				</div>
-			<% } %>
 
 			<% include ../partials/socialShare %>
 

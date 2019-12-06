@@ -23,8 +23,8 @@
 		<form id="<%= pollData.ID.S %>">
 
 			<div class="row">
-				<div class="col title">
-					<%= pollData.title.S %>
+				<div class="col">
+					<h1><%= pollData.title.S %></h1>
 				</div>
 			</div>
 
@@ -55,9 +55,6 @@
 						<span class="text"><%= language.submit_button %></span>
 						<span class="spinner"><i class="icon-save animate-pulse"></i> <%= language.submit_button_posting %></span>
 					</button>
-					<% if (!pollData.metadata.M.hiddenResults.BOOL) { %>
-						<a href="/r/<%= id %>" class="btn btn-slim btn-inline"><%= language.peak_results_button %></a>
-					<% } %>
 				</div>
 			</div>
 

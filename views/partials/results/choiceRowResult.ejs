@@ -1,4 +1,4 @@
-<tr id="choice_<%= r.id.N %>">
+<tr id="choice_<%= r.id.N %>" index="<%= (maxVotes == 0 ? -1 : maxVotes-r.votes.N) %>">
 	<td class="value">
 		<div class="text" style="width: <%= (total != 0 ? Math.floor(r.votes.N/total*100) : 0) %>%;">
 			<%= r.value.S %>

@@ -1,0 +1,72 @@
+// @Author: Xevolab <francesco>
+// @Date:   2019-12-06 11:34:55
+// @Filename: pdf.scss
+// @Last modified by:   francesco
+// @Last modified time: 2019-12-06 21:41:30
+// @Copyright: (c) 2019
+
+@import '_variables';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+
+.pdf-template {
+	font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
+}
+
+.pdf-template {
+
+	nav {
+		font-size: 1.7em;
+		margin-bottom: 1rem;
+		h1 {
+			font-weight: 500;
+			text-align: right;
+			margin-right: 2rem;
+		}
+		h2 {
+			font-weight: 300;
+		}
+	}
+
+	.page-content {
+		.row {
+			margin-bottom: 1em;
+
+			.col-2.percentage {
+				text-align: right;
+				font-weight: bold;
+				padding-right: 0;
+			}
+			h3 {
+				font-weight: 500;
+				margin: .25em 0;
+				font-size: 1.35em;
+			}
+			p {
+				margin: 0;
+				font-weight: 300;
+				font-size: .75em;
+				text-align: justify;
+			}
+		}
+		margin-bottom: 2rem;
+	}
+
+	footer {
+	  position: fixed;
+	  bottom: 0;
+		font-weight: 300;
+		.col-8 {
+			a {
+				text-decoration: none;
+				color: initial;
+			}
+			text-align: center;
+		}
+		.col {
+			text-align: right;
+			padding-right: 1rem;
+			content: counter(page) " of " counter(pages);
+		}
+	}
+
+}
