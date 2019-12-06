@@ -175,8 +175,6 @@ nav #options_toggle:checked + label + .options {
   .main-container .row.h1 {
     margin-bottom: 1rem;
     color: #00249C; }
-  .main-container .col {
-    padding: 0; }
   .main-container .title, .main-container h1 {
     font-weight: 500;
     color: #EE3830;
@@ -265,17 +263,19 @@ nav #options_toggle:checked + label + .options {
   .main-container .socialShare {
     margin-left: 21px;
     margin-right: 21px; }
-  .main-container button[type="submit"] .text .description {
-    font-size: .6em;
-    position: absolute;
-    top: 3rem;
-    color: #888; }
-  .main-container button[type="submit"] .spinner {
-    display: none; }
-  .main-container button[type="submit"].loading .spinner {
-    display: inline-block; }
-  .main-container button[type="submit"].loading .text {
-    display: none; }
+  .main-container button[type="submit"] {
+    margin-left: 8px; }
+    .main-container button[type="submit"] .text .description {
+      font-size: .6em;
+      position: absolute;
+      top: 3rem;
+      color: #888; }
+    .main-container button[type="submit"] .spinner {
+      display: none; }
+    .main-container button[type="submit"].loading .spinner {
+      display: inline-block; }
+    .main-container button[type="submit"].loading .text {
+      display: none; }
 
 .animate-pulse {
   -moz-animation: pulse .9s infinite linear;
@@ -390,7 +390,7 @@ label {
   background-color: #00249C;
   color: white;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 5px 21px;
   cursor: pointer;
   user-select: none; }
 
