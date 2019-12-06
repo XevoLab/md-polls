@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: master.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-06 22:49:33
+// @Last modified time: 2019-12-06 23:30:59
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -12,7 +12,7 @@ body {
 	margin: 0;
 	font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
 }
-button {
+button, textarea, input {
 	font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
 }
 

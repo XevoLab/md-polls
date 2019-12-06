@@ -2,7 +2,7 @@
  * @Filename:     index.js
  * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
  * @Last edit by: francesco
- * @Last edit at: 2019-12-06 11:28:41
+ * @Last edit at: 2019-12-06 23:40:11
  * @Copyright:    (c) 2019
  */
 
@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
 // LANGUAGE MIDDLEWARE
 const languageSelector = (req, res, next) => {
 	var lang = req.acceptsLanguages('en', 'it');
-	if (!lang) {
+	if (!lang && false) {
 		lang = 'en';
 	}
 	req.lang = lang;
