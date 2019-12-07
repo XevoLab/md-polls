@@ -6,52 +6,98 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>PDF export</title>
 
-	<link rel="stylesheet" href="/assets/bootstrap/bootstrap-grid.min.css">
 	<link rel="stylesheet" href="/assets/css/pdf.css">
+	<style>
+		@import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
+		body {
+		  font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
+		  body table#pageHeader-first {
+		    display: flex;
+		    min-height: 104pt; }
+		    body table#pageHeader-first .brand {
+		      font-size: 32pt;
+		      line-height: 32pt;
+		      width: 74mm;
+		      vertical-align: top;
+		      font-weight: 500; }
+		    body table#pageHeader-first .title {
+		      width: 106mm;
+		      vertical-align: top;
+		      font-size: 32pt;
+		      line-height: 32pt;
+		      margin-bottom: 48pt; }
+		  body table#content {
+		    border-collapse: separate;
+		    border-spacing: 0; }
+		    body table#content tr td.percentage {
+		      width: 69mm;
+		      vertical-align: top;
+		      text-align: right;
+		      font-size: 16pt;
+		      font-weight: 500; }
+		    body table#content tr td.content {
+		      padding-bottom: 16pt; }
+		      body table#content tr td.content > * {
+		        padding-left: 5px; }
+		      body table#content tr td.content .value {
+		        font-size: 16pt;
+		        line-height: 16pt;
+		        padding-bottom: 8pt;
+		        font-weight: 500; }
+		      body table#content tr td.content .names {
+		        font-size: 7pt;
+		        line-height: 8pt; }
+		  body table#pageFooter .link {
+		    padding-left: 37mm;
+		    font-size: 8pt;
+		    width: 106mm;
+		    vertical-align: top; }
+		    body table#pageFooter .link a {
+		      color: initial;
+		      text-decoration: none; }
+		  body table#pageFooter .pagination {
+		    width: 32mm;
+		    padding-left: 5mm;
+		    vertical-align: top;
+		    font-size: 12pt;
+		    text-align: right; }
+
+	</style>
 </head>
 <body class="pdf-template">
 
-	<nav class="container-fluid">
-		<div class="row">
-			<div class="col-5">
-				<h1>Questionary</h1>
-			</div>
-			<div class="col">
-				<h2><%= title %></h2>
-			</div>
-		</div>
-	</nav>
+	<table id="pageHeader-first">
+		<tr>
+			<td class="brand">Questionary</td>
+			<td class="title"><%= title %></td>
+		</tr>
+	</table>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-4"></div>
-			<div class="col page-content">
-
-				<% for (i=0; i < options.length; i++) { %>
-					<div class="row">
-						<div class="col-2 percentage"><h3><%= (total != 0 ? Math.floor(options[i]['M'].votes.N/total*100) : 0) %>%</h3></div>
-						<div class="col">
-							<h3><%= options[i]['M'].value.S %></h3>
-							<% if (collectNames) { %>
-								<p>
-									<%= options[i]['M'].metadata.M.names.L.map(e => e.S).join(", ") %>.
-								</p>
-							<% } %>
-						</div>
+	<table id="content">
+		<% for (i=0; i < options.length; i++) { %>
+			<tr>
+				<td class="percentage"><%= (total != 0 ? Math.floor(options[i]['M'].votes.N/total*100) : 0) %>%</td>
+				<td class="content">
+					<div class="value">
+						<%= options[i]['M'].value.S %>
 					</div>
-				<% } %>
+					<% if (collectNames && options[i]['M'].metadata.M.names.L.length > 0) { %>
+						<div class="names">
+							<%= options[i]['M'].metadata.M.names.L.map(e => e.S).join(", ") %>.
+						</div>
+					<% } %>
+				</td>
+			</tr>
+		<% } %>
+	</table>
 
-			</div>
-		</div>
-	</div>
 
-
-	<footer class="container-fluid">
-		<div class="row">
-			<div class="col-8"><a href="//questionary.xevolab.cloud">questionary.xevolab.cloud</a></div>
-			<div class="col"></div>
-		</div>
-	</footer>
+	<table id="pageFooter">
+		<tr>
+			<td class="link"><a href="//<%= uri %>"><%= uri %></a></td>
+			<td class="pagination">{{page}}/{{pages}}</td>
+		</tr>
+	</table>
 
 </body>
 </html>

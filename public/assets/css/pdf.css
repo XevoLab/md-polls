@@ -1,50 +1,53 @@
-/* FONTS */
-/* COLORS */
-/* Dimensions */
-/* */
-/* Footer */
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap");
-.pdf-template {
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
+body {
   font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
-
-.pdf-template nav {
-  font-size: 1.7em;
-  margin-bottom: 1rem; }
-  .pdf-template nav h1 {
-    font-weight: 500;
-    text-align: right;
-    margin-right: 2rem; }
-  .pdf-template nav h2 {
-    font-weight: 300; }
-
-.pdf-template .page-content {
-  margin-bottom: 2rem; }
-  .pdf-template .page-content .row {
-    margin-bottom: 1em; }
-    .pdf-template .page-content .row .col-2.percentage {
+  body table#pageHeader-first {
+    display: flex;
+    min-height: 104pt; }
+    body table#pageHeader-first .brand {
+      font-size: 32pt;
+      line-height: 32pt;
+      width: 74mm;
+      vertical-align: top;
+      font-weight: 500; }
+    body table#pageHeader-first .title {
+      width: 106mm;
+      vertical-align: top;
+      font-size: 32pt;
+      line-height: 32pt;
+      margin-bottom: 48pt; }
+  body table#content {
+    border-collapse: separate;
+    border-spacing: 0; }
+    body table#content tr td.percentage {
+      width: 69mm;
+      vertical-align: top;
       text-align: right;
-      font-weight: bold;
-      padding-right: 0; }
-    .pdf-template .page-content .row h3 {
-      font-weight: 500;
-      margin: .25em 0;
-      font-size: 1.35em; }
-    .pdf-template .page-content .row p {
-      margin: 0;
-      font-weight: 300;
-      font-size: .75em;
-      text-align: justify; }
-
-.pdf-template footer {
-  position: fixed;
-  bottom: 0;
-  font-weight: 300; }
-  .pdf-template footer .col-8 {
-    text-align: center; }
-    .pdf-template footer .col-8 a {
-      text-decoration: none;
-      color: initial; }
-  .pdf-template footer .col {
-    text-align: right;
-    padding-right: 1rem;
-    content: counter(page) " of " counter(pages); }
+      font-size: 16pt;
+      font-weight: 500; }
+    body table#content tr td.content {
+      padding-bottom: 16pt; }
+      body table#content tr td.content > * {
+        padding-left: 5px; }
+      body table#content tr td.content .value {
+        font-size: 16pt;
+        line-height: 16pt;
+        padding-bottom: 8pt;
+        font-weight: 500; }
+      body table#content tr td.content .names {
+        font-size: 7pt;
+        line-height: 8pt; }
+  body table#pageFooter .link {
+    padding-left: 37mm;
+    font-size: 8pt;
+    width: 106mm;
+    vertical-align: top; }
+    body table#pageFooter .link a {
+      color: initial;
+      text-decoration: none; }
+  body table#pageFooter .pagination {
+    width: 32mm;
+    padding-left: 5mm;
+    vertical-align: top;
+    font-size: 12pt;
+    text-align: right; }
