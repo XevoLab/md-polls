@@ -2,7 +2,7 @@
  * @Filename:     pdf.js
  * @Date:         Xevolab <francesco> @ 2019-12-06 11:14:12
  * @Last edit by: francesco
- * @Last edit at: 2019-12-07 16:51:07
+ * @Last edit at: 2019-12-07 19:48:38
  * @Copyright:    (c) 2019
  */
 
@@ -84,6 +84,9 @@ router.get("/:id", async (req, res) => {
 			top: '5mm',
 			left: '5mm',
 			right: '5mm'
+		},
+		footer: {
+			height: '15mm'
 		}
 	}).toStream(function(err, stream){
 		res.setHeader('Content-type', 'application/pdf');
