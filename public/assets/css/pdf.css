@@ -1,21 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
 body {
   font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
-  body table#pageHeader-first {
-    display: flex;
+  body table#nav {
     min-height: 104pt; }
-    body table#pageHeader-first .brand {
+    body table#nav .brand {
       font-size: 32pt;
       line-height: 32pt;
-      width: 74mm;
+      width: 69mm;
       vertical-align: top;
       font-weight: 500; }
-    body table#pageHeader-first .title {
-      width: 106mm;
+    body table#nav .title {
       vertical-align: top;
       font-size: 32pt;
       line-height: 32pt;
-      margin-bottom: 48pt; }
+      padding-bottom: 48pt; }
   body table#content {
     border-collapse: separate;
     border-spacing: 0; }
@@ -24,6 +22,7 @@ body {
       vertical-align: top;
       text-align: right;
       font-size: 16pt;
+      line-height: 16pt;
       font-weight: 500; }
     body table#content tr td.content {
       padding-bottom: 16pt; }
