@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: master.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-07 12:01:00
+// @Last modified time: 2019-12-22 11:20:19
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -49,11 +49,12 @@ nav {
 
 	.options {
 		display: none;
-		position: relative;
+		position: absolute;
+		position: absolute;
+		right: 0px;
 		.container-fluid {
 			margin-top: 5px;
 			border: 15px solid white;
-			position: absolute;
 			width: -moz-max-content;
 	    width: -webkit-max-content;
 	    width: -o-max-content;
@@ -63,7 +64,7 @@ nav {
 			z-index: 1000;
 			background-color: white;
 			.row {
-				padding: 5px 0;
+				padding: .45em 0;
 				.col {
 					text-align: right;
 					padding-right: 0;
@@ -205,4 +206,17 @@ input[type="checkbox"], input[type="radio"] {
 }
 input:checked+label {
 	background-color: $secondary_color;
+}
+
+.options {
+	label {
+		border: 3px solid $primary_color;
+		background-color: white;
+		color: $primary_color;
+		padding: 2px ($choices_padding - 4px);
+	}
+	input:checked+label {
+		border-color: $secondary_color;
+		color: white;
+	}
 }
