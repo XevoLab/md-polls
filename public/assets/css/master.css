@@ -315,7 +315,7 @@ nav #options_toggle:checked + label + .options {
       font-size: 1.2rem; }
 
 .main-container {
-  min-height: calc(100vh - 85px - 7rem - 15px); }
+  min-height: calc(100vh - 89px - 3rem - 6rem); }
 
 footer {
   position: relative;

@@ -2,7 +2,7 @@
  * @Filename:     index.js
  * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
  * @Last edit by: francesco
- * @Last edit at: 2019-12-07 00:04:30
+ * @Last edit at: 2019-12-23 22:53:15
  * @Copyright:    (c) 2019
  */
 
@@ -48,7 +48,6 @@ const languageSelector = (req, res, next) => {
 		lang = 'en';
 	}
 	req.lang = lang;
-	req.lang = "en";
 
 	req.languageData = require('./src/languages/'+lang+'.json');
 
