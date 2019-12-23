@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: master.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-22 11:20:19
+// @Last modified time: 2019-12-23 22:50:06
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -83,7 +83,7 @@ nav {
 @import 'error-page';
 
 .main-container {
-	min-height: calc(100vh - 85px - 7rem - 15px);
+	min-height: calc(100vh - 89px - 3rem - 6rem);
 }
 
 footer {

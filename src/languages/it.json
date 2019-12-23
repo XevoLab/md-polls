@@ -1,10 +1,10 @@
 {
 	"index": {
-		"title_textarea": "What?",
+		"title_textarea": "Cosa?",
 		"settings_title": "Impostazioni",
 		"setting_prevent_duplicates": "Previeni duplicati",
-		"setting_collect_names": "Raccogli nomi",
-		"setting_hidden_results": "Nascondi i voti fino al voto",
+		"setting_collect_names": "Richiedi nome",
+		"setting_hidden_results": "Nascondi i isultati",
 		"choices_title": "Scelte",
 		"answer_textarea": "Opzione",
 		"answer_remove": "Rimuovi",
@@ -24,6 +24,7 @@
 		"collect_names_explanation": "Il creatore di questo sondaggio chiede di lasciare un nome come parte del proprio voto",
 		"submit_button": "Invia",
 		"submit_button_posting": "Invio...",
+		"share_pdf_export": "Esporta PDF",
 		"message_share_text": "Ciao! 👋 Potresti votare anche tu? ",
 		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 "
 	},
@@ -31,6 +32,7 @@
 		"header_og_title": "Risultati per",
 		"header_og_description": "Dai un occhio a come è andato questo sondaggio! Creane uno te stesso per condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
 		"swap_number_percentage": "Mostra percentuali",
+		"share_pdf_export": "Esporta PDF",
 		"message_share_text": "Ciao! 👋 Potresti votare anche tu? ",
 		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 "
 	},
