@@ -1,4 +1,4 @@
-# MD-POLLS
+# Questionary
 
 Live-updatind polling platform based on AWS DynamoDB and socket.io
 
@@ -16,5 +16,5 @@ Create a .env file in the project root (or set some envirnment variables) with y
 
 	AWS_ACCESS_KEY_ID=Your access key
 	AWS_SECRET_ACCESS_KEY=Your secret access key
-  AWS_REGION=Your preferred region
-  AWS_TABLE_NAME=Name of the DynamoDB table
+  	AWS_REGION=Your preferred region
+  	AWS_TABLE_NAME=Name of the DynamoDB table
