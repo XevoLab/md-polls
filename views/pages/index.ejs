@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="<%= language.languageCode %>">
 <head>
-	<title>Create new - Questionary</title>
+	<title><%= language.title %></title>
 
 	<% include ../partials/header %>
 
@@ -19,7 +19,7 @@
 			</div>
 			<div class="col-auto">
 				<input type="checkbox" id="options_toggle" value="">
-				<label for="options_toggle">Options</label>
+				<label for="options_toggle"><%= language.settings_button %></label>
 				<div class="options">
 					<div class="container-fluid">
 						<div class="row">

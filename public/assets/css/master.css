@@ -148,8 +148,8 @@ nav .options {
   position: absolute;
   right: 0px; }
   nav .options .container-fluid {
-    margin-top: 5px;
-    border: 15px solid white;
+    margin-top: 15px;
+    margin-right: 15px;
     width: -moz-max-content;
     width: -webkit-max-content;
     width: -o-max-content;
@@ -159,14 +159,15 @@ nav .options {
     z-index: 1000;
     background-color: white; }
     nav .options .container-fluid .row {
-      padding: .45em 0; }
+      padding: .55em 0; }
       nav .options .container-fluid .row .col {
         text-align: right;
         padding-right: 0;
         padding-left: 0; }
 
 nav #options_toggle:checked + label + .options {
-  display: block; }
+  display: block;
+  z-index: 1000; }
 
 .main-container {
   max-width: calc(760px + 4rem);
@@ -246,6 +247,7 @@ nav #options_toggle:checked + label + .options {
       width: 100%; }
       .main-container table.results .value div.text {
         min-width: fit-content;
+        min-width: -moz-fit-content;
         background-color: #00249C;
         padding: 5px 21px;
         color: white;
@@ -391,7 +393,7 @@ label {
   background-color: #00249C;
   color: white;
   border-radius: 5px;
-  padding: 5px 21px;
+  padding: 7px 21px;
   cursor: pointer;
   user-select: none; }
 
@@ -402,10 +404,10 @@ input:checked + label {
   background-color: #EE3830; }
 
 .options label {
-  border: 3px solid #00249C;
+  border: 2px solid #00249C;
   background-color: white;
   color: #00249C;
-  padding: 2px 17px; }
+  padding: 4px 17px; }
 
 .options input:checked + label {
   border-color: #EE3830;

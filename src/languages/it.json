@@ -1,10 +1,11 @@
 {
 	"index": {
+		"title": "Crea nuovo - Questionary",
 		"title_textarea": "Cosa?",
-		"settings_title": "Impostazioni",
+		"settings_button": "Impostazioni",
 		"setting_prevent_duplicates": "Previeni duplicati",
 		"setting_collect_names": "Richiedi nome",
-		"setting_hidden_results": "Nascondi i isultati",
+		"setting_hidden_results": "Nascondi i risultati",
 		"choices_title": "Scelte",
 		"answer_textarea": "Opzione",
 		"answer_remove": "Rimuovi",

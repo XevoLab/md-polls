@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: index.scss
 // @Last modified by:   francesco
-// @Last modified time: 2019-12-07 11:53:19
+// @Last modified time: 2020-02-22 19:44:56
 // @Copyright: (c) 2019
 
 .main-container {
@@ -124,6 +124,7 @@
 			width: 100%;
 			div.text {
 				min-width: fit-content;
+				min-width: -moz-fit-content;
 				background-color: $primary_color;
 				padding: 5px $choices_padding;
 				color: white;

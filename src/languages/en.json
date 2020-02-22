@@ -1,7 +1,8 @@
 {
 	"index": {
+		"title": "Create new - Questionary",
 		"title_textarea": "What?",
-		"settings_title": "Settings",
+		"settings_button": "Settings",
 		"setting_prevent_duplicates": "Prevent duplicates",
 		"setting_collect_names": "Collect names",
 		"setting_hidden_results": "Prevent results leaks",
