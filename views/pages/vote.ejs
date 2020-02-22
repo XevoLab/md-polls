@@ -49,14 +49,16 @@
 				</div>
 			</div>
 
-			<div class="row">
-				<div class="col">
-					<button type="submit" class="btn disabled">
-						<span class="text"><%= language.submit_button %></span>
-						<span class="spinner"><i class="icon-save animate-pulse"></i> <%= language.submit_button_posting %></span>
-					</button>
+			<% if ((pollData.metadata.M.preventDoubles.BOOL && !alreadyVoted) || allowChange) { %>
+				<div class="row">
+					<div class="col">
+						<button type="submit" class="btn disabled">
+							<span class="text"><%= ((pollData.metadata.M.preventDoubles.BOOL && alreadyVoted && allowChange) ? language.modify_button : language.submit_button) %></span>
+							<span class="spinner"><i class="icon-save animate-pulse"></i> <%= language.submit_button_posting %></span>
+						</button>
+					</div>
 				</div>
-			</div>
+			<% } %>
 
 			<% include ../partials/socialShare %>
 

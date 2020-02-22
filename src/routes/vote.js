@@ -2,7 +2,7 @@
  * @Filename:     vote.js
  * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2019-12-03 19:25:37
+ * @Last edit at: 2020-02-23 00:37:38
  * @Copyright:    (c) 2019
  */
 
@@ -12,8 +12,12 @@
 const express = require('express');
 const router = express.Router();
 
+const crypto = require('crypto');
+
 var path = require('path');
 require('dotenv').config();
+
+router.use(require('cookie-parser')());
 
 const aws = require('aws-sdk');
 var ddb = new aws.DynamoDB({apiVersion: '2012-08-10', region: process.env.AWS_REGION});
@@ -50,8 +54,8 @@ router.get('/:id', (req, res) => {
 
 				var alreadyVoted = false;
 				// Check if the IP is present
-				for (var v in pollData.metadata.M.answeredBy.L) {
-					if (pollData.metadata.M.answeredBy.L[v].S === userIP) {
+				for (var v in pollData.metadata.M.answeredByIP.L) {
+					if (pollData.metadata.M.answeredByIP.L[v].S === userIP) {
 						alreadyVoted = true;
 						break;
 					}
@@ -69,12 +73,29 @@ router.get('/:id', (req, res) => {
 					}
 				}
 
+				// Check if the user can change his/her vote
+				var allowChange = pollData.metadata.M.allowChange.BOOL;
+				if (allowChange && req.cookies.token !== null) {
+
+					for (var v in pollData.metadata.M.editTokens.L) {
+						if (pollData.metadata.M.editTokens.L[v].M.v.S === req.cookies.token) {
+							allowChange = true;
+							break;
+						}
+						allowChange = false;
+					}
+				}
+				else {
+					allowChange = false;
+				}
+
 				var pollData = {
 					id: req.params.id,
 					uri: req.protocol + '://' + req.get('host') + '/v/' + req.params.id,
 					pollData: pollData,
-					alreadyVoted: alreadyVoted,
-					noMoreChoices: noMoreChoices,
+					alreadyVoted,
+					allowChange,
+					noMoreChoices,
 					language: req.languageData.vote
 				};
 
@@ -120,16 +141,35 @@ router.post('/:id', (req, res) => {
 					return;
 				}
 
+				var alreadyVoted = false;
 				// Check if 'prevent douplicates' mode is enabled
 				if (pollData.metadata.M.preventDoubles.BOOL) {
 
 					// Check if the IP is present
-					for (var v in pollData.metadata.M.answeredBy.L) {
-						if (pollData.metadata.M.answeredBy.L[v].S === userIP) {
-							res.json({result: "alreadyVoted", message: "You have already voted on this poll"});
-							return;
+					for (var v in pollData.metadata.M.answeredByIP.L) {
+						if (pollData.metadata.M.answeredByIP.L[v].S === userIP) {
+							alreadyVoted = true;
 						}
 					}
+				}
+
+				var changeAnswer = null;
+				if (alreadyVoted && pollData.metadata.M.allowChange.BOOL && req.cookies.token !== null) {
+
+					for (var v in pollData.metadata.M.editTokens.L) {
+						if (pollData.metadata.M.editTokens.L[v].M.v.S === req.cookies.token) {
+							changeAnswer = v;
+							break;
+						}
+					}
+				}
+
+				if ((alreadyVoted && !pollData.metadata.M.allowChange.BOOL) || (alreadyVoted && pollData.metadata.M.allowChange.BOOL && changeAnswer === null)) {
+					return res.json({result: "alreadyVoted", message: "You have already voted on this poll"});
+				}
+
+				if (pollData.metadata.M.allowChange.BOOL && (req.cookies.token === null || (req.cookies.token !== null && changeAnswer === null))) {
+					req.cookies.token = crypto.createHash('md5').update(JSON.stringify([Math.random()*154875211, Date.now()])).digest('base64').replace(/[\+\/\=]/g, "");
 				}
 
 				// Check if 'collect names' mode is enabled
@@ -160,9 +200,9 @@ router.post('/:id', (req, res) => {
 							options[${parseInt(req.body.choice)}].votes,
 							:zero
 						) + :incr,
-						metadata.answeredBy = list_append(
+						metadata.answeredByIP = list_append(
 							if_not_exists(
-								metadata.answeredBy,
+								metadata.answeredByIP,
 								:emptyList
 							),
 							:IP)
@@ -174,6 +214,27 @@ router.post('/:id', (req, res) => {
 						":emptyList": {L: []}
 					}
 				};
+
+				// If change requested --> Invalidate the previus token and remove vote
+				if (changeAnswer !== null) {
+					updateParams.UpdateExpression += `,
+						options[${pollData.metadata.M.editTokens.L[v].M.i.N}].votes = options[${pollData.metadata.M.editTokens.L[v].M.i.N}].votes - :incr,
+						metadata.editTokens[${v}].i = :tokenvalue
+					`;
+					updateParams.ExpressionAttributeValues[":tokenvalue"] = {N: String(parseInt(req.body.choice))};
+				}
+				else if (pollData.metadata.M.allowChange.BOOL) {
+					// If 'allowChange' --> Also save token for user
+					updateParams.UpdateExpression += `,
+						metadata.editTokens = list_append(
+							if_not_exists(
+								metadata.editTokens,
+								:emptyList
+							),
+							:token)
+					`;
+					updateParams.ExpressionAttributeValues[":token"] = {L: [{M: {v: {S: req.cookies.token}, i: {N: String(parseInt(req.body.choice))}}}]};
+				}
 
 				// If 'collect names' --> Also save the name
 				if (pollData.metadata.M.collectNames.BOOL) {
@@ -190,6 +251,7 @@ router.post('/:id', (req, res) => {
 						:name
 					)`;
 				}
+				console.log(updateParams);
 
 				ddb.updateItem(updateParams, function(err, updateData) {
 					if (err) {
@@ -205,11 +267,15 @@ router.post('/:id', (req, res) => {
 						var io = require('../../index.js').io;
 						var msg = {
 							id: req.params.id,
-							selection: req.body.choice,
+							plus: req.body.choice,
+							minus: (changeAnswer !== null ? pollData.metadata.M.editTokens.L[v].M.i.N : null),
 							name: (pollData.metadata.M.collectNames.BOOL ? String(req.body.name) : "")
 						}
 
 						io.sockets.in("poll-"+msg.id).emit('vote', msg);
+
+						if (pollData.metadata.M.allowChange.BOOL && (req.cookies.token === null || (req.cookies.token !== null && changeAnswer === null)))
+							res.cookie('token', req.cookies.token)
 
 						res.json({result: "success", message:"Everything went smoothly"});
 					}

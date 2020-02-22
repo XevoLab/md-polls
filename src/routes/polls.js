@@ -2,7 +2,7 @@
  * @Filename:     polls.js
  * @Date:         Francesco Cescon <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2019-12-04 21:29:13
+ * @Last edit at: 2020-02-22 23:23:32
  * @Copyright:    (c) 2019
  */
 
@@ -62,6 +62,7 @@ router.post('/', (req, res) => {
 	// Item to be added into dynamoDB
 	var itemData = {
 		'ID': {S: pollID},
+		'apiV': {N: '1'},
 		'created': {N: String(Date.now())},
 		'ownerIP': {S: req.headers['x-forwarded-for'] || req.connection.remoteAddress},
 		'title': {S: d.title || pollID},
@@ -69,8 +70,9 @@ router.post('/', (req, res) => {
 			preventDoubles: {BOOL: (d.metadata.preventDoubles || false)},
 			collectNames: {BOOL: (d.metadata.collectNames || false)},
 			hiddenResults: {BOOL: (d.metadata.hiddenResults || false)},
+			allowChange: {BOOL: (d.metadata.allowChange || false)},
 			graphType: {S: 'bars'},//(d.metadata.graphType || 'bars')},
-			answeredBy: {L: []}
+			answeredByIP: {L: []}
 		}},
 		'options': null,
 	}
@@ -86,6 +88,11 @@ router.post('/', (req, res) => {
 	if (d.options.length < 1) {
 		res.json({result: "error", error: "notEnoughAnswers", message:"Not enough valid options"});
 		return false;
+	}
+
+	// Save the optional tokens to change the answer
+	if (d.metadata.allowChange) {
+		itemData.metadata.M.editTokens = {L: []};
 	}
 
 	// Adding the options

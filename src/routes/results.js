@@ -2,7 +2,7 @@
  * @Filename:     results.js
  * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2019-12-03 19:26:05
+ * @Last edit at: 2020-02-22 23:52:12
  * @Copyright:    (c) 2019
  */
 
@@ -64,8 +64,8 @@ router.get('/:id', (req, res) => {
 
 				var alreadyVoted = false;
 				// Check if the IP is present
-				for (var v in pollData.metadata.M.answeredBy.L) {
-					if (pollData.metadata.M.answeredBy.L[v].S === userIP) {
+				for (var v in pollData.metadata.M.answeredByIP.L) {
+					if (pollData.metadata.M.answeredByIP.L[v].S === userIP) {
 						alreadyVoted = true;
 						break;
 					}

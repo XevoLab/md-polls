@@ -6,6 +6,7 @@
 		"setting_prevent_duplicates": "Previeni duplicati",
 		"setting_collect_names": "Richiedi nome",
 		"setting_hidden_results": "Nascondi i risultati",
+		"setting_allow_change": "Permetti cambio voto (β)",
 		"choices_title": "Scelte",
 		"answer_textarea": "Opzione",
 		"answer_remove": "Rimuovi",
@@ -53,7 +54,7 @@
 		"vote_button": "Vota ora"
 	},
 	"errors": {
-		"header_og_description": "Qualcosa non ha funzionato... Ma con md-polls puoi condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
+		"header_og_description": "Qualcosa non ha funzionato... Ma con Questionary puoi condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
 		"message": "Qualcosa non ha molto funzionato...",
 		"line1": "La pagina è caduta dal furgone 🚚",
 		"line2": "Matrix è crashato 😵",

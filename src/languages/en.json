@@ -6,6 +6,7 @@
 		"setting_prevent_duplicates": "Prevent duplicates",
 		"setting_collect_names": "Collect names",
 		"setting_hidden_results": "Prevent results leaks",
+		"setting_allow_change": "Allow vote change (β)",
 		"choices_title": "Choices",
 		"answer_textarea": "Choice",
 		"answer_remove": "Remove",
@@ -24,6 +25,7 @@
 		"collect_names_textarea": "John Doe",
 		"collect_names_explanation": "The creator of this poll is asking for people to leave their name as part of their vote",
 		"submit_button": "Submit",
+		"modify_button": "Change my answer",
 		"submit_button_posting": "Submitting...",
 		"share_pdf_export": "Export PDF",
 		"message_share_text": "Hi! 👋 Could you vote on this? ",
@@ -53,7 +55,7 @@
 		"vote_button": "Vote now"
 	},
 	"errors": {
-		"header_og_description": "Something didn't work out right... But with md-polls you can quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
+		"header_og_description": "Something didn't work out right... But with Questionary you can quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
 		"message": "Something did not go quite right...",
 		"line1": "This page fell off the truck 🚚",
 		"line2": "The Matrix crashed 😵",

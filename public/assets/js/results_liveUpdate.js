@@ -2,7 +2,7 @@
  * @Filename:     results_liveUpdate.js
  * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2019-12-04 21:11:37
+ * @Last edit at: 2020-02-23 00:36:25
  * @Copyright:    (c) 2019
  */
 
@@ -15,8 +15,13 @@ socket.on('vote', function(vdata){
 	var numOptions = document.querySelectorAll('table.results tr').length;
 
 	// Update number on choice
-	var optionValue = document.querySelector('tr#choice_'+vdata.selection+' .votes .n');
-	optionValue.innerHTML = parseInt(optionValue.innerHTML) + 1;
+	var optionPlusOne = document.querySelector('tr#choice_'+vdata.plus+' .votes .n');
+	optionPlusOne.innerHTML = parseInt(optionPlusOne.innerHTML) + 1;
+
+	if (vdata.minusOne !== null) {
+		var optionMinusOne = document.querySelector('tr#choice_'+vdata.minus+' .votes .n');
+		optionMinusOne.innerHTML = parseInt(optionMinusOne.innerHTML) - 1;
+	}
 
 	// Update bars
 
