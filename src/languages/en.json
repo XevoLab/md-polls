@@ -5,7 +5,7 @@
 		"settings_button": "Settings",
 		"setting_prevent_duplicates": "Prevent duplicates",
 		"setting_collect_names": "Collect names",
-		"setting_hidden_results": "Prevent results leaks",
+		"setting_hidden_results": "Prevent results peeking",
 		"setting_allow_change": "Allow vote change (β)",
 		"choices_title": "Choices",
 		"answer_textarea": "Choice",
@@ -39,15 +39,9 @@
 		"message_share_text": "Hi! 👋 Check out this poll! ",
 		"social_share_text": "Check out how this poll did! 💪😁 "
 	},
-	"translate": {
-		"title": "Help translate Questionary",
-		"p1": "Questionary is a small and personal project of an Italian web developer.",
-		"p2": "The time and resources to get the website translated in as many languages as possible are, obviously, limited. For this reason, the community is one of the most precious things a developed has.",
-		"section_title": "How can I help?",
-		"p3": "If you would like to contribute, please consider downloading the file below, containing all the currently available languages as a .zip archive. The translations are JSON files.",
-		"p4": "Then, create a copy of any file and replace the existing text with the new translation. Be mindful not to change the first section of each id and text pair.",
-		"becomes": "Becomes",
-		"p5": "Ultimately, send the translated file to"
+	"aboutus": {
+		"title": "About us",
+		"header_og_description": "About Questionary and how it works..."
 	},
 	"hiddenResults": {
 		"title": "You cannot see the results without voting",
@@ -55,14 +49,11 @@
 		"vote_button": "Vote now"
 	},
 	"errors": {
-		"header_og_description": "Something didn't work out right... But with Questionary you can quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
-		"message": "Something did not go quite right...",
-		"line1": "This page fell off the truck 🚚",
-		"line2": "The Matrix crashed 😵",
-		"line3": "Millenium bug 🗓"
+		"header_og_description": "Something didn't work out right... But with Questionary you can quicly and effortlessly share nice looking polls with your friends, then collect all their responses."
 	},
 	"commons": {
 		"header_og_description": "Quicly and effortlessly share nice looking polls with your friends, then collect all their responses.",
-		"footer_createPoll": "Create poll"
+		"footer_createPoll": "Create poll",
+		"footer_about": "About us"
 	}
 }

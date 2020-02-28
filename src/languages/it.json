@@ -5,7 +5,7 @@
 		"settings_button": "Impostazioni",
 		"setting_prevent_duplicates": "Previeni duplicati",
 		"setting_collect_names": "Richiedi nome",
-		"setting_hidden_results": "Nascondi i risultati",
+		"setting_hidden_results": "Evita le sbirciate",
 		"setting_allow_change": "Permetti cambio voto (β)",
 		"choices_title": "Scelte",
 		"answer_textarea": "Opzione",
@@ -25,6 +25,7 @@
 		"collect_names_textarea": "Mario Rossi",
 		"collect_names_explanation": "Il creatore di questo sondaggio chiede di lasciare un nome come parte del proprio voto",
 		"submit_button": "Invia",
+		"modify_button": "Modifica il voto",
 		"submit_button_posting": "Invio...",
 		"share_pdf_export": "Esporta PDF",
 		"message_share_text": "Ciao! 👋 Potresti votare anche tu? ",
@@ -38,15 +39,8 @@
 		"message_share_text": "Ciao! 👋 Potresti votare anche tu? ",
 		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 "
 	},
-	"translate": {
-		"title": "Aiuta a tradurre Questionary",
-		"p1": "Questionary è un piccolo progetto personale di un programmatore web italiano.",
-		"p2": "Il tempo e le risorse per avere il sito tradotto in quante più lingue possibili sono ovviamente limitate. Per questo motivo, la comunità è uno degli elementi più preziosi per uno sviluppatore.",
-		"section_title": "Come posso aiutare?",
-		"p3": "Se hai piacere di aiutare a tradurre, scarica il file sottostante, contenente tutte le lingue al momento disponibili come archivio .zip. Le traduzioni sono file JSON.",
-		"p4": "Quindi, crea una copia di un qualsiasi file e sostituisci il testo con quello tradotto. Fa attenzione a non cambiare la prima parte di ogni coppia id: valore.",
-		"becomes": "Diventa",
-		"p5": "Infine, invia il file tradotto a "
+	"aboutus": {
+		"title": "About us"
 	},
 	"hiddenResults": {
 		"title": "Non potrai vedere i risultati fino a quando non voti",
@@ -54,11 +48,7 @@
 		"vote_button": "Vota ora"
 	},
 	"errors": {
-		"header_og_description": "Qualcosa non ha funzionato... Ma con Questionary puoi condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte.",
-		"message": "Qualcosa non ha molto funzionato...",
-		"line1": "La pagina è caduta dal furgone 🚚",
-		"line2": "Matrix è crashato 😵",
-		"line3": "Millenium bug 🗓"
+		"header_og_description": "Qualcosa non ha funzionato... Ma con Questionary puoi condividere velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogliere tutte le loro risposte."
 	},
 	"commons": {
 		"header_og_description": "Condividi velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogli tutte le loro risposte.",

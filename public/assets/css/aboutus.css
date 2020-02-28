@@ -1,0 +1,59 @@
+/* COLORS */
+/* Dimensions */
+/* */
+/* Footer */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
+body {
+  font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif; }
+
+h1 {
+  font-weight: 500;
+  color: #EE3830;
+  font-size: 42pt;
+  line-height: 48pt;
+  min-height: 57pt; }
+
+h2 {
+  font-weight: 500;
+  color: #00249C;
+  margin-bottom: 0; }
+
+nav {
+  background-color: transparent; }
+  nav.row {
+    position: fixed;
+    width: 100vw;
+    z-index: 1000; }
+  @media (max-width: 1080px) {
+    nav.row {
+      background-color: white; } }
+
+.main-container {
+  background-color: white;
+  margin-bottom: 100vh;
+  padding-bottom: 20vh;
+  box-shadow: inset 0px 33vh 33vh -15px rgba(0, 0, 0, 0.08); }
+  .main-container p {
+    margin-left: 5em;
+    margin-top: .3em; }
+  .main-container > .row:not(nav) {
+    max-width: 750px;
+    margin: 0 auto; }
+  .main-container > .row:nth-child(2) {
+    padding-top: calc(3rem + 85px); }
+
+.create-new {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  z-index: -1;
+  box-shadow: inset 0px 33vh 33vh -15px rgba(0, 0, 0, 0.08);
+  display: flex; }
+  .create-new .row {
+    margin: auto; }
+    .create-new .row .col {
+      text-align: center; }
+  .create-new h2 {
+    margin-right: .25em; }
+  .create-new .btn {
+    font-size: 18pt; }

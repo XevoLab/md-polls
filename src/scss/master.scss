@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: master.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-02-22 19:32:56
+// @Last modified time: 2020-02-28 23:40:58
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -27,21 +27,21 @@ nav {
 		max-width: 85px;
 	}
 
-	& > .row {
+	& > .row, &.row {
 		padding: 2rem;
 	}
 	@media (max-width: 992px) {
-		& > .row {
+		& > .row, &.row {
 			padding: 1.5rem;
 		}
 	}
 	@media (max-width: 768px) {
-		& > .row {
+		& > .row, &.row {
 			padding: 1.5rem 1rem;
 		}
 	}
 	@media (max-width: 576px) {
-		& > .row {
+		& > .row, &.row {
 			padding: 1rem .5rem;
 		}
 	}
@@ -64,7 +64,7 @@ nav {
 			z-index: 1000;
 			background-color: white;
 			.row {
-				padding: .55em 0;
+				padding: .45em 0;
 				.col {
 					text-align: right;
 					padding-right: 0;
@@ -78,9 +78,6 @@ nav {
 		z-index: 1000;
 	}
 }
-
-@import 'index';
-@import 'error-page';
 
 .main-container {
 	min-height: calc(100vh - 89px - 3rem - 6rem);
@@ -134,24 +131,16 @@ footer {
 .btn {
 	background-color: $secondary_color;
 	color: white;
-	padding: .7em 1.4em;
+	padding: .5em 1.3em;
 	font-size: 18pt;
 	border-radius: 4px;
+	font-weight: 500;
 	border: none;
 	outline: none;
 	display: inline-block;
 	text-decoration: none;
 	transition: 100ms all ease-in-out;
 	cursor: pointer;
-
-	&:not(.btn-slim), &.btn-slim.btn-primary, &.btn-slim.btn-secondary {
-		&:hover {
-			box-shadow: 0 0 6px 0px rgba(0, 0, 0, 0.35);
-		}
-		&:active {
-			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.35);
-		}
-	}
 
 	&.disabled {
 		pointer-events: none;

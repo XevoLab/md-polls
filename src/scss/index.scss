@@ -2,8 +2,11 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: index.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-02-22 19:44:56
+// @Last modified time: 2020-02-28 23:36:46
 // @Copyright: (c) 2019
+
+@import '_variables';
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
 
 .main-container {
 
@@ -159,7 +162,7 @@
 	button[type="submit"] {
 		margin-left: 8px;
 		.text .description {
-			font-size: .6em;
+			font-size: 18pt;
 	    position: absolute;
 	    top: 3rem;
 	    color: #888;

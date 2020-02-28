@@ -1,0 +1,130 @@
+/* COLORS */
+/* Dimensions */
+/* */
+/* Footer */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
+.main-container {
+  max-width: calc(760px + 4rem);
+  padding: 0 2rem; }
+  .main-container > .row:not(.choice), .main-container form > .row:not(.choice) {
+    margin-bottom: 3rem; }
+  .main-container .row.h1 {
+    margin-bottom: 1rem;
+    color: #00249C; }
+  .main-container .title, .main-container h1 {
+    font-weight: 500;
+    color: #EE3830;
+    font-size: 56pt;
+    line-height: 48pt;
+    min-height: 57pt;
+    padding: 0 .2rem;
+    margin: 2rem 0 0 18px;
+    max-width: 560px; }
+    .main-container .title::placeholder, .main-container .title:-ms-input-placeholder, .main-container .title::-ms-input-placeholder, .main-container .title::-webkit-input-placeholder, .main-container .title:-moz-placeholder, .main-container h1::placeholder, .main-container h1:-ms-input-placeholder, .main-container h1::-ms-input-placeholder, .main-container h1::-webkit-input-placeholder, .main-container h1:-moz-placeholder {
+      color: #EE3830;
+      opacity: .75; }
+    .main-container .title::placeholder, .main-container h1::placeholder {
+      color: #EE3830;
+      opacity: .75; }
+  .main-container textarea, .main-container input {
+    font-size: 24pt;
+    font-weight: 500;
+    border: 1px solid #ccc;
+    width: 100%;
+    background: transparent;
+    resize: none; }
+    .main-container textarea:focus, .main-container input:focus {
+      outline: none; }
+  .main-container textarea {
+    border: none;
+    width: 100%; }
+  .main-container input {
+    max-width: 320px;
+    padding: .5em .75em;
+    border-radius: 5px;
+    font-size: 1.05rem; }
+  .main-container .description {
+    margin-top: .5em;
+    color: #888;
+    font-size: .95rem; }
+  .main-container .choices .choice:not(:last-of-type) {
+    margin-bottom: 5px; }
+  .main-container .choices .choice .value {
+    font-size: 24pt;
+    display: inline-flex; }
+    .main-container .choices .choice .value input, .main-container .choices .choice .value textarea {
+      width: 100%;
+      overflow: hidden;
+      color: #050505; }
+    .main-container .choices .choice .value:not(label):before {
+      background-color: #00249C;
+      width: 5px;
+      border-radius: 5px;
+      margin-left: 10px;
+      margin-right: 5px;
+      content: '\2800'; }
+  .main-container .choices .choice .remove {
+    color: #888;
+    cursor: pointer; }
+    .main-container .choices .choice .remove:hover {
+      color: #444; }
+  .main-container .choices .choice:first-of-type .remove {
+    display: none; }
+  .main-container table.results {
+    font-size: 24pt; }
+    .main-container table.results tr[index="0"] .value .text {
+      background-color: #EE3830;
+      width: 100% !important; }
+    .main-container table.results tr[index="0"] .votes {
+      color: #EE3830; }
+    .main-container table.results .value {
+      width: 100%; }
+      .main-container table.results .value div.text {
+        min-width: fit-content;
+        min-width: -moz-fit-content;
+        background-color: #00249C;
+        padding: 5px 21px;
+        color: white;
+        border-radius: 5px; }
+    .main-container table.results .votes {
+      text-align: right;
+      color: #00249C;
+      padding: 0 .25em;
+      cursor: pointer; }
+      .main-container table.results .votes .votes-percentage {
+        display: none; }
+    .main-container table.results.percentage .votes-number {
+      display: none; }
+    .main-container table.results.percentage .votes-percentage {
+      display: block; }
+  .main-container .socialShare {
+    margin-left: 21px;
+    margin-right: 21px; }
+  .main-container button[type="submit"] {
+    margin-left: 8px; }
+    .main-container button[type="submit"] .text .description {
+      font-size: 18pt;
+      position: absolute;
+      top: 3rem;
+      color: #888; }
+    .main-container button[type="submit"] .spinner {
+      display: none; }
+    .main-container button[type="submit"].loading .spinner {
+      display: inline-block; }
+    .main-container button[type="submit"].loading .text {
+      display: none; }
+
+.animate-pulse {
+  -moz-animation: pulse .9s infinite linear;
+  -o-animation: pulse .9s infinite linear;
+  -webkit-animation: pulse .9s infinite linear;
+  animation: pulse .9s infinite linear;
+  display: inline-block; }
+
+@keyframes pulse {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }

@@ -1,0 +1,16 @@
+/* COLORS */
+/* Dimensions */
+/* */
+/* Footer */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap");
+body {
+  overflow: hidden; }
+
+.error-page {
+  display: flex;
+  min-height: 100vh; }
+  .error-page div {
+    margin: auto; }
+    .error-page div img {
+      max-width: 400px;
+      width: 85vw; }
