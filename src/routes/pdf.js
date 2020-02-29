@@ -2,7 +2,7 @@
  * @Filename:     pdf.js
  * @Date:         Xevolab <francesco> @ 2019-12-06 11:14:12
  * @Last edit by: francesco
- * @Last edit at: 2019-12-07 19:48:38
+ * @Last edit at: 2020-02-29 10:36:06
  * @Copyright:    (c) 2019
  */
 
@@ -93,11 +93,6 @@ router.get("/:id", async (req, res) => {
 		stream.pipe(res);
 	});
 	return
-
-});
-router.get("/:id/export", async (req, res) => {
-
-	console.log(res.render('pages/pdftemplate', pollData));
 
 });
 

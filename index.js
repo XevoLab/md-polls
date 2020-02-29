@@ -2,7 +2,7 @@
  * @Filename:     index.js
  * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
  * @Last edit by: francesco
- * @Last edit at: 2019-12-23 22:53:15
+ * @Last edit at: 2020-02-23 22:26:33
  * @Copyright:    (c) 2019
  */
 
@@ -77,11 +77,8 @@ app.use(languageSelector);
 		app.use(['/r/', '/result/', '/results/'], require('./src/routes/results.js'));
 
 		// Translate
-		app.use('/translate', (req, res) => {
-			res.render('pages/translate', {language: req.languageData.translate, uri: req.protocol + '://' + req.get('host') + '/'});
-		});
-		app.use('/how-it-works', (req, res) => {
-			res.render('pages/howItWorks', {language: req.languageData.howItWorks, uri: req.protocol + '://' + req.get('host') + '/'});
+		app.use('/about-us', (req, res) => {
+			res.render('pages/aboutus', {language: req.languageData.aboutus, uri: req.protocol + '://' + req.get('host') + '/'});
 		});
 
 	// RESOURCES

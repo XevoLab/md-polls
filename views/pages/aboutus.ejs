@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title><%= language.title %> - Questionary</title>
+
+	<meta property="og:title" content="<%= language.title %> - Questionary" />
+	<meta property="og:description" content="<%= language.header_og_description %>" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="<%= uri %>" />
+
+	<% include ../partials/header %>
+	<link rel="stylesheet" href="/assets/css/aboutus.css">
+</head>
+<body>
+
+	<div class="container-fluid main-container">
+
+		<nav class="row">
+			<div class="col-12">
+				<a href="/"><img src="/assets/img/logo_color.png" alt="Logo"></a>
+			</div>
+		</nav>
+
+		<div class="row mb-3">
+			<div class="col">
+				<h1><%= language.title %></h1>
+			</div>
+		</div>
+
+		<% for (var i=0; i < language.sections.length; i++) { %>
+			<div class="row">
+				<div class="col">
+					<h2><%= language.sections[i].h2 %></h2>
+					<p><%- language.sections[i].p %></p>
+				</div>
+			</div>
+		<% } %>
+
+	</div>
+
+	<div class="container-fluid create-new">
+		<div class="row">
+			<div class="col">
+				<h2 class="d-inline"><%= language.callToAction %></h2> <a href="/" class="btn btn-secondary"><%= language.callToActionButton %></a>
+			</div>
+		</div>
+	</div>
+
+	<% include('../partials/scripts', {lang: language}) %>
+
+</body>
+</html>

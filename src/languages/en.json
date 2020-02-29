@@ -41,7 +41,31 @@
 	},
 	"aboutus": {
 		"title": "About us",
-		"header_og_description": "About Questionary and how it works..."
+		"header_og_description": "About Questionary and how it works...",
+		"sections": [
+			{
+				"h2": "We don't ask you to register",
+				"p": "The service is free and it doesn't require a registration.<br> In this way we do not need to save or handle your personal information."
+			},
+			{
+				"h2": "We don't save your contact information",
+				"p": "We don't need email addresses and phone numbers, you just send a link."
+			},
+			{
+				"h2": "We don't use third-party trackers and traffic analyzers",
+				"p": "In today's world, where personalized ad for everyone became the norm, we go upstream and we decided not to rely on trackers that, consequently, follow you during your daily browsing to understand who you are and your preferences."
+			},
+			{
+				"h2": "Your data is anonymous, seriously",
+				"p": "It's true, we do need to save something; about this, we try to be as clear as possible and we want you to know that your information are anonymized and not directly traceable back to you."
+			},
+			{
+				"h2": "We use cookies only if we need them",
+				"p": "You can check for yourself that we do use cookie technology and we are obligated to let you know the first time you visit our site. Nevertheless, their use is connected only to the technolgies we use to provide our service. If you wish to delete them, you are free to do so, just know that some functionalities might stop working."
+			}
+		],
+		"callToAction": "E ora che ne dici di",
+		"callToActionButton": "Creare un nuovo sondaggio"
 	},
 	"hiddenResults": {
 		"title": "You cannot see the results without voting",

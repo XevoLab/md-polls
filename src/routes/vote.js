@@ -2,7 +2,7 @@
  * @Filename:     vote.js
  * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2020-02-23 00:37:38
+ * @Last edit at: 2020-02-29 11:05:43
  * @Copyright:    (c) 2019
  */
 
@@ -215,8 +215,11 @@ router.post('/:id', (req, res) => {
 					}
 				};
 
-				// If change requested --> Invalidate the previus token and remove vote
+				// If change requested --> Invalidate the previous token and remove vote
 				if (changeAnswer !== null) {
+					if (pollData.metadata.M.editTokens.L[v].M.i.N == req.body.choice)
+						return res.json({result: "error", message: "Nothing has changed"})
+
 					updateParams.UpdateExpression += `,
 						options[${pollData.metadata.M.editTokens.L[v].M.i.N}].votes = options[${pollData.metadata.M.editTokens.L[v].M.i.N}].votes - :incr,
 						metadata.editTokens[${v}].i = :tokenvalue
@@ -251,7 +254,6 @@ router.post('/:id', (req, res) => {
 						:name
 					)`;
 				}
-				console.log(updateParams);
 
 				ddb.updateItem(updateParams, function(err, updateData) {
 					if (err) {

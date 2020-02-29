@@ -2,7 +2,7 @@
  * @Filename:     results_liveUpdate.js
  * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2020-02-23 00:36:25
+ * @Last edit at: 2020-02-29 10:59:55
  * @Copyright:    (c) 2019
  */
 
@@ -12,7 +12,8 @@ var socket = io(window.location.origin+"?pollID="+encodeURIComponent(pollID));
 
 socket.on('vote', function(vdata){
 
-	var numOptions = document.querySelectorAll('table.results tr').length;
+	var options = document.querySelectorAll('table.results tr');
+	var numOptions = options.length;
 
 	// Update number on choice
 	var optionPlusOne = document.querySelector('tr#choice_'+vdata.plus+' .votes .n');
@@ -25,15 +26,23 @@ socket.on('vote', function(vdata){
 
 	// Update bars
 
-		// Total number of votes
+		// Reconstruct votes votes
 	var total = 0;
+	var q = [];
 	for (var i = 0; i < numOptions; i++) {
+		q.push({
+			t: document.querySelector('tr#choice_'+i+' .value .text').innerText,
+			n: parseInt(document.querySelector('tr#choice_'+i+' .votes .n').innerHTML)
+		})
 		total += parseInt(document.querySelector('tr#choice_'+i+' .votes .n').innerHTML);
 	}
+	q.sort(function (a, b) {return b.n - a.n});
 
 	for (var i = 0; i < numOptions; i++) {
-		var rowValue = parseInt(document.querySelector('tr#choice_'+i+' .votes .n').innerHTML);
-		document.querySelector('tr#choice_'+i+' .value .text').style.width = Math.floor(rowValue/total*100)+'%';
+		options[i].setAttribute("index", (q[0].n - q[i].n));
+		options[i].querySelector('.value .text').innerText = q[i].t;
+		options[i].querySelector('.votes .n').innerText = q[i].n;
+		options[i].style.width = Math.floor(q[i].n/total*100)+'%';
 	}
 
 });

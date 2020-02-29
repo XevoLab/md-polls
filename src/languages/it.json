@@ -40,7 +40,32 @@
 		"social_share_text": "Potresti votare a questo sondaggio per me? 🙂📩 "
 	},
 	"aboutus": {
-		"title": "About us"
+		"title": "Riguardo a noi",
+		"header_og_description": "Riguardo a Questionary e a come funziona",
+		"sections": [
+			{
+				"h2": "Non ti chiediamo di registrati",
+				"p": "Il servizio è gratuito e non richiede la registrazione.<br> In questo modo non abbiamo bisogno di salvare e gestire le tue informazioni personali."
+			},
+			{
+				"h2": "Non salviamo le tue informazioni di contatto",
+				"p": "Indirizzi email e numeri di telefono non ci servono, ti basta inviare un link."
+			},
+			{
+				"h2": "Non ci affidiamo a servizi esterni di analisi del traffico",
+				"p": "Nel mondo di oggi, dove le pubblicità personalizzate per ciascuno di noi sono ormai la norma, noi andiamo contro corrente ed abbiamo deciso di non affidarci a servizi di analisi del traffico che, conseguentemente, ti tracciano durante la tua navigazione quotidiana per capire chi sei e i tuoi gusti."
+			},
+			{
+				"h2": "I tuoi dati sono anonimi, sul serio",
+				"p": "&Egrave; vero, qualcosa dovremo pur salvare; riguardo a questo, però, cerchiamo di essere il più trasparenti possibili e ci teniamo ad informarti che le informazioni sono anonime e non riconducibili direttamente a te."
+			},
+			{
+				"h2": "Usiamo i cookie solo se servono",
+				"p": "Puoi vedere tu stesso che utilizziamo i cookie come tecnologia e siamo obbligati ad informarti di ciò quando visiti il nostro sito per la prima volta. Tuttavia, il loro uso e strettamente legato alle sole tecnologie che utilizziamo per fornirti il servizio. Se volessi cancellarli, sei libero di farlo in ogni momento, sappi che alcune funzionalità potrebbero smettere di funzionare."
+			}
+		],
+		"callToAction": "E ora che ne dici di",
+		"callToActionButton": "Creare un nuovo sondaggio"
 	},
 	"hiddenResults": {
 		"title": "Non potrai vedere i risultati fino a quando non voti",
