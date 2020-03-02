@@ -50,7 +50,7 @@
 				</div>
 			</div>
 
-			<% if ((pollData.metadata.M.preventDoubles.BOOL && !alreadyVoted) || allowChange) { %>
+			<% if (!pollData.metadata.M.preventDoubles.BOOL || (pollData.metadata.M.preventDoubles.BOOL && !alreadyVoted) || allowChange) { %>
 				<div class="row">
 					<div class="col">
 						<button type="submit" class="btn disabled">
