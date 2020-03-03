@@ -73,19 +73,42 @@
   .main-container table.results {
     font-size: 24pt; }
     .main-container table.results tr[index="0"] .value .text {
-      background-color: #EE3830;
       width: 100% !important; }
     .main-container table.results tr[index="0"] .votes {
       color: #EE3830; }
     .main-container table.results .value {
-      width: 100%; }
-      .main-container table.results .value div.text {
-        min-width: fit-content;
-        min-width: -moz-fit-content;
-        background-color: #00249C;
+      width: 100%;
+      border-radius: 9px;
+      overflow: hidden; }
+      .main-container table.results .value div.text, .main-container table.results .value div.bg {
         padding: 5px 21px;
-        color: white;
-        border-radius: 5px; }
+        color: white; }
+    .main-container table.results[type="histogram"] .value div.text {
+      background-color: #00249C;
+      padding: 5px 21px;
+      min-width: fit-content;
+      min-width: -moz-fit-content;
+      border-radius: 5px; }
+    .main-container table.results[type="histogram"] .value div.bg {
+      display: none; }
+    .main-container table.results[type="histogram"] tr[index="0"] .value .text {
+      background-color: #EE3830; }
+    .main-container table.results[type="test"] .value {
+      position: relative; }
+      .main-container table.results[type="test"] .value div.text {
+        background-color: #EE3830;
+        position: absolute;
+        padding: 5px 0;
+        overflow: hidden; }
+        .main-container table.results[type="test"] .value div.text span {
+          padding: 0 21px;
+          clear: both;
+          display: inline-block;
+          white-space: nowrap; }
+      .main-container table.results[type="test"] .value div.bg {
+        background-color: #00249C;
+        border-radius: 5px;
+        width: 100%; }
     .main-container table.results .votes {
       text-align: right;
       color: #00249C;

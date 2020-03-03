@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: index.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-02-28 23:36:46
+// @Last modified time: 2020-03-03 13:04:44
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -115,7 +115,6 @@
 
 		tr[index="0"] {
 			.value .text {
-				background-color: $secondary_color;
 				width: 100% !important;
 			}
 			.votes {
@@ -125,15 +124,55 @@
 
 		.value {
 			width: 100%;
-			div.text {
-				min-width: fit-content;
-				min-width: -moz-fit-content;
-				background-color: $primary_color;
+			border-radius: 9px;
+			overflow: hidden;
+			div.text, div.bg {
 				padding: 5px $choices_padding;
 				color: white;
-				border-radius: 5px;
 			}
 		}
+		&[type="histogram"] {
+			.value {
+				div.text {
+					background-color: $primary_color;
+					padding: 5px $choices_padding;
+					min-width: fit-content;
+					min-width: -moz-fit-content;
+					border-radius: 5px;
+				}
+				div.bg {
+					display: none;
+				}
+			}
+			tr[index="0"] {
+				.value .text {
+					background-color: $secondary_color;
+				}
+			}
+		}
+		&[type="test"] {
+			.value {
+				position: relative;
+				div.text {
+					background-color: $secondary_color;
+					position: absolute;
+					padding: 5px 0;
+					overflow: hidden;
+					span {
+						padding: 0 $choices_padding;
+						clear: both;
+				    display: inline-block;
+				    white-space: nowrap;
+					}
+				}
+				div.bg {
+					background-color: $primary_color;
+					border-radius: 5px;
+					width: 100%;
+				}
+			}
+		}
+
 		.votes {
 			text-align: right;
 			color: $primary_color;

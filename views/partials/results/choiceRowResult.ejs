@@ -1,10 +1,10 @@
-<tr id="choice_<%= r.id.N %>" index="<%= (maxVotes == 0 ? -1 : maxVotes-r.votes.N) %>">
+<tr id="choice_<%= r.id.N %>" choiceI="<%= r.id.N %>" index="<%= (maxVotes == 0 ? -1 : maxVotes-r.votes.N) %>">
 	<td class="value">
-		<div class="text" style="width: <%= (total != 0 ? Math.floor(r.votes.N/total*100) : 0) %>%;">
-			<%= r.value.S %>
+		<div class="text" style="width: <%= (total != 0 ? Math.floor((r.votes.N/total)/(maxVotes/total)*100) : 0) %>%;">
+			<span><%= r.value.S %></span>
 		</div>
 
-		<!--<div class="bg" ><%= r.value.S %></div>-->
+		<div class="bg" ><%= r.value.S %></div>
 	</td>
 	<td class="votes" onclick="swapNumberPerc()" title="<%= language.swap_number_percentage %>">
 		<span class="votes-number">

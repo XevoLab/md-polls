@@ -2,7 +2,7 @@
 // @Date:   2020-02-28 21:40:41
 // @Filename: aboutus.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-02-28 23:26:25
+// @Last modified time: 2020-03-03 15:31:56
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -43,8 +43,6 @@ nav {
   margin-bottom:  100vh;
   padding-bottom: 20vh;
 
-  box-shadow: inset 0px 33vh 33vh -15px rgba(0, 0, 0, 0.08);
-
   p {
     margin-left: 5em;
     margin-top: .3em;
@@ -63,8 +61,7 @@ nav {
   top: 0;
   height: 100vh;
   z-index: -1;
-
-  box-shadow: inset 0px 33vh 33vh -15px rgba(0, 0, 0, 0.08);
+	background-color: #ededed;
 
   display: flex;
   .row {

@@ -2,7 +2,7 @@
  * @Filename:     results_liveUpdate.js
  * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2020-03-02 21:10:32
+ * @Last edit at: 2020-03-03 12:45:43
  * @Copyright:    (c) 2019
  */
 
@@ -16,11 +16,11 @@ socket.on('vote', function(vdata){
 	var numOptions = options.length;
 
 	// Update number on choice
-	var optionPlusOne = document.querySelector('tr#choice_'+vdata.plus+' .votes .n');
+	var optionPlusOne = document.querySelector('tr[choiceI="'+vdata.plus+'"] .votes .n');
 	optionPlusOne.innerHTML = parseInt(optionPlusOne.innerHTML) + 1;
 
 	if (vdata.minus !== null) {
-		var optionMinusOne = document.querySelector('tr#choice_'+vdata.minus+' .votes .n');
+		var optionMinusOne = document.querySelector('tr[choiceI='+vdata.minus+'] .votes .n');
 		optionMinusOne.innerHTML = parseInt(optionMinusOne.innerHTML) - 1;
 	}
 
@@ -31,18 +31,19 @@ socket.on('vote', function(vdata){
 	var q = [];
 	for (var i = 0; i < numOptions; i++) {
 		q.push({
-			t: document.querySelector('tr#choice_'+i+' .value .text').innerText,
-			n: parseInt(document.querySelector('tr#choice_'+i+' .votes .n').innerHTML)
+			t: document.querySelector('tr[choiceI="'+i+'"] .value .text').innerText,
+			n: parseInt(document.querySelector('tr[choiceI="'+i+'"] .votes .n').innerHTML)
 		})
-		total += parseInt(document.querySelector('tr#choice_'+i+' .votes .n').innerHTML);
+		total += parseInt(document.querySelector('tr[choiceI="'+i+'"] .votes .n').innerHTML);
 	}
 	q.sort(function (a, b) {return b.n - a.n});
 
+	console.log(q);
 	for (var i = 0; i < numOptions; i++) {
 		options[i].setAttribute("index", (q[0].n - q[i].n));
 		options[i].querySelector('.value .text').innerText = q[i].t;
 		options[i].querySelector('.votes .n').innerText = q[i].n;
-		options[i].style.width = Math.floor(q[i].n/total*100)+'%';
+		options[i].querySelector('.value .text').style.width = Math.floor((q[i].n/total)/(q[0].n/total)*100)+'%';
 	}
 
 });
