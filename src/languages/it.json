@@ -77,6 +77,7 @@
 	},
 	"commons": {
 		"header_og_description": "Condividi velocemente e senza sforzi sondaggi con i tuoi amici, quindi raccogli tutte le loro risposte.",
-		"footer_createPoll": "Crea nuovo"
+		"footer_createPoll": "Crea nuovo",
+		"footer_about": "Riguardo a noi"
 	}
 }

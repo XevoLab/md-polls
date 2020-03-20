@@ -16,8 +16,8 @@
   "author": "XevoLab",
   "license": "MIT",
   "dependencies": {
-    "aws-sdk": "^2.584.0",
-    "cookie-parser": "^1.4.4",
+    "aws-sdk": "^2.641.0",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "ejs": "^2.7.4",
     "express": "^4.17.1",
@@ -26,7 +26,7 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "node-sass": "^4.13.0",
-    "nodemon": "^1.19.4"
+    "node-sass": "^4.13.1",
+    "nodemon": "^2.0.2"
   }
 }

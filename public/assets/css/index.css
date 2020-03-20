@@ -78,7 +78,7 @@
       color: #EE3830; }
     .main-container table.results .value {
       width: 100%;
-      border-radius: 9px;
+      border-radius: 8px;
       overflow: hidden; }
       .main-container table.results .value div.text, .main-container table.results .value div.bg {
         padding: 5px 21px;

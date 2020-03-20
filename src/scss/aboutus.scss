@@ -2,11 +2,13 @@
 // @Date:   2020-02-28 21:40:41
 // @Filename: aboutus.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-03-03 15:31:56
+// @Last modified time: 2020-03-20 15:47:01
 // @Copyright: (c) 2019
 
 @import '_variables';
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500&display=swap');
+
+$switchWidth: 1000px;
 
 body {
 	font-family: 'Roboto', 'Arial', 'Helvetica', sans-serif;
@@ -25,21 +27,15 @@ h2 {
 }
 
 nav {
-  background-color: transparent;
-
-  &.row {
-    position: fixed;
-    width: 100vw;
-    z-index: 1000;
-  }
-	@media (max-width: 1080px) {
-		&.row {
-			background-color: white;
-		}
-	}
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	z-index: 1000;
 }
 .main-container {
   background-color: white;
+	padding-top: calc(40px + 1.7rem);
   margin-bottom:  100vh;
   padding-bottom: 20vh;
 
@@ -52,28 +48,47 @@ nav {
     max-width: 750px;
     margin: 0 auto;
   }
-  & >.row:nth-child(2) {
-    padding-top: calc(3rem + 85px);
-  }
 }
 .create-new {
   position: fixed;
   top: 0;
+	left: 0;
   height: 100vh;
+	width: 100vw;
   z-index: -1;
-	background-color: #ededed;
+	background-color: #fafafa;
 
   display: flex;
-  .row {
+  div {
     margin: auto;
-    .col {
-      text-align: center;
-    }
+    text-align: center;
   }
   h2 {
     margin-right: .25em;
   }
   .btn {
-    font-size: 18pt;
+    font-size: 16pt;
   }
+}
+
+@media (max-width: $switchWidth) {
+	nav {
+		background-color: rgba(#fff, 0.95);
+		padding: .35rem 1rem!important;
+		img {
+			max-height: 70px;
+		}
+	}
+	.main-container {
+		margin-bottom: 0;
+		padding-bottom: 3em;
+		p {
+			margin-left: 30px;
+		}
+	}
+	.create-new {
+		height: auto;
+		padding: 5em 0;
+		position: relative;
+	}
 }

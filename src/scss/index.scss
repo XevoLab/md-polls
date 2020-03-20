@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: index.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-03-03 13:04:44
+// @Last modified time: 2020-03-04 22:03:48
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -124,7 +124,7 @@
 
 		.value {
 			width: 100%;
-			border-radius: 9px;
+			border-radius: 8px;
 			overflow: hidden;
 			div.text, div.bg {
 				padding: 5px $choices_padding;

@@ -2,7 +2,7 @@
  * @Filename:     results_liveUpdate.js
  * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2020-03-03 12:45:43
+ * @Last edit at: 2020-03-04 22:33:28
  * @Copyright:    (c) 2019
  */
 
@@ -38,7 +38,6 @@ socket.on('vote', function(vdata){
 	}
 	q.sort(function (a, b) {return b.n - a.n});
 
-	console.log(q);
 	for (var i = 0; i < numOptions; i++) {
 		options[i].setAttribute("index", (q[0].n - q[i].n));
 		options[i].querySelector('.value .text').innerText = q[i].t;
