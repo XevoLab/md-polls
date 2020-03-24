@@ -2,7 +2,7 @@
  * @Filename:     results.js
  * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2020-02-22 23:52:12
+ * @Last edit at: 2020-03-22 21:24:17
  * @Copyright:    (c) 2019
  */
 
@@ -59,7 +59,6 @@ router.get('/:id', (req, res) => {
 
 				pollData.options.L = pollData.options.L.sort(compare);
 
-				var totalVotes = pollData.options.L.reduce((ac, cv) => ac + parseInt(cv.M.votes.N), 0);
 				var userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
 				var alreadyVoted = false;
@@ -86,11 +85,9 @@ router.get('/:id', (req, res) => {
 				var pageData = {
 					id: req.params.id,
 					title: pollData.title.S,
-					total: totalVotes,
 					options: pollData.options.L,
 					uri: req.protocol + '://' + req.get('host') + '/r/' + req.params.id,
 					alreadyVoted: alreadyVoted,
-					collectNames: pollData.metadata.M.collectNames.BOOL,
 					language: req.languageData.results
 				};
 

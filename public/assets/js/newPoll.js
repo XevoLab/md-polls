@@ -2,7 +2,7 @@
  * @Filename:     newPoll.ejs
  * @Date:         Francesco Cescon <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2019-12-03 16:13:30
+ * @Last edit at: 2020-03-22 21:35:16
  * @Copyright:    (c) 2019
  */
 
@@ -35,18 +35,13 @@ function removeChoice(o) {
 
 	itemToRemove.parentElement.removeChild(itemToRemove);
 }
-function disableMaxAnswers(o) {
-	if (o.value == 0) {
-		o.value = "";
-	}
-}
 
 //clickedToggle
 
 var form = document.querySelector('form');
-
-form.addEventListener('submit', function (e) {
-	e.preventDefault();
+function handleForm(e) {
+	if (e != null)
+		e.preventDefault();
 
 	var choices = document.querySelectorAll(".choices .choice");
 	var validChoicesLength = 0;
@@ -126,12 +121,13 @@ form.addEventListener('submit', function (e) {
 
 	xhr.send(JSON.stringify(pollData));
 
-}, false);
+}
+form.addEventListener('submit', handleForm, false);
 
 document.onkeydown = function () {
 	var evtobj = window.event? event : e
 	if (evtobj.keyCode == 13 && (event.metaKey || event.ctrlKey)) {
 		console.log("enter");
-		form.submit();
+		handleForm();
 	}
 };

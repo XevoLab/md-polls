@@ -72,9 +72,9 @@
     display: none; }
   .main-container table.results {
     font-size: 24pt; }
-    .main-container table.results tr[index="0"] .value .text {
+    .main-container table.results tr[delta="0"] .value .text {
       width: 100% !important; }
-    .main-container table.results tr[index="0"] .votes {
+    .main-container table.results tr[delta="0"] .votes {
       color: #EE3830; }
     .main-container table.results .value {
       width: 100%;
@@ -93,19 +93,19 @@
       display: none; }
     .main-container table.results[type="histogram"] tr[index="0"] .value .text {
       background-color: #EE3830; }
-    .main-container table.results[type="test"] .value {
+    .main-container table.results[type="bars"] .value {
       position: relative; }
-      .main-container table.results[type="test"] .value div.text {
+      .main-container table.results[type="bars"] .value div.text {
         background-color: #EE3830;
         position: absolute;
         padding: 5px 0;
         overflow: hidden; }
-        .main-container table.results[type="test"] .value div.text span {
+        .main-container table.results[type="bars"] .value div.text span {
           padding: 0 21px;
           clear: both;
           display: inline-block;
           white-space: nowrap; }
-      .main-container table.results[type="test"] .value div.bg {
+      .main-container table.results[type="bars"] .value div.bg {
         background-color: #00249C;
         border-radius: 5px;
         width: 100%; }

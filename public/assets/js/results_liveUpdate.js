@@ -2,47 +2,67 @@
  * @Filename:     results_liveUpdate.js
  * @Date:         Xevolab <francesco> @ 2019-11-27 15:25:44
  * @Last edit by: francesco
- * @Last edit at: 2020-03-04 22:33:28
+ * @Last edit at: 2020-03-22 21:29:17
  * @Copyright:    (c) 2019
  */
 
 var pollID = document.querySelector("body").attributes["id"].value;
 
+// Show result bars
+function makeBars() {
+	var pollData = JSON.parse(document.querySelector("data").innerText);
+
+	var total = 0, maxVotes = 0;
+	for (var i = 0; i < pollData.length; i++) {
+		total += parseInt(pollData[i].M.votes.N);
+		if (parseInt(pollData[i].M.votes.N) > maxVotes)
+			maxVotes = parseInt(pollData[i].M.votes.N);
+	}
+
+	var barsTable = document.querySelector("table.results");
+	barsTable.innerHTML = "";
+
+	for (var i = 0; i < pollData.length; i++) {
+		var r = pollData[i].M;
+		var rowHtml = `
+		<tr id="choice_${ r.id.N }" choiceI="${ r.id.N }" delta="${(maxVotes == 0 ? -1 : maxVotes-r.votes.N)}">
+			<td class="value">
+				<div class="text" style="width: ${ (total != 0 ? Math.floor((r.votes.N/total)/(maxVotes/total)*100) : 0) }%;">
+					<span>${ r.value.S }</span>
+				</div>
+
+				<div class="bg" >${ r.value.S }</div>
+			</td>
+			<td class="votes" onclick="swapNumberPerc()" title="${ language.swap_number_percentage }">
+				<span class="votes-number">
+					<span class="n">${ r.votes.N }</span>
+						${ (r.metadata.M.limitAnswers.N != 0) ? " / "+r.metadata.M.limitAnswers.N : "" }
+				</span>
+				<span class="votes-percentage">
+					${ (total != 0 ? Math.floor(r.votes.N/total*100) : 0) }%
+				</span>
+			</td>
+		</tr>`;
+		barsTable.innerHTML = barsTable.innerHTML + rowHtml;
+	}
+}
+
+makeBars();
+
+// Socket.io & live updates
+
 var socket = io(window.location.origin+"?pollID="+encodeURIComponent(pollID));
 
 socket.on('vote', function(vdata){
 
-	var options = document.querySelectorAll('table.results tr');
-	var numOptions = options.length;
+	var pollData = JSON.parse(document.querySelector("data").innerText);
 
-	// Update number on choice
-	var optionPlusOne = document.querySelector('tr[choiceI="'+vdata.plus+'"] .votes .n');
-	optionPlusOne.innerHTML = parseInt(optionPlusOne.innerHTML) + 1;
-
-	if (vdata.minus !== null) {
-		var optionMinusOne = document.querySelector('tr[choiceI='+vdata.minus+'] .votes .n');
-		optionMinusOne.innerHTML = parseInt(optionMinusOne.innerHTML) - 1;
+	for (var i = 0; i < pollData.length; i++) {
+		if (pollData[i].M.id.N == vdata.plus || pollData[i].M.id.N == vdata.minus)
+			pollData[i].M.votes.N = parseInt(pollData[i].M.votes.N) + (pollData[i].M.id.N == vdata.plus ? +1 : -1);
 	}
-
-	// Update bars
-
-		// Reconstruct votes votes
-	var total = 0;
-	var q = [];
-	for (var i = 0; i < numOptions; i++) {
-		q.push({
-			t: document.querySelector('tr[choiceI="'+i+'"] .value .text').innerText,
-			n: parseInt(document.querySelector('tr[choiceI="'+i+'"] .votes .n').innerHTML)
-		})
-		total += parseInt(document.querySelector('tr[choiceI="'+i+'"] .votes .n').innerHTML);
-	}
-	q.sort(function (a, b) {return b.n - a.n});
-
-	for (var i = 0; i < numOptions; i++) {
-		options[i].setAttribute("index", (q[0].n - q[i].n));
-		options[i].querySelector('.value .text').innerText = q[i].t;
-		options[i].querySelector('.votes .n').innerText = q[i].n;
-		options[i].querySelector('.value .text').style.width = Math.floor((q[i].n/total)/(q[0].n/total)*100)+'%';
-	}
+	pollData.sort(function (a, b) {return b.M.votes.N - a.M.votes.N});
+	document.querySelector("data").innerText = JSON.stringify(pollData)
+	makeBars();
 
 });

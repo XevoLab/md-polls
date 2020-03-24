@@ -23,7 +23,8 @@ nav {
   top: 0;
   left: 0;
   width: 100vw;
-  z-index: 1000; }
+  z-index: 1000;
+  padding-left: calc(2rem + 15px) !important; }
 
 .main-container {
   background-color: white;
