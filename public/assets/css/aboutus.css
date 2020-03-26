@@ -62,11 +62,12 @@ nav {
     nav img {
       max-height: 70px; }
   .main-container {
-    margin-bottom: 0;
+    margin-bottom: 15em;
     padding-bottom: 3em; }
     .main-container p {
       margin-left: 30px; }
   .create-new {
-    height: auto;
+    height: 15em;
     padding: 5em 0;
-    position: relative; } }
+    top: auto;
+    bottom: 0; } }

@@ -91,7 +91,7 @@
       border-radius: 5px; }
     .main-container table.results[type="histogram"] .value div.bg {
       display: none; }
-    .main-container table.results[type="histogram"] tr[index="0"] .value .text {
+    .main-container table.results[type="histogram"] tr[delta="0"] .value .text {
       background-color: #EE3830; }
     .main-container table.results[type="bars"] .value {
       position: relative; }

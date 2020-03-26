@@ -2,7 +2,7 @@
 // @Date:   2020-02-28 21:40:41
 // @Filename: aboutus.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-03-22 18:40:23
+// @Last modified time: 2020-03-24 20:37:33
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -81,15 +81,16 @@ nav {
 		}
 	}
 	.main-container {
-		margin-bottom: 0;
+		margin-bottom: 15em;
 		padding-bottom: 3em;
 		p {
 			margin-left: 30px;
 		}
 	}
 	.create-new {
-		height: auto;
+		height: 15em;
 		padding: 5em 0;
-		position: relative;
+		top: auto;
+		bottom: 0;
 	}
 }

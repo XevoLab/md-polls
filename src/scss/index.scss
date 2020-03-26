@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: index.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-03-22 21:02:33
+// @Last modified time: 2020-03-24 20:40:18
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -144,7 +144,7 @@
 					display: none;
 				}
 			}
-			tr[index="0"] {
+			tr[delta="0"] {
 				.value .text {
 					background-color: $secondary_color;
 				}
