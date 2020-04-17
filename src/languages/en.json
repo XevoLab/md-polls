@@ -6,7 +6,7 @@
 		"setting_prevent_duplicates": "Prevent duplicates",
 		"setting_collect_names": "Collect names",
 		"setting_hidden_results": "Prevent results peeking",
-		"setting_allow_change": "Allow vote change (β)",
+		"setting_allow_change": "Allow vote change",
 		"choices_title": "Choices",
 		"answer_textarea": "Choice",
 		"answer_remove": "Remove",
@@ -64,8 +64,8 @@
 				"p": "You can check for yourself that we do use cookie technology and we are obligated to let you know the first time you visit our site. Nevertheless, their use is connected only to the technolgies we use to provide our service. If you wish to delete them, you are free to do so, just know that some functionalities might stop working."
 			}
 		],
-		"callToAction": "E ora che ne dici di",
-		"callToActionButton": "Creare un nuovo sondaggio"
+		"callToAction": "About about",
+		"callToActionButton": "Creating a new poll"
 	},
 	"hiddenResults": {
 		"title": "You cannot see the results without voting",

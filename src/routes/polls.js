@@ -34,11 +34,6 @@ router.get('/:id', (req, res) => {
 			console.error("DynamoDB error results.js : ", err);
 		  res.json({result: "error", message:"Somthing didn\'t work out quite right"});
 		} else {
-			var resultSet = []
-			data.Items.forEach(function(element, index, array) {
-				resultSet.push(element);
-			});
-
 			if (data.Items.length === 0) {
 				res.json({result: "empty"});
 			}
@@ -49,6 +44,8 @@ router.get('/:id', (req, res) => {
 	});
 
 });
+
+router.use(require("./mid/collectInfo.js"))
 
 router.post('/', (req, res) => {
 
@@ -62,9 +59,8 @@ router.post('/', (req, res) => {
 	// Item to be added into dynamoDB
 	var itemData = {
 		'ID': {S: pollID},
-		'apiV': {N: '1'},
+		'apiV': {N: '2'},
 		'created': {N: String(Date.now())},
-		'ownerIP': {S: req.headers['x-forwarded-for'] || req.connection.remoteAddress},
 		'title': {S: d.title || pollID},
 		'metadata': {M: {
 			preventDoubles: {BOOL: (d.metadata.preventDoubles || false)},
@@ -72,7 +68,13 @@ router.post('/', (req, res) => {
 			hiddenResults: {BOOL: (d.metadata.hiddenResults || false)},
 			allowChange: {BOOL: (d.metadata.allowChange || false)},
 			graphType: {S: 'bars'},//(d.metadata.graphType || 'bars')},
-			answeredByIP: {L: []}
+			owner: {
+				M: {
+					IP: {S: req.payload.userIP},
+					token: {S: req.payload.userToken.v}
+				}
+			},
+			answeredBy: {L: []}
 		}},
 		'options': null,
 	}
@@ -90,9 +92,10 @@ router.post('/', (req, res) => {
 		return false;
 	}
 
-	// Save the optional tokens to change the answer
+	// Save the optional tokens to change the answer + disable collectNames
 	if (d.metadata.allowChange) {
 		itemData.metadata.M.editTokens = {L: []};
+		itemData.medata.M.collectNames.BOOL = false;
 	}
 
 	// Adding the options

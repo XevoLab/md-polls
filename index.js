@@ -68,18 +68,20 @@ app.use(languageSelector);
 		// set the view engine to ejs
 		app.set('view engine', 'ejs');
 
+		app.use(require('cookie-parser')());
+
 		// Index
 		app.get(['/', '/index.html', 'index.php'], (req, res) => {
-			res.render('pages/index', {language: req.languageData.index, uri: req.protocol + '://' + req.get('host') + '/'});
+			res.render('pages/index', {language: req.languageData.index, showRecents: (req.cookies.showRecents === "yes"), uri: req.protocol + '://' + req.get('host') + '/'});
+		});
+
+		// About Us
+		app.use('/about-us', (req, res) => {
+			res.render('pages/aboutus', {language: req.languageData.aboutus, uri: req.protocol + '://' + req.get('host') + '/'});
 		});
 
 		// Results
 		app.use(['/r/', '/result/', '/results/'], require('./src/routes/results.js'));
-
-		// Translate
-		app.use('/about-us', (req, res) => {
-			res.render('pages/aboutus', {language: req.languageData.aboutus, uri: req.protocol + '://' + req.get('host') + '/'});
-		});
 
 	// RESOURCES
 
@@ -99,7 +101,9 @@ app.use(languageSelector);
 	app.use('/pdf/', require('./src/routes/pdf.js'));
 
 	app.use(express.json());
-	app.use('/polls', require('./src/routes/polls.js'))
+	app.use(['/p', '/polls'], require('./src/routes/polls.js'));
+
+	app.use(['/rec', '/recents'], require('./src/routes/recents.js'));
 
 // HYBRID
 

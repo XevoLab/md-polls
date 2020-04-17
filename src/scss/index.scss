@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: index.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-03-24 20:40:18
+// @Last modified time: 2020-04-17T21:45:54+02:00
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -215,6 +215,50 @@
 			}
 			.text {
 				display: none;
+			}
+		}
+	}
+
+	.recents .col {
+		overflow-x: auto;
+		white-space: nowrap;
+		.rec-item {
+			display: inline-flex;
+			border: 2px solid #999;
+			background-color: #fafafa;
+			border-radius: 5px;
+			margin-bottom: .5em;
+
+			&:not(:last-child) {
+				margin-right: .5em;
+			}
+
+			a {
+				text-decoration: none;
+			}
+			.rec-content {
+				display: block;
+				padding: .75em 1em;
+			}
+			.tit {
+				color: $secondary_color;
+				font-weight: 500;
+				margin-bottom: .2em;
+				max-width: 15em;
+				overflow-x: hidden;
+				text-overflow: ellipsis;
+			}
+			.data {
+				font-size: .8em;
+				color: #555;
+			}
+		}
+	}
+	@media (max-width: 576px) {
+		.recents {
+			.rec-item {
+				display: flex;
+				margin-right: 0!important;
 			}
 		}
 	}

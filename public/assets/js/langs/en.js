@@ -1,4 +1,13 @@
+/**
+ * @Author: francesco
+ * @Date:   2020-04-17T21:22:52+02:00
+ * @Last modified by:   francesco
+ * @Last modified time: 2020-04-17T21:23:26+02:00
+ */
+
+
 var language = {
+	"recommendations_votes": "Votes",
 	"toast_not_enough_answers": "There are not enough valid answers 😲, you need at least one.",
 	"toast_too_many_answers": "Whoa, way to many answers 😵. The maximum is 25.",
 	"toast_success_poll": "You poll was posted and is now ready 🤩",

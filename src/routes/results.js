@@ -15,6 +15,8 @@ const router = express.Router();
 var path = require('path');
 require('dotenv').config();
 
+router.use(require("./mid/collectInfo.js"))
+
 const aws = require('aws-sdk');
 var ddb = new aws.DynamoDB({apiVersion: '2012-08-10', region: process.env.AWS_REGION});
 
@@ -59,12 +61,10 @@ router.get('/:id', (req, res) => {
 
 				pollData.options.L = pollData.options.L.sort(compare);
 
-				var userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
 				var alreadyVoted = false;
 				// Check if the IP is present
-				for (var v in pollData.metadata.M.answeredByIP.L) {
-					if (pollData.metadata.M.answeredByIP.L[v].S === userIP) {
+				for (var v in pollData.metadata.M.answeredBy.L) {
+					if (pollData.metadata.M.answeredBy.L[v].M.token.S === req.payload.userToken.v || pollData.metadata.M.answeredBy.L[v].M.IP.S === req.payload.userIP) {
 						alreadyVoted = true;
 						break;
 					}

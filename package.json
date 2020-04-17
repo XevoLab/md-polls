@@ -1,11 +1,11 @@
 {
-  "name": "md-polls",
+  "name": "questionary",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/XevoLab/md-polls.git"
+    "url": "https://github.com/XevoLab/questionary.git"
   },
   "scripts": {
     "start": "node index",

@@ -1,10 +1,10 @@
 /**
- * @Filename:     pdf.js
- * @Date:         Xevolab <francesco> @ 2019-12-06 11:14:12
- * @Last edit by: francesco
- * @Last edit at: 2020-03-03 13:16:11
- * @Copyright:    (c) 2019
+ * @Author: francesco
+ * @Date:   2020-04-16T22:09:05+02:00
+ * @Last modified by:   francesco
+ * @Last modified time: 2020-04-16T22:19:59+02:00
  */
+
 
 
 const express = require('express');
@@ -57,12 +57,11 @@ router.get("/:id", async (req, res) => {
 		pollData.options.L = pollData.options.L.sort(compare);
 
 		var totalVotes = pollData.options.L.reduce((ac, cv) => ac + parseInt(cv.M.votes.N), 0);
-		var userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
 		var alreadyVoted = false;
 		// Check if the IP is present
-		for (var v in pollData.metadata.M.answeredByIP.L) {
-			if (pollData.metadata.M.answeredByIP.L[v].S === userIP) {
+		for (var v in pollData.metadata.M.answeredBy.L) {
+			if (pollData.metadata.M.answeredBy.L[v].M.token.S === req.payload.userToken.v || pollData.metadata.M.answeredBy.L[v].M.IP.S === req.payload.userIP) {
 				alreadyVoted = true;
 				break;
 			}

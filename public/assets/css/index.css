@@ -136,6 +136,36 @@
       display: inline-block; }
     .main-container button[type="submit"].loading .text {
       display: none; }
+  .main-container .recents .col {
+    overflow-x: auto;
+    white-space: nowrap; }
+    .main-container .recents .col .rec-item {
+      display: inline-flex;
+      border: 2px solid #999;
+      background-color: #fafafa;
+      border-radius: 5px;
+      margin-bottom: .5em; }
+      .main-container .recents .col .rec-item:not(:last-child) {
+        margin-right: .5em; }
+      .main-container .recents .col .rec-item a {
+        text-decoration: none; }
+      .main-container .recents .col .rec-item .rec-content {
+        display: block;
+        padding: .75em 1em; }
+      .main-container .recents .col .rec-item .tit {
+        color: #EE3830;
+        font-weight: 500;
+        margin-bottom: .2em;
+        max-width: 15em;
+        overflow-x: hidden;
+        text-overflow: ellipsis; }
+      .main-container .recents .col .rec-item .data {
+        font-size: .8em;
+        color: #555; }
+  @media (max-width: 576px) {
+    .main-container .recents .rec-item {
+      display: flex;
+      margin-right: 0 !important; } }
 
 .animate-pulse {
   -moz-animation: pulse .9s infinite linear;
