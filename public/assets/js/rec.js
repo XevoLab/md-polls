@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-17T21:37:05+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-04-17T22:46:46+02:00
+ * @Last modified time: 2020-04-17T23:15:31+02:00
  */
 
 
@@ -18,18 +18,20 @@ xhr.onload = function () {
 
 	if (xhr.readyState == 4 && xhr.status == 200 && res.length > 0) {
 		for (var i = 0; i < res.length; i++) {
+			var d = new Date(0);
+			d.setUTCMilliseconds(res[i].created);
 			var recHTML = `
-				<a href="#test">
+				<a href="/r/${res[i].id}">
 					<div class="rec-content">
 						<div class="tit">${res[i].title}</div>
-						<div class="data">17/04/2020 14:05 - ${res[i].votesCount} ${language.recommendations_votes}</div>
+						<div class="data">${d.getDate()} ${language.recents_months[d.getMonth()]} ${d.getFullYear()} - ${res[i].votesCount} ${language.recents_votes}</div>
 					</div>
 				</a>
 			`;
 
 			var recElement = document.createElement('div');
 			recElement.innerHTML = recHTML;
-			recElement.classList.add("rec-item")
+			recElement.classList.add("rec-item");
 
 			var recContainer = document.querySelector('.recents .col');
 			recContainer.appendChild(recElement);

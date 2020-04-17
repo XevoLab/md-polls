@@ -9,7 +9,7 @@
 var cookies = document.cookie.split(';');
 var showPopUp = true;
 for (var v in cookies) {
-	if (cookies[v] == "cookie_conset=yes") {
+	if (cookies[v].trim() == "cookie_conset=yes") {
 		showPopUp = false;
 		break;
 	}

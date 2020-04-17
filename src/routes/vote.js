@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
 				var alreadyVoted = false;
 				// Check if the IP is present
 				for (var v in pollData.metadata.M.answeredBy.L) {
-					if (pollData.metadata.M.answeredBy.L[v].M.token.S === req.payload.userToken.v || pollData.metadata.M.answeredBy.L[v].M.IP.S === req.payload.userIP) {
+					if (pollData.metadata.M.answeredBy.L[v].M.token.S === req.payload.userToken.v || (pollData.metadata.M.answeredBy.L[v].M.IP.S === req.payload.userIP && pollData.metadata.M.enhancedPreventDoubles)) {
 						alreadyVoted = true;
 						break;
 					}
@@ -140,7 +140,7 @@ router.post('/:id', (req, res) => {
 
 					// Check if the IP is present
 					for (var v in pollData.metadata.M.answeredBy.L) {
-						if (pollData.metadata.M.answeredBy.L[v].M.token.S === req.payload.userToken.v || pollData.metadata.M.answeredBy.L[v].M.IP.S === req.payload.userIP) {
+						if (pollData.metadata.M.answeredBy.L[v].M.token.S === req.payload.userToken.v || (pollData.metadata.M.answeredBy.L[v].M.IP.S === req.payload.userIP && pollData.metadata.M.enhancedPreventDoubles)) {
 							alreadyVoted = true;
 							break;
 						}

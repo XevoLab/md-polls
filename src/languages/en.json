@@ -4,6 +4,7 @@
 		"title_textarea": "What?",
 		"settings_button": "Settings",
 		"setting_prevent_duplicates": "Prevent duplicates",
+		"setting_enhanced_prevent_duplicates": "Enhanced duplicates check",
 		"setting_collect_names": "Collect names",
 		"setting_hidden_results": "Prevent results peeking",
 		"setting_allow_change": "Allow vote change",
@@ -64,7 +65,7 @@
 				"p": "You can check for yourself that we do use cookie technology and we are obligated to let you know the first time you visit our site. Nevertheless, their use is connected only to the technolgies we use to provide our service. If you wish to delete them, you are free to do so, just know that some functionalities might stop working."
 			}
 		],
-		"callToAction": "About about",
+		"callToAction": "What about",
 		"callToActionButton": "Creating a new poll"
 	},
 	"hiddenResults": {

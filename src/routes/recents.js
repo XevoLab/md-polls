@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-16T22:19:10+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-04-17T18:58:27+02:00
+ * @Last modified time: 2020-04-18T01:06:43+02:00
  */
 
 const express = require('express');
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
   var params = {
 		TableName: process.env.AWS_TABLE_NAME,
 		ConsistentRead: false,
-		/*Limit: 5,*/
+		Limit: 1500,
     FilterExpression: "apiV = :apiV AND metadata.#owner.#token = :val",
 		//FilterExpression: "",
     ExpressionAttributeNames: {
@@ -59,6 +59,7 @@ router.get('/', (req, res) => {
           })
         }
 
+        res.set('Cache-Control', 'private, must-revalidate, max-age=1800, max-stale=300');
 				res.json(rec);
 			}
 		}

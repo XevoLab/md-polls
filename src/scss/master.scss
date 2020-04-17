@@ -2,7 +2,7 @@
 // @Date:   2019-12-01 20:50:03
 // @Filename: master.scss
 // @Last modified by:   francesco
-// @Last modified time: 2020-02-28 23:40:58
+// @Last modified time: 2020-04-18T00:03:22+02:00
 // @Copyright: (c) 2019
 
 @import '_variables';
@@ -156,8 +156,14 @@ footer {
 		&:not(.btn-primary):not(.btn-secondary) {
 			background-color: transparent;
 			color: $button_active_color;
+			svg {
+				fill: $button_active_color
+			}
 			&:hover {
 				color: $button_hover_color;
+				svg {
+					fill: $button_hover_color
+				}
 				background-color: $button_hover_bg;
 			}
 		}

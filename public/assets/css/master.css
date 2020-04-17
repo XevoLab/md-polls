@@ -224,9 +224,13 @@ footer {
     .btn.btn-slim:not(.btn-primary):not(.btn-secondary) {
       background-color: transparent;
       color: #999; }
+      .btn.btn-slim:not(.btn-primary):not(.btn-secondary) svg {
+        fill: #999; }
       .btn.btn-slim:not(.btn-primary):not(.btn-secondary):hover {
         color: #888;
         background-color: #eee; }
+        .btn.btn-slim:not(.btn-primary):not(.btn-secondary):hover svg {
+          fill: #888; }
     .btn.btn-slim i {
       width: 18px; }
   .btn.btn-primary {

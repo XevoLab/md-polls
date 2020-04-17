@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-16T20:17:53+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-04-16T23:12:04+02:00
+ * @Last modified time: 2020-04-18T00:39:27+02:00
  */
 
 const crypto = require('crypto');
@@ -17,7 +17,7 @@ const collectInfo = (req, res, next) => {
   }
 
   if (req.cookies.token === null || req.cookies.token === undefined)
-    res.cookie('token', req.payload.userToken.v)
+    res.cookie('token', req.payload.userToken.v, {expires: new Date(Date.now() + 31536000), httpOnly: false})
 
   next();
 }

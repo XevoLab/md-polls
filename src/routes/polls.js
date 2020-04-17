@@ -63,7 +63,8 @@ router.post('/', (req, res) => {
 		'created': {N: String(Date.now())},
 		'title': {S: d.title || pollID},
 		'metadata': {M: {
-			preventDoubles: {BOOL: (d.metadata.preventDoubles || false)},
+			preventDoubles: {BOOL: (d.metadata.preventDoubles || d.metadata.enhancedPreventDoubles || false)},
+			enhancedPreventDoubles: {BOOL: (d.metadata.enhancedPreventDoubles || false)},
 			collectNames: {BOOL: (d.metadata.collectNames || false)},
 			hiddenResults: {BOOL: (d.metadata.hiddenResults || false)},
 			allowChange: {BOOL: (d.metadata.allowChange || false)},
