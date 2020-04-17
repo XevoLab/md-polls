@@ -15,7 +15,8 @@ button, textarea, input {
   top: 1rem;
   max-width: calc(100vw - 2rem);
   max-height: calc(100vh - 2rem);
-  right: 1rem; }
+  right: 1rem;
+  z-index: 1010; }
   .toast-container .toast {
     background-color: white;
     border: 1px solid #ddd;

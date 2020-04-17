@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-17T21:37:05+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-04-17T21:44:12+02:00
+ * @Last modified time: 2020-04-17T22:46:46+02:00
  */
 
 
@@ -31,7 +31,7 @@ xhr.onload = function () {
 			recElement.innerHTML = recHTML;
 			recElement.classList.add("rec-item")
 
-			var recContainer = document.querySelector('.recommendations .col');
+			var recContainer = document.querySelector('.recents .col');
 			recContainer.appendChild(recElement);
 		}
 	}
