@@ -1,10 +1,10 @@
 /**
- * @Filename:     polls.js
- * @Date:         Francesco Cescon <francesco> @ 2019-11-27 15:25:44
- * @Last edit by: francesco
- * @Last edit at: 2020-02-22 23:23:32
- * @Copyright:    (c) 2019
+ * @Author: francesco
+ * @Date:   2020-04-17T23:26:33+02:00
+ * @Last modified by:   francesco
+ * @Last modified time: 2020-04-28T21:39:58+02:00
  */
+
 
 const express = require('express');
 const router = express.Router();

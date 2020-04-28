@@ -6,9 +6,6 @@
  * @Copyright:    (c) 2019
  */
 
-// Index.js
-// (c) 2019 - Cescon Francesco
-
 const express = require("express");
 const path = require("path");
 
