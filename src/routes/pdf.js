@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-16T22:09:05+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-04-16T22:19:59+02:00
+ * @Last modified time: 2020-04-18T23:32:01+02:00
  */
 
 
@@ -11,6 +11,7 @@ const express = require('express');
 const router = express.Router();
 
 require('dotenv').config();
+router.use(require("./mid/collectInfo.js"))
 
 const aws = require('aws-sdk');
 var ddb = new aws.DynamoDB({apiVersion: '2012-08-10', region: process.env.AWS_REGION});
