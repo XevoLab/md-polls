@@ -35,12 +35,12 @@ router.get('/:id', (req, res) => {
 	var ddbResponse = ddb.query(params, function(err, data) {
 		if (err) {
 			console.error("DynamoDB error vote.js : ", err);
-			res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 500});
+			res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 500});
 		} else {
 
 			if (data.Items.length === 0) {
 				console.log("404")
-				res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
+				res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
 				return;
 			}
 			else {
@@ -86,6 +86,7 @@ router.get('/:id', (req, res) => {
 
 				var pollData = {
 					id: req.params.id,
+					cookies: req.cookies,
 					uri: req.protocol + '://' + req.get('host') + '/v/' + req.params.id,
 					pollData: pollData,
 					alreadyVoted,

@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-16T22:09:05+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-04-18T23:32:01+02:00
+ * @Last modified time: 2020-05-04T20:49:05+02:00
  */
 
 
@@ -73,6 +73,7 @@ router.get("/:id", async (req, res) => {
 			var pageData = {
 				id: req.params.id,
 				language: req.languageData.hiddenResults,
+				cookies: req.cookies,
 				uri: req.protocol + '://' + req.get('host')
 			}
 
@@ -93,7 +94,7 @@ router.get("/:id", async (req, res) => {
 
 	}).catch((err) => {
 		console.error("DynamoDB error results.js : ", err);
-		res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 500});
+		res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 500});
 	})
 
 	if (pollData === -1)

@@ -61,7 +61,7 @@
 
 	<div class="container main-container">
 
-		<form method="post">
+		<form id="newPoll" method="post">
 
 			<div class="row">
 				<div class="col">
@@ -96,7 +96,7 @@
 				</div>
 			</div>
 
-			<% if (showRecents) { %>
+			<% if (cookies.showRecents === "yes") { %>
 				<div class="row recents">
 					<div class="col"></div>
 				</div>

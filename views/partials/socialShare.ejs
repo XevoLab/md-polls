@@ -1,16 +1,16 @@
 <div class="row">
 	<div class="col socialShare">
-		<a href="tg://msg?text=<%- encodeURIComponent(language.message_share_text + uri) %>" class="btn btn-slim" title="Telegram">
+		<a href="tg://msg?text=<%- encodeURIComponent(language.message_share_text + uri) %>" class="btn btn-slim socialLink" title="Telegram">
 			<i class="icon-telegram"></i>
 			Telegram
 		</a>
-		<a href="whatsapp://send?text=<%- encodeURIComponent(language.message_share_text + uri) %>" class="btn btn-slim" title="Whatsapp">
+		<a href="whatsapp://send?text=<%- encodeURIComponent(language.message_share_text + uri) %>" class="btn btn-slim socialLink" title="Whatsapp">
 			<i class="icon-whatsapp"></i>
 			Whatsapp
 		</a>
 		<a
 			href="https://www.facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(uri) %>"
-			class="btn btn-slim"
+			class="btn btn-slim socialLink"
 			target="popup"
 			onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=<%- encodeURIComponent(uri) %>','popup','width=600,height=600'); return false;"
 			title="Facebook"
@@ -20,7 +20,7 @@
 		</a>
 		<a
 			href="https://twitter.com/intent/tweet?text=<%- encodeURIComponent(language.social_share_text + uri) %>"
-			class="btn btn-slim"
+			class="btn btn-slim socialLink"
 			target="popup"
 			onclick="window.open('https://twitter.com/intent/tweet?text=<%- encodeURIComponent(language.social_share_text + uri) %>','popup','width=600,height=600'); return false;"
 			title="Twitter"
@@ -28,11 +28,11 @@
 			<i class="icon-twitter"></i>
 			Twitter
 		</a>
-		<a href="#" class="btn btn-slim" id="share_via_qr" title="QR code">
+		<a href="#" class="btn btn-slim socialLink" id="share_via_qr" title="QR code">
 			<i class="icon-qrcode"></i>
 			Qr code
 		</a>
-		<a href="/pdf/<%= id %>" target="_blank" class="btn btn-slim" id="exportPDF" title="PDF export">
+		<a href="/pdf/<%= id %>" target="_blank" class="btn btn-slim socialLink" id="exportPDF" title="PDF export">
 			<i class="icon-file-pdf"></i>
 			<%= language.share_pdf_export %>
 		</a>

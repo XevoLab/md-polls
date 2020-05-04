@@ -120,6 +120,8 @@ button, textarea, input {
         box-shadow: 0 0 6px -3px rgba(0, 0, 0, 0.5); }
       .toast-container .toast.toast-cookie button:focus, .toast-container .toast.toast-cookie a.btn:focus {
         outline: none; }
+      .toast-container .toast.toast-cookie button:not(:last-of-type), .toast-container .toast.toast-cookie a.btn:not(:last-of-type) {
+        margin-left: .5rem; }
 
 .text-right {
   text-align: right; }

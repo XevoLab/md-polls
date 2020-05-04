@@ -35,11 +35,11 @@ router.get('/:id', (req, res) => {
 	var ddbResponse = ddb.query(params, function(err, data) {
 		if (err) {
 			console.error("DynamoDB error results.js : ", err);
-			res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 500});
+			res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 500});
 		} else {
 
 			if (data.Items.length === 0) {
-				res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
+				res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
 				return;
 			}
 			else {
@@ -75,6 +75,7 @@ router.get('/:id', (req, res) => {
 					var pageData = {
 						id: req.params.id,
 						language: req.languageData.hiddenResults,
+						cookies: req.cookies,
 						uri: req.protocol + '://' + req.get('host')
 					}
 
@@ -86,6 +87,7 @@ router.get('/:id', (req, res) => {
 					id: req.params.id,
 					title: pollData.title.S,
 					options: pollData.options.L,
+					cookies: req.cookies,
 					uri: req.protocol + '://' + req.get('host') + '/r/' + req.params.id,
 					alreadyVoted: alreadyVoted,
 					language: req.languageData.results

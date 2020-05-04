@@ -9,7 +9,7 @@
 var cookies = document.cookie.split(';');
 var showPopUp = true;
 for (var v in cookies) {
-	if (cookies[v].trim() == "cookie_conset=yes") {
+	if (cookies[v].trim() == "cookie_consent=yes" || cookies[v].trim() == "cookie_consent=no") {
 		showPopUp = false;
 		break;
 	}
@@ -27,7 +27,8 @@ if (showPopUp) {
 						<div>
 							${language.cookie_phrase}
 						</div>
-						<button onclick="dismissCookieConset(this)">${language.cookie_button}</button>
+						<button onclick="dismissCookieConset(this, true)">${language.cookie_button}</button>
+						<button onclick="dismissCookieConset(this, false)">Only functional</button>
 					</div>
 				</div>
 			</div>
@@ -46,13 +47,13 @@ if (showPopUp) {
 		toastElement.classList.add('show');
 	}, 10);
 
-	function dismissCookieConset(o) {
+	function dismissCookieConset(o, c) {
 		var itemToRemove = o.parentElement.parentElement.parentElement.parentElement.parentElement;
 		itemToRemove.classList.remove('show');
 
 		var d = new Date();
 	  d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
-		document.cookie = "cookie_conset=yes; expires="+d.toUTCString()+"; path=/";
+		document.cookie = "cookie_consent="+(c ? "yes" : "no")+"; expires="+d.toUTCString()+"; path=/";
 
 		setTimeout(() => {
 			itemToRemove.parentElement.removeChild(itemToRemove);

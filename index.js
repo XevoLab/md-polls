@@ -69,12 +69,12 @@ app.use(languageSelector);
 
 		// Index
 		app.get(['/', '/index.html', 'index.php'], (req, res) => {
-			res.render('pages/index', {language: req.languageData.index, showRecents: (req.cookies.showRecents === "yes"), uri: req.protocol + '://' + req.get('host') + '/'});
+			res.render('pages/index', {language: req.languageData.index, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/'});
 		});
 
 		// About Us
 		app.use('/about-us', (req, res) => {
-			res.render('pages/aboutus', {language: req.languageData.aboutus, uri: req.protocol + '://' + req.get('host') + '/'});
+			res.render('pages/aboutus', {language: req.languageData.aboutus, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/'});
 		});
 
 		// Results
@@ -109,7 +109,7 @@ app.use(languageSelector);
 
 	// Assuming nothing else responded --> 404
 	app.use((req, res) => {
-		res.render('pages/errors', {language: req.languageData.errors, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
+		res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
 	});
 
 
