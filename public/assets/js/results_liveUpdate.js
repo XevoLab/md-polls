@@ -55,14 +55,15 @@ var socket = io(window.location.origin+"?pollID="+encodeURIComponent(pollID));
 
 socket.on('vote', function(vdata){
 
-	var pollData = JSON.parse(document.querySelector("data").innerText);
+	var pollData = JSON.parse(document.querySelector("script#data").innerText);
 
 	for (var i = 0; i < pollData.length; i++) {
-		if (pollData[i].id == vdata.plus || pollData[i].id == vdata.minus)
-			pollData[i].votes = parseInt(pollData[i].votes) + (pollData[i].id == vdata.plus ? +1 : -1);
+		if (vdata.plus.find((e) => e==pollData[i].id)) {
+			pollData[i].votes = parseInt(pollData[i].votes) + 1;
+		}
 	}
 	pollData.sort(function (a, b) {return b.votes - a.votes});
-	document.querySelector("data").innerText = JSON.stringify(pollData)
+	document.querySelector("script#data").innerText = JSON.stringify(pollData)
 	makeBars();
 
 });

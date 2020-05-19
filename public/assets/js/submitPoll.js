@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-05-19T21:33:58+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-05-19T22:50:50+02:00
+ * @Last modified time: 2020-05-19T23:25:50+02:00
  */
 
 var pollData = JSON.parse(document.querySelector("script#data").innerHTML);
@@ -32,7 +32,7 @@ for (var i=0; i<choices.length; i++) {
       document.querySelectorAll("input:checked[name=choice]").forEach((item, i) => selHist.push(item));
     }
 
-    if (selHist.length === pollData.metadata.minOptions)
+    if (selHist.length >= pollData.metadata.minOptions)
       document.querySelector('button[type="submit"]').classList.remove("disabled");
     else
       document.querySelector('button[type="submit"]').classList.add("disabled");
@@ -132,12 +132,12 @@ function sendSocketMessage() {
 var socket = io(window.location.origin+"?pollID="+encodeURIComponent(pollID));
 socket.on('vote', function(vdata){
 
-	var number = document.querySelectorAll('.choice')[vdata.selection].querySelector(".limit .n");
+  for (var i in vdata.plus) {
+    var number = document.querySelectorAll('.choice')[vdata.plus[i]].querySelector(".limit .n");
+  	number.innerHTML = parseInt(number.innerHTML) - 1;
 
-	number.innerHTML = parseInt(number.innerHTML) - 1;
-
-	if (number.innerHTML == 0) {
-		document.querySelectorAll('.choice')[vdata.selection].classList.add("disabled");
-	}
+  	if (number.innerHTML == 0)
+  		document.querySelectorAll('.choice')[vdata.plus[i]].classList.add("disabled");
+  }
 
 });

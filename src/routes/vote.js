@@ -72,7 +72,7 @@ router.get('/:id', (req, res) => {
 					id: req.params.id,
 					cookies: req.cookies,
 					uri: req.protocol + '://' + req.get('host') + '/v/' + req.params.id,
-					pollData: {ID: pollData.ID, title: pollData.title, options: pollData.options, metadata: {minOptions: pollData.metadata.minOptions, maxOptions: pollData.metadata.maxOptions}},
+					pollData: {ID: pollData.ID, title: pollData.title, options: pollData.options, metadata: {minOptions: pollData.metadata.minOptions, maxOptions: pollData.metadata.maxOptions, collectNames: pollData.metadata.collectNames}},
 					alreadyVoted,
 					noMoreChoices,
 					language: req.languageData.vote
@@ -189,22 +189,22 @@ router.post('/:id', (req, res) => {
 						options[${parseInt(req.body.choices[i])}].votes,
 						:zero
 					) + :incr`
-				}
 
-				// If 'collect names' --> Also save the name
-				if (pollData.metadata.collectNames) {
-					updateParams.ExpressionAttributeValues[":name"] = {L: [{S: String(req.body.name)}]};
-					updateParams.ExpressionAttributeNames = {'#names' : 'names'};
+					// If 'collect names' --> Also save the name
+					if (pollData.metadata.collectNames) {
+						updateParams.ExpressionAttributeValues[":name"] = {L: [{S: String(req.body.name)}]};
+						updateParams.ExpressionAttributeNames = {'#names' : 'names'};
 
-					updateParams.UpdateExpression += `,
-					options[${parseInt(req.body.choice)}].metadata.#names =
-					list_append(
-						if_not_exists(
-							options[${parseInt(req.body.choice)}].metadata.#names,
-							:emptyList
-						),
-						:name
-					)`;
+						updateParams.UpdateExpression += `,
+						options[${parseInt(req.body.choices[i])}].metadata.#names =
+						list_append(
+							if_not_exists(
+								options[${parseInt(req.body.choices[i])}].metadata.#names,
+								:emptyList
+							),
+							:name
+						)`;
+					}
 				}
 
 				ddb.updateItem(updateParams, function(err, updateData) {
@@ -221,7 +221,7 @@ router.post('/:id', (req, res) => {
 						var io = require('../../index.js').io;
 						var msg = {
 							id: req.params.id,
-							plus: req.body.choice,
+							plus: req.body.choices,
 							name: (pollData.metadata.collectNames ? String(req.body.name) : "")
 						}
 
