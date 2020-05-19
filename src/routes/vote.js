@@ -45,12 +45,12 @@ router.get('/:id', (req, res) => {
 			}
 			else {
 
-				var pollData = data.Items[0];
+				var pollData = aws.DynamoDB.Converter.unmarshall(data.Items[0]);
 
 				var alreadyVoted = false;
 				// Check if the IP is present
-				for (var v in pollData.metadata.M.answeredBy.L) {
-					if (pollData.metadata.M.answeredBy.L[v].M.token.S === req.payload.userToken.v || (pollData.metadata.M.answeredBy.L[v].M.IP.S === req.payload.userIP && pollData.metadata.M.enhancedPreventDoubles)) {
+				for (var v in pollData.metadata.answeredBy) {
+					if (pollData.metadata.answeredBy[v].token === req.payload.userToken.v || (pollData.metadata.answeredBy[v].IP === req.payload.userIP && pollData.metadata.enhancedPreventDoubles)) {
 						alreadyVoted = true;
 						break;
 					}
@@ -58,39 +58,22 @@ router.get('/:id', (req, res) => {
 
 				// Check if there are more available answers
 				var noMoreChoices = true;
-				for (var v in pollData.options.L) {
+				for (var v in pollData.options) {
 					if (
-						pollData.options.L[v].M.metadata.M.limitAnswers.N == 0 ||
-						pollData.options.L[v].M.votes.N < pollData.options.L[v].M.metadata.M.limitAnswers.N
+						pollData.options[v].metadata.limitAnswers == 0 ||
+						pollData.options[v].votes < pollData.options[v].metadata.limitAnswers
 					) {
 						noMoreChoices = false;
 						break;
 					}
 				}
 
-				// Check if the user can change his/her vote
-				var allowChange = pollData.metadata.M.allowChange.BOOL;
-				if (allowChange && !req.payload.userToken.new) {
-
-					for (var v in pollData.metadata.M.editTokens.L) {
-						if (pollData.metadata.M.editTokens.L[v].M.v.S === req.payload.userToken.v) {
-							allowChange = true;
-							break;
-						}
-						allowChange = false;
-					}
-				}
-				else {
-					allowChange = false;
-				}
-
 				var pollData = {
 					id: req.params.id,
 					cookies: req.cookies,
 					uri: req.protocol + '://' + req.get('host') + '/v/' + req.params.id,
-					pollData: pollData,
+					pollData: {ID: pollData.ID, title: pollData.title, options: pollData.options, metadata: {minOptions: pollData.metadata.minOptions, maxOptions: pollData.metadata.maxOptions}},
 					alreadyVoted,
-					allowChange,
 					noMoreChoices,
 					language: req.languageData.vote
 				};
@@ -127,44 +110,33 @@ router.post('/:id', (req, res) => {
 			}
 			else {
 				// Poll found
-				pollData = pollData.Items[0];
+				pollData = aws.DynamoDB.Converter.unmarshall(pollData.Items[0]);
 
 				// Check the option exists
-				if (parseInt(req.choice) === NaN || req.body.choice > (pollData.options.L.length - 1) || req.body.choice < 0) {
-					res.json({result: "invalidChoice", message: "The selected choice is not valid"});
+				if (typeof(req.body.choices) !== "object" || req.body.choices.filter(n => (n >= pollData.options.length || n < 0)) > 0) {
+					res.json({result: "invalidChoice", message: "The selected choices are not valid"});
 					return;
 				}
 
 				var alreadyVoted = false;
 				// Check if 'prevent douplicates' mode is enabled
-				if (pollData.metadata.M.preventDoubles.BOOL) {
+				if (pollData.metadata.preventDoubles) {
 
 					// Check if the IP is present
-					for (var v in pollData.metadata.M.answeredBy.L) {
-						if (pollData.metadata.M.answeredBy.L[v].M.token.S === req.payload.userToken.v || (pollData.metadata.M.answeredBy.L[v].M.IP.S === req.payload.userIP && pollData.metadata.M.enhancedPreventDoubles)) {
+					for (var v in pollData.metadata.answeredBy) {
+						if (pollData.metadata.answeredBy[v].token === req.payload.userToken.v || (pollData.metadata.answeredBy[v].IP === req.payload.userIP && pollData.metadata.enhancedPreventDoubles)) {
 							alreadyVoted = true;
 							break;
 						}
 					}
-				}
 
-				var changeAnswer = null;
-				if (alreadyVoted && pollData.metadata.M.allowChange.BOOL && !req.payload.userToken.new) {
-
-					for (var v in pollData.metadata.M.editTokens.L) {
-						if (pollData.metadata.M.editTokens.L[v].M.v.S === req.payload.userToken.v) {
-							changeAnswer = v;
-							break;
-						}
+					if (alreadyVoted) {
+						return res.json({result: "alreadyVoted", message: "You have already voted on this poll"});
 					}
 				}
 
-				if ((alreadyVoted && !pollData.metadata.M.allowChange.BOOL) || (alreadyVoted && pollData.metadata.M.allowChange.BOOL && changeAnswer === null)) {
-					return res.json({result: "alreadyVoted", message: "You have already voted on this poll"});
-				}
-
 				// Check if 'collect names' mode is enabled
-				if (pollData.metadata.M.collectNames.BOOL) {
+				if (pollData.metadata.collectNames) {
 					// Check if name was provided
 					if (req.body.name === undefined || req.body.name === "") {
 						res.json({result: "invalidName", message: "A valid name was not provied and this poll requires one"});
@@ -172,11 +144,19 @@ router.post('/:id', (req, res) => {
 					}
 				}
 
+				// Check that not too many choices have been selected
+				if (req.body.choices.length > pollData.metadata.maxOptions) {
+					req.body.choices = req.body.choices.slice(0, pollData.metadata.maxOptions);
+				}
+
 				// Check if answer has a limit
-				if (pollData.options.L[parseInt(req.body.choice)].M.metadata.M.limitAnswers.N != 0) {
-					if ((parseInt(pollData.options.L[parseInt(req.body.choice)].M.votes.N) + 1) > parseInt(pollData.options.L[parseInt(req.body.choice)].M.metadata.M.limitAnswers.N)) {
-						res.json({result: "full", message:"This choide is already full"});
-						return;
+				for (var i in req.body.choices) {
+					if (pollData.options[parseInt(req.body.choices[i])].metadata.limitAnswers != 0) {
+						if ((parseInt(pollData.options[parseInt(req.body.choices[i])].votes) + 1) > parseInt(pollData.options[parseInt(req.body.choices[i])].metadata.limitAnswers)) {
+							res.json({result: "full", message:"This choide is already full"});
+							return;
+							break;
+						}
 					}
 				}
 
@@ -187,10 +167,6 @@ router.post('/:id', (req, res) => {
 					},
 					UpdateExpression: `
 						SET
-						options[${parseInt(req.body.choice)}].votes = if_not_exists(
-							options[${parseInt(req.body.choice)}].votes,
-							:zero
-						) + :incr,
 						metadata.answeredBy = list_append(
 							if_not_exists(
 								metadata.answeredBy,
@@ -206,32 +182,17 @@ router.post('/:id', (req, res) => {
 					}
 				};
 
-				// If change requested --> Invalidate the previous token and remove vote
-				if (changeAnswer !== null) {
-					if (pollData.metadata.M.editTokens.L[v].M.i.N == req.body.choice)
-						return res.json({result: "error", message: "Nothing has changed"})
-
+				// Add selected options to query
+				for (var i in req.body.choices) {
 					updateParams.UpdateExpression += `,
-						options[${pollData.metadata.M.editTokens.L[v].M.i.N}].votes = options[${pollData.metadata.M.editTokens.L[v].M.i.N}].votes - :incr,
-						metadata.editTokens[${v}].i = :tokenvalue
-					`;
-					updateParams.ExpressionAttributeValues[":tokenvalue"] = {N: String(parseInt(req.body.choice))};
-				}
-				else if (pollData.metadata.M.allowChange.BOOL) {
-					// If 'allowChange' --> Also save token for user
-					updateParams.UpdateExpression += `,
-						metadata.editTokens = list_append(
-							if_not_exists(
-								metadata.editTokens,
-								:emptyList
-							),
-							:token)
-					`;
-					updateParams.ExpressionAttributeValues[":token"] = {L: [{M: {v: {S: req.payload.userToken.v}, i: {N: String(parseInt(req.body.choice))}}}]};
+					options[${parseInt(req.body.choices[i])}].votes = if_not_exists(
+						options[${parseInt(req.body.choices[i])}].votes,
+						:zero
+					) + :incr`
 				}
 
 				// If 'collect names' --> Also save the name
-				if (pollData.metadata.M.collectNames.BOOL) {
+				if (pollData.metadata.collectNames) {
 					updateParams.ExpressionAttributeValues[":name"] = {L: [{S: String(req.body.name)}]};
 					updateParams.ExpressionAttributeNames = {'#names' : 'names'};
 
@@ -261,13 +222,12 @@ router.post('/:id', (req, res) => {
 						var msg = {
 							id: req.params.id,
 							plus: req.body.choice,
-							minus: (changeAnswer !== null ? pollData.metadata.M.editTokens.L[v].M.i.N : null),
-							name: (pollData.metadata.M.collectNames.BOOL ? String(req.body.name) : "")
+							name: (pollData.metadata.collectNames ? String(req.body.name) : "")
 						}
 
 						io.sockets.in("poll-"+msg.id).emit('vote', msg);
 
-						res.json({result: "success", message:"Everything went smoothly"});
+						res.json({result: "success", k: pollData.metadata.auth, message:"Everything went smoothly"});
 					}
 				});
 

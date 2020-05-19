@@ -100,8 +100,6 @@ app.use(languageSelector);
 	app.use(express.json());
 	app.use(['/p', '/polls'], require('./src/routes/polls.js'));
 
-	app.use(['/rec', '/recents'], require('./src/routes/recents.js'));
-
 // HYBRID
 
 		// Vote

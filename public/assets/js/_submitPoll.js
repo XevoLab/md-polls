@@ -1,44 +1,24 @@
 /**
- * @Author: francesco
- * @Date:   2020-05-19T21:33:58+02:00
- * @Last modified by:   francesco
- * @Last modified time: 2020-05-19T22:50:50+02:00
+ * @Filename:     submitPoll.js
+ * @Date:         Xevolab <francesco> @ 2019-12-01 20:50:03
+ * @Last edit by: francesco
+ * @Last edit at: 2019-12-03 09:33:21
+ * @Copyright:    (c) 2019
  */
 
-var pollData = JSON.parse(document.querySelector("script#data").innerHTML);
-var pollID = pollData.ID;
+var pollID = document.querySelector("form").attributes["id"].value;
 
-// Enable submit and check number of answers
-var choices = document.querySelectorAll('input[name="choice"]');
-var selHist = [];
-document.querySelectorAll("input:checked[name=choice]").forEach((item, i) => selHist.push(item));
+var socket = io(window.location.origin+"?pollID="+encodeURIComponent(pollID));
 
-for (var i=0; i<choices.length; i++) {
-  choices[i].onclick = function(e) {
-    if (e.target.checked) {
-      selHist.push(e.target);
+var select = document.querySelectorAll('input[type="checkbox"]');
+for (var i=0; i<select.length; i++) {
+  var pollData = 
+  select[i].onclick = function() {
+    document.querySelectorAll("input:checked[name=choice]")
 
-      if (pollData.metadata.maxOptions === 1 && selHist.length > 1) {
-        selHist[0].checked = false;
-        selHist.shift();
-      }
-      else if (selHist.length > pollData.metadata.maxOptions) {
-        selHist.pop();
-        e.target.checked = false;
-      }
-    }
-    else {
-      selHist = [];
-      document.querySelectorAll("input:checked[name=choice]").forEach((item, i) => selHist.push(item));
-    }
-
-    if (selHist.length === pollData.metadata.minOptions)
-      document.querySelector('button[type="submit"]').classList.remove("disabled");
-    else
-      document.querySelector('button[type="submit"]').classList.add("disabled");
+		document.querySelector('button[type="submit"]').classList.remove("disabled");
 	};
 }
-
 
 var form = document.querySelector('form');
 form.addEventListener('submit', function (e) {
@@ -55,8 +35,7 @@ form.addEventListener('submit', function (e) {
 		return false;
 	}
 
-	voteData.choices = [];
-  selection.forEach((e, i) => voteData.choices.push(e.value))
+	voteData.choice = selection[0].value;
 
 	var name = document.querySelectorAll("input[name=name]");
 	if (name.length === 1) {
@@ -81,7 +60,7 @@ form.addEventListener('submit', function (e) {
 
 				toast("success", language.toast_success_vote);
 				setTimeout(() => {
-					window.location.href = `/r/${pollID}?k=${res.k}`;
+					window.location.href = '/r/'+document.querySelector("form").attributes["id"].value;
 				}, 1000);
 				return true;
 			}
@@ -129,7 +108,6 @@ function sendSocketMessage() {
 
 // --- ---
 
-var socket = io(window.location.origin+"?pollID="+encodeURIComponent(pollID));
 socket.on('vote', function(vdata){
 
 	var number = document.querySelectorAll('.choice')[vdata.selection].querySelector(".limit .n");

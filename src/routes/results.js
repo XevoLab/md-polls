@@ -22,6 +22,13 @@ var ddb = new aws.DynamoDB({apiVersion: '2012-08-10', region: process.env.AWS_RE
 
 router.get('/:id', (req, res) => {
 
+	// Blocking invalid k values
+	if (typeof(req.query.k) !== "string" || req.query.k === "")
+		return res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
+
+	// Trimming
+	req.query.k = req.query.k.trim();
+
 	var params = {
 		TableName: process.env.AWS_TABLE_NAME,
 		ConsistentRead: true,
@@ -39,16 +46,15 @@ router.get('/:id', (req, res) => {
 		} else {
 
 			if (data.Items.length === 0) {
-				res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
-				return;
+				return res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
 			}
 			else {
-				var pollData = data.Items[0];
+				var pollData = aws.DynamoDB.Converter.unmarshall(data.Items[0]);
 
+				// Ordering function
 				function compare(a, b) {
-				  // Use toUpperCase() to ignore character casing
-				  const votesA = parseInt(a.M.votes.N);
-				  const votesB = parseInt(b.M.votes.N);
+				  const votesA = parseInt(a.votes);
+				  const votesB = parseInt(b.votes);
 
 				  let comparison = 0;
 				  if (votesA > votesB) {
@@ -59,19 +65,22 @@ router.get('/:id', (req, res) => {
 				  return comparison;
 				}
 
-				pollData.options.L = pollData.options.L.sort(compare);
+				if (req.query.k !== pollData.metadata.auth)
+					return res.render('pages/errors', {language: req.languageData.errors, cookies: req.cookies, uri: req.protocol + '://' + req.get('host') + '/', errorCode: 404});
+
+				pollData.options = pollData.options.sort(compare);
 
 				var alreadyVoted = false;
 				// Check if the IP is present
-				for (var v in pollData.metadata.M.answeredBy.L) {
-					if (pollData.metadata.M.answeredBy.L[v].M.token.S === req.payload.userToken.v || (pollData.metadata.M.answeredBy.L[v].M.IP.S === req.payload.userIP && pollData.metadata.M.enhancedPreventDoubles)) {
+				for (var v in pollData.metadata.answeredBy) {
+					if (pollData.metadata.answeredBy[v].token === req.payload.userToken.v || (pollData.metadata.answeredBy[v].IP === req.payload.userIP && pollData.metadata.enhancedPreventDoubles)) {
 						alreadyVoted = true;
 						break;
 					}
 				}
 
 				// Check if 'hidden_results' mode is enabled
-				if (pollData.metadata.M.hiddenResults.BOOL && !alreadyVoted) {
+				if (pollData.metadata.hiddenResults && !alreadyVoted) {
 					var pageData = {
 						id: req.params.id,
 						language: req.languageData.hiddenResults,
@@ -85,8 +94,8 @@ router.get('/:id', (req, res) => {
 
 				var pageData = {
 					id: req.params.id,
-					title: pollData.title.S,
-					options: pollData.options.L,
+					title: pollData.title,
+					options: pollData.options,
 					cookies: req.cookies,
 					uri: req.protocol + '://' + req.get('host') + '/r/' + req.params.id,
 					alreadyVoted: alreadyVoted,

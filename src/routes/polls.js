@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-17T23:26:33+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-04-28T21:39:58+02:00
+ * @Last modified time: 2020-05-17T21:40:37+02:00
  */
 
 
@@ -10,6 +10,7 @@ const express = require('express');
 const router = express.Router();
 
 const crypto = require('crypto');
+var slugid = require('slugid');
 
 require('dotenv').config();
 
@@ -38,7 +39,7 @@ router.get('/:id', (req, res) => {
 				res.json({result: "empty"});
 			}
 			else {
-				res.json(data.Items[0]);
+				res.json(aws.DynamoDB.Converter.unmarshall(data.Items[0]));
 			}
 		}
 	});
@@ -53,30 +54,31 @@ router.post('/', (req, res) => {
 
 	// Remap data
 	var d = req.body;
-	var pollID = crypto.createHash('md5').update(JSON.stringify([d, Date.now()])).digest('base64');
-	pollID = pollID.replace(/[\+\/\=]/g, "").substr(0, 9);
+	var pollID = slugid.v4().replace(/[\-\_]/g, "").substr(0, 9);
+
+	const graphTypes = ["bars", "pie"];
 
 	// Item to be added into dynamoDB
 	var itemData = {
-		'ID': {S: pollID},
-		'apiV': {N: '2'},
-		'created': {N: String(Date.now())},
-		'title': {S: d.title || pollID},
-		'metadata': {M: {
-			preventDoubles: {BOOL: (d.metadata.preventDoubles || d.metadata.enhancedPreventDoubles || false)},
-			enhancedPreventDoubles: {BOOL: (d.metadata.enhancedPreventDoubles || false)},
-			collectNames: {BOOL: (d.metadata.collectNames || false)},
-			hiddenResults: {BOOL: (d.metadata.hiddenResults || false)},
-			allowChange: {BOOL: (d.metadata.allowChange || false)},
-			graphType: {S: 'bars'},//(d.metadata.graphType || 'bars')},
+		'ID': pollID,
+		'apiV': 3,
+		'created': Date.now(),
+		'title': (d.title || pollID),
+		'metadata': {
+			preventDoubles: !(d.metadata.preventDoubles === false || d.metadata.enhancedPreventDoubles === false),
+			enhancedPreventDoubles: ((d.metadata.enhancedPreventDoubles === true) || false),
+			collectNames: (d.metadata.collectNames || false),
+			hiddenResults: (d.metadata.hiddenResults || false),
+			graphType: (graphTypes.includes(d.metadata.graphType) ? (d.metadata.graphType || "bars") : "bars"),
+			minOptions: 1,
+			maxOptions: 1,
+			auth: slugid.nice(),
 			owner: {
-				M: {
-					IP: {S: req.payload.userIP},
-					token: {S: req.payload.userToken.v}
-				}
+				IP: req.payload.userIP,
+				token: req.payload.userToken.v
 			},
-			answeredBy: {L: []}
-		}},
+			answeredBy: []
+		},
 		'options': null,
 	}
 
@@ -93,12 +95,6 @@ router.post('/', (req, res) => {
 		return false;
 	}
 
-	// Save the optional tokens to change the answer + disable collectNames
-	if (d.metadata.allowChange) {
-		itemData.metadata.M.editTokens = {L: []};
-		itemData.medata.M.collectNames.BOOL = false;
-	}
-
 	// Adding the options
 	var options = [];
 	for (var i = 0; i < d.options.length; i++) {
@@ -111,25 +107,25 @@ router.post('/', (req, res) => {
 		// Forcing object structure
 		// Hence, only allowed data will be inside the database
 		var singleOption = {
-			id: {N: String(i)},
-			value: {S: o.value},
-			metadata: {M: {
-				limitAnswers: {N: String(o.metadata.limitAnswers)}
-			}},
-			votes: {N: '0'}
+			id: i,
+			value: o.value,
+			metadata: {
+				limitAnswers: o.metadata.limitAnswers
+			},
+			votes: 0
 		}
 
 		if (d.metadata.collectNames) {
-			singleOption.metadata.M["names"] = {L : []};
+			singleOption.metadata["names"] = [];
 		}
 
-		options.push({M: singleOption});
+		options.push(singleOption);
 	}
-	itemData.options = {L: options};
+	itemData.options = options;
 
 	var params = {
 		TableName: process.env.AWS_TABLE_NAME,
-		Item: itemData
+		Item: aws.DynamoDB.Converter.marshall(itemData)
 	};
 
 	var ddbResponse = ddb.putItem(params).promise();

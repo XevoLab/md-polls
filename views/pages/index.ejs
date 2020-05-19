@@ -23,36 +23,14 @@
 				<label for="options_toggle"><%= language.settings_button %></label>
 				<div class="options">
 					<div class="container-fluid">
-						<div class="row">
-							<div class="col">
-								<input type="checkbox" id="setting_preventDoubles" name="preventDoubles" checked>
-								<label for="setting_preventDoubles"><%= language.setting_prevent_duplicates %></label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<input type="checkbox" id="setting_enhancedPreventDoubles" name="enhancedPreventDoubles">
-								<label for="setting_enhancedPreventDoubles"><%= language.setting_enhanced_prevent_duplicates %></label>
-							</div>
-						</div>
+
 						<div class="row">
 							<div class="col">
 								<input type="checkbox" id="setting_collectNames" name="collectNames">
 							  <label for="setting_collectNames"><%= language.setting_collect_names %></label>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col">
-								<input type="checkbox" id="setting_hiddenResults" name="hiddenResults">
-							  <label for="setting_hiddenResults"><%= language.setting_hidden_results %></label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col">
-								<input type="checkbox" id="setting_allowChange" name="allowChange">
-							  <label for="setting_allowChange"><%= language.setting_allow_change %></label>
-							</div>
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -90,18 +68,11 @@
 			<div class="row">
 				<div class="col">
 					<button type="submit" class="btn">
-						<span class="text"><%= language.go_button %> <div class="description" hidden>(⌘+enter)</div></span>
+						<span class="text"><%= language.go_button %></span>
 						<span class="spinner"><i class="icon-save animate-pulse"></i> <%= language.go_button_posting %></span>
 					</button>
 				</div>
 			</div>
-
-			<% if (cookies.showRecents === "yes") { %>
-				<div class="row recents">
-					<div class="col"></div>
-				</div>
-				<script src="/assets/js/rec.js" charset="utf-8" async></script>
-			<% } %>
 
 		</form>
 

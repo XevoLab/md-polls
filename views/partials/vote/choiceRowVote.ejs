@@ -1,17 +1,17 @@
 
-<div class="row choice <%= ( r.metadata.M.limitAnswers.N != 0 && (r.metadata.M.limitAnswers.N - r.votes.N <= 0) ? 'disabled' : '') %>" id="answer_row_<%= r.id.N %>">
+<div class="row choice <%= ( r.metadata.limitAnswers != 0 && (r.metadata.limitAnswers - r.votes <= 0) ? 'disabled' : '') %>" id="answer_row_<%= r.id %>">
 
 	<div class="col select">
 		<div class="custom-checkbox">
-			<input type="radio" class="option" id="answer_<%= r.id.N %>" name="choice" value="<%= r.id.N %>">
-			<label class="value" for="answer_<%= r.id.N %>">
-				<div><%= r.value.S %></div>
+			<input type="checkbox" class="option" id="answer_<%= r.id %>" name="choice" value="<%= r.id %>">
+			<label class="value" for="answer_<%= r.id %>">
+				<div><%= r.value %></div>
 			</label>
 		</div>
 	</div>
-	<% if (r.metadata.M.limitAnswers.N != 0) { %>
+	<% if (r.metadata.limitAnswers != 0) { %>
 		<div class="col-auto limit">
-			<span class="n"><%= r.metadata.M.limitAnswers.N - r.votes.N %></span> left
+			<span class="n"><%= r.metadata.limitAnswers - r.votes %></span> left
 		</div>
 	<% } %>
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Vote on &apos;<%= pollData.title.S %>&apos; - Questionary</title>
+	<title>Vote on &apos;<%= pollData.title %>&apos; - Questionary</title>
 
-	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= pollData.title.S %>&apos; - Questionary" />
+	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= pollData.title %>&apos; - Questionary" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
 	<meta name="description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
@@ -25,36 +25,36 @@
 
 			<div class="row">
 				<div class="col">
-					<h1><%= pollData.title.S %></h1>
+					<h1><%= pollData.title %></h1>
 				</div>
 			</div>
 
-			<% if (pollData.metadata.M.preventDoubles.BOOL && alreadyVoted) { %>
+			<% if (pollData.metadata.preventDoubles && alreadyVoted) { %>
 				<%- include('./../partials/vote/alreadyVoted'); %>
 			<% } else if (noMoreChoices) { %>
 				<%- include('./../partials/vote/noMoreChoices'); %>
 			<% } %>
 
-			<% if (pollData.metadata.M.collectNames.BOOL) { %>
+			<% if (pollData.metadata.collectNames) { %>
 				<%- include('./../partials/vote/collectNames'); %>
 			<% } %>
 
 			<div class="row choices">
 				<div class="col">
 
-					<% pollData.options.L.forEach(function(row){ %>
-				    <%- include('./../partials/vote/choiceRowVote', {r: row.M}); %>
+					<% pollData.options.forEach(function(row){ %>
+				    <%- include('./../partials/vote/choiceRowVote', {r: row}); %>
 				  <% }); %>
 
 
 				</div>
 			</div>
 
-			<% if (!pollData.metadata.M.preventDoubles.BOOL || (pollData.metadata.M.preventDoubles.BOOL && !alreadyVoted) || allowChange) { %>
+			<% if (!pollData.metadata.preventDoubles || (pollData.metadata.preventDoubles && !alreadyVoted) || allowChange) { %>
 				<div class="row">
 					<div class="col">
 						<button type="submit" class="btn disabled">
-							<span class="text"><%= ((pollData.metadata.M.preventDoubles.BOOL && alreadyVoted && allowChange) ? language.modify_button : language.submit_button) %></span>
+							<span class="text"><%= ((pollData.metadata.preventDoubles && alreadyVoted && allowChange) ? language.modify_button : language.submit_button) %></span>
 							<span class="spinner"><i class="icon-save animate-pulse"></i> <%= language.submit_button_posting %></span>
 						</button>
 					</div>
@@ -68,6 +68,10 @@
 	</div>
 
 	<% include ../partials/footer %>
+
+	<script id="data" type="application/json">
+		<%- JSON.stringify(pollData) %>
+	</script>
 
 	<%- include('../partials/scripts', {lang: language.languageCode}) %>
 
