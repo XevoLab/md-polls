@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="<%= language.languageCode %>">
 <head>
-	<title><%= language.header_og_title %> &apos;<%= title %>&apos; - Questionary</title>
+	<title><%= language.header_og_title %> &apos;<%= data.title %>&apos; - Questionary</title>
 
-	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= title %>&apos; - Questionary" />
+	<meta property="og:title" content="<%= language.header_og_title %> &apos;<%= data.title %>&apos; - Questionary" />
 	<meta property="og:description" content="<%= language.header_og_description %>" />
 	<meta name="description" content="<%= language.header_og_description %>" />
 	<meta property="og:type" content="website" />
@@ -24,7 +24,7 @@
 
 			<div class="row">
 				<div class="col">
-					<h1><%= title %></h1>
+					<h1><%= data.title %></h1>
 				</div>
 			</div>
 
@@ -51,7 +51,7 @@
 	<% include ../partials/footer %>
 
 	<script id="data" type="application/json">
-		<%- JSON.stringify(options) %>
+		<%- JSON.stringify(data.options) %>
 	</script>
 
 	<%- include('../partials/scripts', {lang: language.languageCode}) %>

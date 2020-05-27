@@ -68,21 +68,21 @@
 	<table id="nav">
 		<tr>
 			<td class="brand">Questionary</td>
-			<td class="title"><%= title %></td>
+			<td class="title"><%= data.title %></td>
 		</tr>
 	</table>
 
 	<table id="content">
-		<% for (i=0; i < options.length; i++) { %>
+		<% for (i=0; i < data.options.length; i++) { %>
 			<tr>
-				<td class="percentage"><%= (total != 0 ? Math.floor(options[i]['M'].votes.N/total*100) : 0) %>%</td>
+				<td class="percentage"><%= (total != 0 ? Math.floor(data.options[i].votes/total*100) : 0) %>%</td>
 				<td class="content">
 					<div class="value">
-						<%= options[i]['M'].value.S %>
+						<%= data.options[i].value %>
 					</div>
-					<% if (collectNames && options[i]['M'].metadata.M.names.L.length > 0) { %>
+					<% if (collectNames && data.options[i].names.length > 0) { %>
 						<div class="names">
-							<%= options[i]['M'].metadata.M.names.L.map(e => e.S).join(", ") %>.
+							<%= data.options[i].names.map(e => e.S).join(", ") %>.
 						</div>
 					<% } %>
 				</td>

@@ -24,26 +24,32 @@ function makeBars() {
 
 	for (var i = 0; i < pollData.length; i++) {
 		var r = pollData[i];
-		var rowHtml = `
-		<tr id="choice_${ r.id }" choiceI="${ r.id }" delta="${(maxVotes == 0 ? -1 : maxVotes-r.votes)}">
-			<td class="value">
-				<div class="text" style="width: ${ (total != 0 ? Math.floor((r.votes/total)/(maxVotes/total)*100) : 0) }%;">
-					<span>${ r.value }</span>
-				</div>
 
-				<div class="bg" >${ r.value }</div>
-			</td>
-			<td class="votes" onclick="swapNumberPerc()" title="${ language.swap_number_percentage }">
-				<span class="votes-number">
-					<span class="n">${ r.votes }</span>
-						${ (r.metadata.limitAnswers != 0) ? " / "+r.metadata.limitAnswers : "" }
-				</span>
-				<span class="votes-percentage">
-					${ (total != 0 ? Math.floor(r.votes/total*100) : 0) }%
-				</span>
-			</td>
-		</tr>`;
-		barsTable.innerHTML = barsTable.innerHTML + rowHtml;
+		var choiceObj = document.createElement("tr");
+    choiceObj.attributes.choiceI = r.id;
+    choiceObj.attributes.delta = (maxVotes == 0 ? -1 : maxVotes-r.votes);
+    choiceObj.id = `choice_${ r.id }`;
+
+		choiceObj.innerHTML = `<td class="value">
+			<div class="ch">
+				<div class="accent-bg" style="width: ${ (total != 0 ? Math.floor((r.votes/total)/(maxVotes/total)*100) : 0) }%;"></div>
+				<div class="text">
+					<div class="card hidden"></div>
+					<span class="_card-small-text">${ r.value }</span>
+				</div>
+			</div>
+		</td>
+		<td class="votes" onclick="swapNumberPerc()" title="${ language.swap_number_percentage }">
+			<span class="votes-number">
+				<span class="n">${ r.votes }</span>
+					${ (r.metadata.limitAnswers != 0) ? " / "+r.metadata.limitAnswers : "" }
+			</span>
+			<span class="votes-percentage">
+				${ (total != 0 ? Math.floor(r.votes/total*100) : 0) }%
+			</span>
+		</td>`
+
+		createCards(barsTable.appendChild(choiceObj), r.value);
 	}
 }
 

@@ -32,9 +32,11 @@
 			<i class="icon-qrcode"></i>
 			Qr code
 		</a>
-		<a href="/pdf/<%= id %>" target="_blank" class="btn btn-slim socialLink" id="exportPDF" title="PDF export">
-			<i class="icon-file-pdf"></i>
-			<%= language.share_pdf_export %>
-		</a>
+		<% if (typeof k !== "undefined") { %>
+			<a href="/pdf/<%= id %>?k=<%= k %>" target="_blank" class="btn btn-slim socialLink" id="exportPDF" title="PDF export">
+				<i class="icon-file-pdf"></i>
+				<%= language.share_pdf_export %>
+			</a>
+		<% } %>
 	</div>
 </div>

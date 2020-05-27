@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-03T21:20:38+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-04-17T23:12:34+02:00
+ * @Last modified time: 2020-05-20T11:23:49+02:00
  */
 
 
@@ -20,5 +20,6 @@ var language = {
 	"toast_success_vote": "Il tuo voto è stato salvato! 🤩",
 	"toast_generic_error": "Qualcosa è andato storto mentre inviavamo il tuo voto 😞",
 	"cookie_phrase": "Questo sito usa i cookie 🍪 per rendere la tua visita ancora migliore 😄.",
-	"cookie_button": "Va bene 👌"
+	"cookie_button": "Va bene 👌",
+	"cookie_button_functional": "Solo funzionali"
 }

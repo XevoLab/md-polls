@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-17T23:26:33+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-05-17T21:40:37+02:00
+ * @Last modified time: 2020-05-20T11:41:42+02:00
  */
 
 
@@ -17,32 +17,21 @@ require('dotenv').config();
 const aws = require('aws-sdk');
 var ddb = new aws.DynamoDB({apiVersion: '2012-08-10', region: process.env.AWS_REGION});
 
-router.get('/:id', (req, res) => {
+router.get('/:id', require("./mid/getQuestionary.js"), (req, res) => {
 	// Get polls data from ID
 
-	var params = {
-		TableName: process.env.AWS_TABLE_NAME,
-		ConsistentRead: true,
-		Limit: 1,
-		KeyConditionExpression: "ID = :val",
-		ExpressionAttributeValues: {
-			':val': {S: req.params.id}
+	if (!req.q.ok) {
+		return res.json({result: "error", message:"Somthing didn\'t work out quite right"});
+	} else {
+		if (req.q.length === 0) {
+			res.json({result: "empty"});
 		}
-	};
-
-	var ddbResponse = ddb.query(params, function(err, data) {
-		if (err) {
-			console.error("DynamoDB error results.js : ", err);
-		  res.json({result: "error", message:"Somthing didn\'t work out quite right"});
-		} else {
-			if (data.Items.length === 0) {
-				res.json({result: "empty"});
-			}
-			else {
-				res.json(aws.DynamoDB.Converter.unmarshall(data.Items[0]));
-			}
+		else {
+			// Send them only the necessary data
+			res.json(req.q.pubD);
 		}
-	});
+	}
+	return;
 
 });
 

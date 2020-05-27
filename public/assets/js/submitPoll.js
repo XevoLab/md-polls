@@ -2,43 +2,72 @@
  * @Author: francesco
  * @Date:   2020-05-19T21:33:58+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-05-19T23:25:50+02:00
+ * @Last modified time: 2020-05-22T13:54:07+02:00
  */
 
 var pollData = JSON.parse(document.querySelector("script#data").innerHTML);
 var pollID = pollData.ID;
 
-// Enable submit and check number of answers
-var choices = document.querySelectorAll('input[name="choice"]');
-var selHist = [];
-document.querySelectorAll("input:checked[name=choice]").forEach((item, i) => selHist.push(item));
+// Show result bars
+function makeBars() {
+	var pollOpts = JSON.parse(document.querySelector("script#data").innerText).options;
+  var selHist = [];
 
-for (var i=0; i<choices.length; i++) {
-  choices[i].onclick = function(e) {
-    if (e.target.checked) {
-      selHist.push(e.target);
+	var choicesDiv = document.querySelector("div.choices .col");
+	choicesDiv.innerHTML = "";
 
-      if (pollData.metadata.maxOptions === 1 && selHist.length > 1) {
-        selHist[0].checked = false;
-        selHist.shift();
+	for (var i = 0; i < pollOpts.length; i++) {
+		var r = pollOpts[i];
+
+    var choiceObj = document.createElement("div");
+    choiceObj.classList.value = `row choice${( r.metadata.limitAnswers != 0 && (r.metadata.limitAnswers - r.votes <= 0) ? ' disabled' : '')}`;
+    choiceObj.id = `answer_row_${r.id}`;
+
+		choiceObj.innerHTML = `
+      <div class="col select">
+    		<div class="custom-checkbox">
+    			<input type="checkbox" class="option" id="answer_${r.id}" name="choice" value="${r.id}">
+    			<label class="value" for="answer_${r.id}">
+            <div>
+              <div class="card hidden"></div>
+              <div class="content _card-small-text">${r.value}</div>
+            </div>
+    			</label>
+    		</div>
+    	</div>
+      ${( r.metadata.limitAnswers != 0 ? `<div class="col-auto limit">
+        <span class="n">${r.metadata.limitAnswers - r.votes}</span> left
+      </div>` : '')}
+    `;
+    choiceObj.onclick = function(e) {
+      if (e.target.checked) {
+        selHist.push(e.target);
+
+        if (pollData.metadata.maxOptions === 1 && selHist.length > 1) {
+          selHist[0].checked = false;
+          selHist.shift();
+        }
+        else if (selHist.length > pollData.metadata.maxOptions) {
+          selHist.pop();
+          e.target.checked = false;
+        }
       }
-      else if (selHist.length > pollData.metadata.maxOptions) {
-        selHist.pop();
-        e.target.checked = false;
+      else {
+        selHist = [];
+        document.querySelectorAll("input:checked[name=choice]").forEach((item, i) => selHist.push(item));
       }
-    }
-    else {
-      selHist = [];
-      document.querySelectorAll("input:checked[name=choice]").forEach((item, i) => selHist.push(item));
-    }
 
-    if (selHist.length >= pollData.metadata.minOptions)
-      document.querySelector('button[type="submit"]').classList.remove("disabled");
-    else
-      document.querySelector('button[type="submit"]').classList.add("disabled");
-	};
+      if (selHist.length >= pollData.metadata.minOptions)
+        document.querySelector('button[type="submit"]').classList.remove("disabled");
+      else
+        document.querySelector('button[type="submit"]').classList.add("disabled");
+  	};
+
+		createCards(choicesDiv.appendChild(choiceObj), r.value);
+	}
 }
 
+makeBars();
 
 var form = document.querySelector('form');
 form.addEventListener('submit', function (e) {

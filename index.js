@@ -17,7 +17,7 @@ const http = require('http').createServer(app);
 //
 
 // Socket.io
-var io = module.exports.io = require('socket.io')(http)
+var io = module.exports.io = require('socket.io')(http, {cookie: false})
 
 io.on('connection', (socket) => {
 

@@ -2,7 +2,7 @@
  * @Author: francesco
  * @Date:   2020-04-17T21:22:52+02:00
  * @Last modified by:   francesco
- * @Last modified time: 2020-04-17T23:11:52+02:00
+ * @Last modified time: 2020-05-20T11:23:42+02:00
  */
 
 
@@ -20,5 +20,6 @@ var language = {
 	"toast_success_vote": "You vote was saved 🤩",
 	"toast_generic_error": "Something went wrong while submitting your answer 😞",
 	"cookie_phrase": "This website uses cookies 🍪 to enhance your browsing experience 😄.",
-	"cookie_button": "I agree 👌"
+	"cookie_button": "I agree 👌",
+	"cookie_button_functional": "Only functional"
 };

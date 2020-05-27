@@ -111,7 +111,6 @@
 	}
 
 	table.results {
-		font-size: $choices_font_size;
 
 		tr[delta="0"] {
 			.value .text {
@@ -126,49 +125,35 @@
 			width: 100%;
 			border-radius: 8px;
 			overflow: hidden;
-			div.text, div.bg {
-				padding: 5px $choices_padding;
-				color: white;
-			}
-		}
-		&[type="histogram"] {
-			.value {
-				div.text {
-					background-color: $primary_color;
-					padding: 5px $choices_padding;
-					min-width: fit-content;
-					min-width: -moz-fit-content;
-					border-radius: 5px;
-				}
-				div.bg {
-					display: none;
-				}
-			}
-			tr[delta="0"] {
-				.value .text {
-					background-color: $secondary_color;
-				}
-			}
 		}
 		&[type="bars"] {
 			.value {
-				position: relative;
-				div.text {
+				overflow: hidden;
+				div.accent-bg {
 					background-color: $secondary_color;
 					position: absolute;
-					padding: 5px 0;
-					overflow: hidden;
-					span {
-						padding: 0 $choices_padding;
-						clear: both;
-				    display: inline-block;
-				    white-space: nowrap;
-					}
+					z-index: 990;
+					height: 100%;
+					border-radius: 8px 0 0 8px;
+
 				}
-				div.bg {
-					background-color: $primary_color;
-					border-radius: 5px;
+				div.ch {
+					position: relative;
+					display: flex;
+					color: white;
 					width: 100%;
+					background-color: $primary_color;
+					border-radius: 8px;
+					div.text {
+						padding: $choices_padding/2 $choices_padding;
+						z-index: 1000;
+						-ms-flex: 0 0 100%;
+						flex: 0 0 100%;
+						max-width: 100%;
+						span {
+							font-size: $choices_font_size;
+						}
+					}
 				}
 			}
 		}
@@ -189,6 +174,32 @@
 			}
 			.votes-percentage {
 				display: block;
+			}
+		}
+	}
+
+	.choices .choice, table.results {
+		.card-small-text {
+			font-size: 12pt!important;
+		}
+		.card {
+			max-width: 75vw;
+			margin-bottom: 5px;
+
+			&.hidden {
+				display: none;
+			}
+			.card-image-preview {
+			}
+			.card-image {
+				max-width: 100%;
+				max-height: 20vh;
+				min-height: 150px;
+				img {
+					max-width: 100%;
+					max-height: 20vh;
+					min-height: 150px;
+				}
 			}
 		}
 	}
